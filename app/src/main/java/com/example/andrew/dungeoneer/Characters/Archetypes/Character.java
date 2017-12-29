@@ -45,6 +45,7 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
     protected  String defenseExclamation;
     protected String healedExclamation;
     protected String critExclamation;
+    protected ArrayList<Character> threatTable;
 
 
 
@@ -58,6 +59,7 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
         this.superWeapon = false;
         this.armour = armour;
         this.alive = true;
+        this.threatTable = new ArrayList<>();
 
 //        Random Modifiers:
         this.damageModifier = new ArrayList<>(Arrays.asList(1.0, 1.0, 1.0, 1.0, 1.0));
@@ -88,7 +90,7 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
         this.critExclamation = "";
     }
 
-//  Attack Mechanics:
+//         Attack Mechanics:
 
     public void attack(Character target) {
         double damage;
@@ -398,4 +400,15 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
         this.stunned = stun;
     }
 
+    public void setThreat(Integer increase){
+        this.threat = this.getThreat() + increase;
+    }
+
+    public void increaseThreat( Integer increaseInThreat){
+        this.setThreat(increaseInThreat);
+    }
+
+    public void addTargetsToThreatTable(ArrayList<Character> theEnemy){
+        this.threatTable.addAll(theEnemy);
+    }
 }
