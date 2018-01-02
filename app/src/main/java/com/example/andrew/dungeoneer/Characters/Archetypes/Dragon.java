@@ -35,6 +35,10 @@ public class Dragon extends Character implements IThreatAttack {
         target.healthBar = healthBar - damage;
         return "FireBall : Did " + damage + "damage.";
     }
+
+    public void threatAttack(){
+        weaponattack1(this.threatTable.get(0));
+    }
 }
 
 //

@@ -5,17 +5,17 @@ import com.example.andrew.dungeoneer.Characters.Interfaces.IThreatAttack;
 import com.example.andrew.dungeoneer.Characters.OffHand;
 import com.example.andrew.dungeoneer.Characters.Weapon;
 
-public class OrcCaptain extends Character implements IThreatAttack {
+public class Goblin extends Character implements IThreatAttack {
 
 
-    public OrcCaptain(String name, double gold, Weapon weapon, Armour armour, OffHand offHand) {
+    public Goblin(String name, double gold, Weapon weapon, Armour armour, OffHand offHand) {
         super(name, gold, weapon, armour, offHand);
 
-        this.strength = 80;
-        this.agility = 30;
-        this.intellect = 40;
-        this.stamina = 90;
-        this.baseThreat = 20;
+        this.strength = 20;
+        this.agility = 70;
+        this.intellect = 25;
+        this.stamina = 30;
+        this.baseThreat = 10;
         this.threat = 0;
         this.critChance = agility/100;
         this.critDamage = agility/25;
@@ -24,7 +24,10 @@ public class OrcCaptain extends Character implements IThreatAttack {
         this.healthBar = maxHealth;
     }
 
+
     public void threatAttack(){
-        weaponattack1(this.threatTable.get(0));
+        weaponattack1(this.threatTable.get(1));
     }
+
+
 }
