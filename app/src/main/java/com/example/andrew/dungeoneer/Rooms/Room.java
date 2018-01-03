@@ -1,14 +1,15 @@
 package com.example.andrew.dungeoneer.Rooms;
 
-import java.util.ArrayList;
-
+import com.example.andrew.dungeoneer.Characters.Archetypes.Character;
 import com.example.andrew.dungeoneer.Items.Corpse;
 import com.example.andrew.dungeoneer.Items.Item;
 import com.example.andrew.dungeoneer.Magic.ITick;
-import com.example.andrew.dungeoneer.Characters.Archetypes.Character;
+
+import java.util.ArrayList;
 
 public abstract class Room {
 
+    String name;
     double rewardGold;
     public ArrayList<Character> goodies;
     public ArrayList<Character> baddies;
@@ -17,10 +18,11 @@ public abstract class Room {
     public ArrayList<ITick> hotsAndDots;
 
 
-    public Room(ArrayList goodies, ArrayList baddies, double rewardGold) {
+    public Room(String name) {
+        this.name = name;
         this.rewardGold = rewardGold;
-        this.goodies = goodies;
-        this.baddies = baddies;
+        this.goodies = new ArrayList<>();
+        this.baddies = new ArrayList<>();
         this.floor = new ArrayList<>();
         this.shelves = new ArrayList<>();
         this.hotsAndDots = new ArrayList<>();

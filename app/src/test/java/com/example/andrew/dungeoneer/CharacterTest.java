@@ -31,7 +31,7 @@ public class CharacterTest {
         dps = new Wizard( "Gandalf",5, Weapon.STAFF, Armour.CLOTHE, OffHand.DPSWAND);
         dragon = new Dragon("Smaug",10000000);
         healer = new Priest("Cadfael", 100,Weapon.BLESSED_SCEPTER, Armour.LEATHER, OffHand.HEALWAND);
-        orcCaptain = new OrcCaptain("Badrag", 100, Weapon.SWORD, Armour.PLATE, OffHand.KNIFE);
+        orcCaptain = new OrcCaptain();
 
     }
 

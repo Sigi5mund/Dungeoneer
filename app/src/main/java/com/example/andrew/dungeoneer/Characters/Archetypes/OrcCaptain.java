@@ -8,9 +8,9 @@ import com.example.andrew.dungeoneer.Characters.Weapon;
 public class OrcCaptain extends Character implements IThreatAttack {
 
 
-    public OrcCaptain(String name, double gold, Weapon weapon, Armour armour, OffHand offHand) {
-        super(name, gold, weapon, armour, offHand);
 
+    public OrcCaptain() {
+        super("Grishnak",  100.00, Weapon.SWORD, Armour.LEATHER, OffHand.KNIFE);
         this.strength = 80;
         this.agility = 30;
         this.intellect = 40;
