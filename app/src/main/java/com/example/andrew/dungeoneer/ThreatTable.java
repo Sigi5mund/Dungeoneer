@@ -48,11 +48,11 @@ public class ThreatTable {
         Collections.shuffle(this.targets);
     }
 
-    public void fillAllThreatTables(ArrayList<Character> villains, ArrayList<Character> heroes){
-        for (Character villain: villains
-             ) {villain.addTargetsToThreatTable(heroes);
-        }
-    }
+//    public void fillAllThreatTables(ArrayList<Character> villains, ArrayList<Character> heroes){
+//        for (Character villain: villains
+//             ) {villain.addTargetsToThreatTable(heroes);
+//        }
+//    }
 
 
 //        Utility:

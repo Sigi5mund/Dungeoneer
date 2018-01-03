@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Fellowship {
 
     String name;
-    ArrayList<Character> heroes;
+    public ArrayList<Character> heroes;
 
     Integer goldPool;
     ArrayList<Item> itemPool;
@@ -19,6 +19,7 @@ public class Fellowship {
         this.goldPool = 0;
         this.itemPool = new ArrayList<>();
         this.fellowshipMegaManaPool = 0;
+
     }
 
 
@@ -43,6 +44,17 @@ public class Fellowship {
         return fellowshipMegaManaPool;
     }
 
+    public Character tank(){
+        return this.getHeroes().get(1);
+    }
+    public Character healer(){
+        return this.getHeroes().get(0);
+    }
+    public Character dps(){
+        return this.getHeroes().get(2);
+    }
+
+
 
 
 //    Setters:
@@ -62,5 +74,13 @@ public class Fellowship {
 
     public void setFellowshipMegaManaPool(Integer fellowshipMegaManaPool) {
         this.fellowshipMegaManaPool = fellowshipMegaManaPool;
+    }
+
+    public void addHeroes(Character character){
+        this.heroes.add(character);
+    }
+
+    public void removeHeroes(Character character){
+        this.heroes.remove(character);
     }
 }

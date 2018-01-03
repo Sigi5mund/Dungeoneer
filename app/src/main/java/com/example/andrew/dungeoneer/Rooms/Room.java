@@ -1,6 +1,7 @@
 package com.example.andrew.dungeoneer.Rooms;
 
 import com.example.andrew.dungeoneer.Characters.Archetypes.Character;
+import com.example.andrew.dungeoneer.Characters.Archetypes.Fellowship;
 import com.example.andrew.dungeoneer.Items.Corpse;
 import com.example.andrew.dungeoneer.Items.Item;
 import com.example.andrew.dungeoneer.Magic.ITick;
@@ -11,7 +12,7 @@ public abstract class Room {
 
     String name;
     double rewardGold;
-    public ArrayList<Character> goodies;
+    public Fellowship fellowship;
     public ArrayList<Character> baddies;
     public ArrayList<Corpse> floor;
     public ArrayList<Item> shelves;
@@ -21,7 +22,7 @@ public abstract class Room {
     public Room(String name) {
         this.name = name;
         this.rewardGold = rewardGold;
-        this.goodies = new ArrayList<>();
+        this.fellowship = new Fellowship("The Valiant Few", new ArrayList<>());
         this.baddies = new ArrayList<>();
         this.floor = new ArrayList<>();
         this.shelves = new ArrayList<>();
@@ -33,19 +34,19 @@ public abstract class Room {
 //    Goodies and Baddies ArrayList Maintenance:
 
     public ArrayList<Character> getGoodies() {
-        return goodies;
+        return this.fellowship.getHeroes();
     }
 
-    public void setGoodies(ArrayList<Character> goodies) {
-        this.goodies = goodies;
+    public void loadGoodies(Fellowship fellowship) {
+        this.fellowship = fellowship;
     }
 
     public void addGoodies(Character character){
-        this.goodies.add(character);
+        this.fellowship.addHeroes(character);
     }
 
     public void removeGoodies(Character character){
-        this.goodies.remove(character);
+        this.fellowship.removeHeroes(character);
     }
 
     public ArrayList<Character> getBaddies() {
@@ -87,7 +88,7 @@ public abstract class Room {
 
     public void removeDead() {
         baddies.removeIf(next -> !next.checkAlive());
-        goodies.removeIf(next -> !next.checkAlive());
+        fellowship.getHeroes().removeIf(next -> !next.checkAlive());
     }
 
     private Corpse corpseCreation(Character character){
@@ -109,7 +110,7 @@ public abstract class Room {
 //    End of Combat Turn Checks:
 
     private void checkForCorpses(){
-        for (Character character: goodies){
+        for (Character character: fellowship.getHeroes()){
             if (character.checkAlive() == false){
                 addToFloor(corpseCreation(character));
             }
@@ -122,7 +123,7 @@ public abstract class Room {
     }
 
     private void removeStuns() {
-        for (Character character : goodies) {
+        for (Character character : fellowship.getHeroes()) {
             character.setStunned(false);
         }
         for (Character character : baddies) {
@@ -137,7 +138,7 @@ public abstract class Room {
     }
 
     private void checkForMaxHealth() {
-        for (Character character : goodies) {
+        for (Character character : fellowship.getHeroes()) {
             character.maxHealthExceededCheck();
         }
         for (Character character : baddies) {
@@ -154,6 +155,12 @@ public abstract class Room {
     }
 
 
+
+    public void fillAllThreatTables(){
+        for (Character baddies: baddies
+                ) {baddies.addTargetsToThreatTable(fellowship);
+        }
+    }
 
 
 //        public String goToTheNextRoom(ArrayList<Character> adventurers){

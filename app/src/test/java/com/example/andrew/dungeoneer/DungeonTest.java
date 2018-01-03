@@ -2,6 +2,7 @@ package com.example.andrew.dungeoneer;
 
 import com.example.andrew.dungeoneer.Characters.Archetypes.Character;
 import com.example.andrew.dungeoneer.Characters.Archetypes.Dragon;
+import com.example.andrew.dungeoneer.Characters.Archetypes.Fellowship;
 import com.example.andrew.dungeoneer.Characters.Archetypes.Knight;
 import com.example.andrew.dungeoneer.Characters.Archetypes.OrcCaptain;
 import com.example.andrew.dungeoneer.Characters.Archetypes.Priest;
@@ -12,7 +13,7 @@ import com.example.andrew.dungeoneer.Characters.Weapon;
 import com.example.andrew.dungeoneer.Items.Item;
 import com.example.andrew.dungeoneer.Magic.DamageOverTime;
 import com.example.andrew.dungeoneer.Magic.HealOverTime;
-import com.example.andrew.dungeoneer.Rooms.Dungeon;
+import com.example.andrew.dungeoneer.Rooms.Dungeon1;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -24,7 +25,7 @@ import static org.junit.Assert.assertNotEquals;
 
 public class DungeonTest {
 
-    private Dungeon dungeon;
+    private Dungeon1 dungeon;
     private ArrayList<Character> heroes;
     private ArrayList<Character> villains;
     private Item item;
@@ -35,23 +36,26 @@ public class DungeonTest {
     private Character tank;
     private Character dragon1;
     private Character orc;
+    private Fellowship fellowship;
 
 
     @Before
     public void before() {
         heroes = new ArrayList<>();
         heroes.add(new Priest("Cadfael", 5, Weapon.BLESSED_SCEPTER, Armour.CLOTHE, OffHand.HEALWAND));
-        heroes.add(new Wizard("Gandalf", 10, Weapon.STAFF, Armour.CLOTHE, OffHand.DPSWAND));
         heroes.add(new Knight("Athina", 20, Weapon.SWORD, Armour.PLATE, OffHand.SHIELD));
+        heroes.add(new Wizard("Gandalf", 10, Weapon.STAFF, Armour.CLOTHE, OffHand.DPSWAND));
         villains = new ArrayList<>();
         villains.add(new Dragon("Smaug", 1000));
-        villains.add(new OrcCaptain("Badrag", 100, Weapon.SWORD, Armour.PLATE, OffHand.KNIFE));
-        dungeon = new Dungeon(heroes, villains, 10000);
+        villains.add(new OrcCaptain("Badrag"));
+        fellowship =  new Fellowship("The Valiant Few", heroes);
+        dungeon = new Dungeon1("The Undercroft");
+        dungeon.loadGoodies(fellowship);
         item = new Item("Suspicious box", 1, new ArrayList<>());
         dungeon.shelves.add(item);
-        healer = heroes.get(0);
-        dps = heroes.get(1);
-        tank = heroes.get(2);
+        healer = fellowship.heroes.get(0);
+        tank = fellowship.heroes.get(1);
+        dps = fellowship.heroes.get(2);
         dragon1 = villains.get(0);
         orc = villains.get(1);
 
@@ -68,10 +72,9 @@ public class DungeonTest {
 
     @Test
     public void openBoxWorks() {
-        Character priest = heroes.get(0);
         item = dungeon.shelves.get(0);
-        assertNotEquals("", item.openBox(priest));
-        assertNotEquals(350, priest.getHealthBar());
+        assertNotEquals("", item.openBox(healer));
+        assertNotEquals(350, healer.getHealthBar());
     }
 
     @Test
@@ -79,7 +82,7 @@ public class DungeonTest {
         healer.physicalDamage(2000);
         dungeon.endOfCombatChecks();
         assertEquals(1, dungeon.floor.size());
-        assertEquals(2, dungeon.goodies.size());
+        assertEquals(2, dungeon.fellowship.getHeroes().size());
         assertEquals("Cadfael's corpse has 5.0 gold, CLOTHE armour and a BLESSED_SCEPTER weapon. What will you take?", tank.examineCorpse(dungeon.floor.get(0)));
     }
 
@@ -87,7 +90,7 @@ public class DungeonTest {
     public void checkdeletecorpsesafterspawn() {
         healer.physicalDamage(2000);
         dungeon.removeDead();
-        assertEquals(2, dungeon.goodies.size());
+        assertEquals(2,  dungeon.fellowship.getHeroes().size());
     }
 
     @Test

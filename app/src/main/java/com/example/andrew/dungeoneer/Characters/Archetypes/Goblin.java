@@ -8,8 +8,8 @@ import com.example.andrew.dungeoneer.Characters.Weapon;
 public class Goblin extends Character implements IThreatAttack {
 
 
-    public Goblin() {
-        super("Snotling", 10, Weapon.SWORD, Armour.CLOTHE, OffHand.BITE);
+    public Goblin(String name) {
+        super(name, 10, Weapon.SWORD, Armour.CLOTHE, OffHand.BITE);
 
         this.strength = 20;
         this.agility = 70;

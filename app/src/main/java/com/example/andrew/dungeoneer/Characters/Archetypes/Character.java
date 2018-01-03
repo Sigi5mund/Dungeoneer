@@ -408,7 +408,14 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
         this.setThreat(increaseInThreat);
     }
 
-    public void addTargetsToThreatTable(ArrayList<Character> theEnemy){
-        this.threatTable.addAll(theEnemy);
+    public void addTargetsToThreatTable(Fellowship theEnemy){
+        ArrayList<Character> enemies;
+        enemies =theEnemy.getHeroes();
+        this.threatTable.addAll(enemies);
+    }
+
+
+    public ArrayList<Character> getThreatTable() {
+        return threatTable;
     }
 }
