@@ -9,7 +9,6 @@ import com.example.andrew.dungeoneer.Characters.Armour;
 import com.example.andrew.dungeoneer.Characters.OffHand;
 import com.example.andrew.dungeoneer.Characters.Weapon;
 import com.example.andrew.dungeoneer.Game.Game;
-import com.example.andrew.dungeoneer.Rooms.Room;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -24,54 +23,66 @@ import static org.junit.Assert.assertEquals;
 
 public class GameTest {
 
-    Game game1;
-    Room room1;
-    Character tank;
-    Character dps;
-    Character healer;
-    Fellowship fellowship;
-    ArrayList<Character> heroes;
+    private Game game1;
 
     @Before
     public void before() {
 
-        heroes = new ArrayList<>();
-        tank = new Knight("Athina", 0, Weapon.SWORD, Armour.GOLD, OffHand.SHIELD);
-        dps = new Wizard("Gandalf", 5, Weapon.STAFF, Armour.CLOTHE, OffHand.DPSWAND);
-        healer = new Priest("Cadfael", 100, Weapon.BLESSED_SCEPTER, Armour.LEATHER, OffHand.HEALWAND);
-        heroes.add(healer);
-        heroes.add(tank);
-        heroes.add(dps);
-        fellowship = new Fellowship("The Valiant Few", heroes);
+        ArrayList<Character> heroes = new ArrayList<>();
+        Character tankload = new Knight("Athina", 0, Weapon.SWORD, Armour.GOLD, OffHand.SHIELD);
+        Character dpsload = new Wizard("Gandalf", 5, Weapon.STAFF, Armour.CLOTHE, OffHand.DPSWAND);
+        Character healerload = new Priest("Cadfael", 100, Weapon.BLESSED_SCEPTER, Armour.LEATHER, OffHand.HEALWAND);
+        heroes.add(healerload);
+        heroes.add(tankload);
+        heroes.add(dpsload);
+        Fellowship fellowship = new Fellowship("The Valiant Few", heroes);
         game1 = new Game();
-        game1.getRoomSequence().get(0).loadGoodies(fellowship);
-        game1.room.fillAllThreatTables();
+        game1.room1.loadGoodies(fellowship);
+        game1.room1.fillAllThreatTables();
 
     }
 
     @Test
-    public void gameExistsTest(){
-        assertEquals(1, game1.getRoomSequence().size());
+    public void gameConstructorTest(){
+        assertEquals(4, game1.room1.baddies.size());
+        assertEquals(null, game1.room2);
     }
-
-
 
     @Test
     public void checkGameHasFellowship(){
-        game1.room.fellowship.tank().attack(game1.room.captain);
-        assertEquals(1725, game1.room.captain.getHealthBar(), 1);
+        game1.room1.fellowship.tank().weaponattack1(game1.room1.captain);
+        assertEquals(1740, game1.room1.captain.getHealthBar(), 1);
     }
-
 
     @Test
     public void checkThreatTableHasHeroes(){
-        assertEquals(3, game1.room.captain.getThreatTable().size());
+        assertEquals(3, game1.room1.captain.getThreatTable().size());
+    }
+
+    @Test
+    public void threatTablesTests(){
+        assertEquals(game1.room1.fellowship.healer(), game1.room1.captain.getThreatTable().get(0));
+        game1.room1.fellowship.dps().increaseThreat(1000);
+        game1.room1.fillAllThreatTables();
+        game1.room1.captain.sortThreatTable();
+        assertEquals(game1.room1.fellowship.dps(), game1.room1.captain.topThreat());
 
     }
 
     @Test
-    public void checkThreatTableOrder(){
-        assertEquals(game1.room.fellowship.healer(), game1.room.captain.getThreatTable().get(0));
+    public void threatTableAttackTest(){
+        assertEquals(game1.room1.fellowship.healer(), game1.room1.captain.getThreatTable().get(0));
+        assertEquals(500 ,game1.room1.fellowship.healer().getHealthBar(), 1);
+        game1.room1.captain.threatAttack();
+        assertEquals(440 ,game1.room1.fellowship.healer().getHealthBar(), 1);
+        game1.room1.fellowship.dps().increaseThreat(1000);
+        game1.room1.fillAllThreatTables();
+        game1.room1.captain.sortThreatTable();
+        assertEquals(game1.room1.fellowship.dps(), game1.room1.captain.topThreat());
+        assertEquals(500 ,game1.room1.fellowship.dps().getHealthBar(), 1);
+        game1.room1.captain.threatAttack();
+        assertEquals(420 ,game1.room1.fellowship.dps().getHealthBar(), 1);
     }
+
 
 }

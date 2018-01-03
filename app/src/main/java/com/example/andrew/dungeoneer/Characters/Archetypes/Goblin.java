@@ -26,7 +26,7 @@ public class Goblin extends Character implements IThreatAttack {
 
 
     public void threatAttack(){
-        weaponattack1(this.threatTable.get(1));
+        weaponattack1(this.middleThreat());
     }
 
 

@@ -37,7 +37,7 @@ public class Dragon extends Character implements IThreatAttack {
     }
 
     public void threatAttack(){
-        weaponattack1(this.threatTable.get(0));
+        weaponattack1(this.topThreat());
     }
 }
 

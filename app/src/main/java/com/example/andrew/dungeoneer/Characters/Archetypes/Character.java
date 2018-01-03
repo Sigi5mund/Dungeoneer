@@ -12,40 +12,41 @@ import com.example.andrew.dungeoneer.Items.Item;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 
 public abstract class Character implements ISpell, IAttack, ITakeDamage {
 
     protected String name;
     protected double gold;
     protected Weapon weapon;
-    protected OffHand offHand;
-    protected  Double healthBar;
-    protected  ArrayList<Item> items;
-    protected boolean superWeapon;
-    protected ArrayList<Double> damageModifier;
-    protected ArrayList<Double> critModifier;
-    protected ArrayList<Double> blockModifier;
-    protected Armour armour;
-    protected  boolean alive;
-    protected  Integer strength;
-    protected Integer agility;
-    protected  Integer intellect;
-    protected  Integer stamina;
-    protected Integer baseThreat;
-    protected  Integer threat;
-    protected  Integer critChance;
-    protected  Integer critDamage;
-    protected  Boolean stunned;
-    protected double maxHealth;
-    protected Integer dodgeChance;
-    protected  Integer blockChance;
-    protected  Integer magicDefense;
-    protected  Integer stunnedChance;
-    protected  String attackExclamation;
-    protected  String defenseExclamation;
-    protected String healedExclamation;
-    protected String critExclamation;
-    protected ArrayList<Character> threatTable;
+    private OffHand offHand;
+    Double healthBar;
+    private ArrayList<Item> items;
+    private boolean superWeapon;
+    ArrayList<Double> damageModifier;
+    private ArrayList<Double> critModifier;
+    private ArrayList<Double> blockModifier;
+    private Armour armour;
+    private boolean alive;
+    Integer strength;
+    Integer agility;
+    Integer intellect;
+    Integer stamina;
+    Integer baseThreat;
+    Integer threat;
+    Integer critChance;
+    Integer critDamage;
+    Boolean stunned;
+    double maxHealth;
+    private Integer dodgeChance;
+    private Integer blockChance;
+    private Integer magicDefense;
+    private Integer stunnedChance;
+    private String attackExclamation;
+    private String defenseExclamation;
+    private String healedExclamation;
+    private String critExclamation;
+    private ArrayList<Character> threatTable;
 
 
 
@@ -60,6 +61,7 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
         this.armour = armour;
         this.alive = true;
         this.threatTable = new ArrayList<>();
+
 
 //        Random Modifiers:
         this.damageModifier = new ArrayList<>(Arrays.asList(1.0, 1.0, 1.0, 1.0, 1.0));
@@ -115,21 +117,21 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
         this.threat = this.threat + this.weapon.getThreatIncrease();
     }
 
-    public double calculateCritChance(){
+    private double calculateCritChance(){
         if (this.critChance + randomCritModifier() >= 1){
             return this.critDamage;
         }
         return 1.0;
     }
 
-    public double calculateWeaponDamage(Weapon weapon){
+    private double calculateWeaponDamage(Weapon weapon){
         double damage;
         damage = weapon.getWeaponDamage() * this.getStrength()/100 * randomDamageModifier();
         return damage;
     }
 
-    public double calculateBlockChance(){
-        if (this.canBlockDamage(this.offHand) == true){
+    private double calculateBlockChance(){
+        if (this.canBlockDamage(this.offHand)){
             if (this.blockChance + randomBlockModifier() >=1){
                 return 0.0;
             }
@@ -137,7 +139,7 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
         return 1.0;
     }
 
-    public double doesSuperWeaponApply() {
+    private double doesSuperWeaponApply() {
         if (this.superWeapon) {
             return 3.0;
         }
@@ -155,7 +157,7 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
         }
     }
 
-    public void magicDamage(double damage){
+    void magicDamage(double damage){
         if (damage < 0) {
             this.healthBar = healthBar - damage;
         } else {
@@ -164,28 +166,32 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
         }
     }
 
-    public Integer calculateMagicResistance(Character target){
+    private Integer calculateMagicResistance(Character target){
         return 1 - (target.getIntellect()/100) ;
     }
 
-    public Double randomDamageModifier() {
+    Double randomDamageModifier() {
         Collections.shuffle(this.damageModifier);
         return damageModifier.get(0);
     }
 
-    public Double randomCritModifier(){
+    private Double randomCritModifier(){
         Collections.shuffle(this.critModifier);
         return critModifier.get(0);
     }
 
-    public Double randomBlockModifier(){
+    private Double randomBlockModifier(){
         Collections.shuffle(this.blockModifier);
         return blockModifier.get(0);
     }
 
 
     public String spell(Character target) {
-        return null;
+        return "string";
+    }
+
+    public void threatAttack(){
+        weaponattack1(this.topThreat());
     }
 
 
@@ -216,7 +222,7 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
         return this.offHand;
     }
 
-    public boolean canBlockDamage(OffHand offhand){
+    private boolean canBlockDamage(OffHand offhand){
            return offhand.CanBlock();
     }
 
@@ -414,6 +420,37 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
         this.threatTable.addAll(enemies);
     }
 
+    public void sortThreatTable() {
+        Collections.sort(threatTable, new Comparator<Character>(){
+                    public int compare(Character h1, Character h2) {
+                        return Integer.valueOf(h2.threat).compareTo(h1.threat);
+                    }
+        });
+    }
+
+    public void initialSortThreatTable(){
+        Collections.sort(threatTable, new Comparator<Character>() {
+                    public int compare(Character h1, Character h2) {
+                        return Integer.valueOf(h2.baseThreat).compareTo(h1.baseThreat);
+                    }
+                });
+    }
+
+    public Character topThreat(){
+        return this.threatTable.get(0);
+    }
+
+    public Character middleThreat(){
+        return this.threatTable.get(1);
+    }
+
+    public Character bottomThreat(){
+        return this.threatTable.get(2);
+    }
+
+    public void randomiseThreatTable() {
+        Collections.shuffle(this.threatTable);
+    }
 
     public ArrayList<Character> getThreatTable() {
         return threatTable;

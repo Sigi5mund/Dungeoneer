@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public abstract class Room {
 
-    String name;
+    public String name;
     double rewardGold;
     public Fellowship fellowship;
     public ArrayList<Character> baddies;
@@ -67,7 +67,6 @@ public abstract class Room {
 
 
 
-
 //    Room Reward Mechanisms:
 
     public void collectReward(Character character){
@@ -106,17 +105,16 @@ public abstract class Room {
 
 
 
-
 //    End of Combat Turn Checks:
 
     private void checkForCorpses(){
         for (Character character: fellowship.getHeroes()){
-            if (character.checkAlive() == false){
+            if (!character.checkAlive()){
                 addToFloor(corpseCreation(character));
             }
         }
         for (Character character: baddies){
-            if (character.checkAlive() == false){
+            if (!character.checkAlive()){
                 addToFloor(corpseCreation(character));
             }
         }
