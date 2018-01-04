@@ -7,9 +7,7 @@ import com.example.andrew.dungeoneer.Characters.Weapon;
 
 public class Wizard extends Character {
 
-    Integer manaMax;
-    Integer manaLevel;
-    Integer manaRegen;
+
 
 
     public Wizard(String name, int gold, Weapon weapon, Armour armour, OffHand offHand) {
@@ -22,7 +20,7 @@ public class Wizard extends Character {
         this.critChance = intellect/100;
         this.critDamage = intellect/25;
         this.stunned = false;
-        this.manaLevel = 50;
+        this.manaPool = 100;
         this.manaRegen = 5;
         this.manaMax = 100;
         this.maxHealth = stamina * 20;
@@ -35,5 +33,7 @@ public class Wizard extends Character {
         double damage;
         damage = 1000.00 * randomDamageModifier();
         target.magicDamage(damage);
-        return "Fireball! : Did " + damage + "damage.";}
+        return "Fireball! : Did " + damage + "damage.";
+    }
+
 }

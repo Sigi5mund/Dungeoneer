@@ -17,9 +17,6 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * Created by Andrew on 29/12/2017.
- */
 
 public class GameTest {
 
@@ -62,7 +59,7 @@ public class GameTest {
     @Test
     public void threatTablesTests(){
         assertEquals(game1.room1.fellowship.healer(), game1.room1.captain.topThreat());
-        game1.room1.increaseThreat(100, game1.room1.captain, game1.room1.fellowship.dps());
+        game1.room1.fellowship.dps().increaseThreat(100, game1.room1.captain);
         game1.room1.captain.sortThreatTable();
         assertEquals(game1.room1.fellowship.dps(), game1.room1.captain.topThreat());
 
@@ -75,7 +72,7 @@ public class GameTest {
         assertEquals(500 ,game1.room1.fellowship.healer().getHealthBar(), 1);
         game1.room1.captain.threatAttack();
         assertEquals(425 ,game1.room1.fellowship.healer().getHealthBar(), 1);
-        game1.room1.increaseThreat(1000, game1.room1.captain, game1.room1.fellowship.dps());
+        game1.room1.fellowship.dps().increaseThreat(1000, game1.room1.captain);
         game1.room1.captain.sortThreatTable();
         assertEquals(game1.room1.fellowship.dps(), game1.room1.captain.topThreat());
         assertEquals(500 ,game1.room1.fellowship.dps().getHealthBar(), 1);
@@ -90,15 +87,18 @@ public class GameTest {
         assertEquals(500 ,game1.room1.fellowship.dps().getHealthBar(), 1);
         game1.room1.captain.threatAttack();
         game1.room1.goblin1.threatAttack();
-        assertEquals(500 ,game1.room1.fellowship.dps().getHealthBar(), 1);
-        game1.room1.increaseThreat(100, game1.room1.captain, game1.room1.fellowship.dps());
+        assertEquals(300 ,game1.room1.fellowship.dps().getHealthBar(), 1);
+        game1.room1.fellowship.dps().increaseThreat(100, game1.room1.captain);
+        game1.room1.fellowship.healer().increaseThreat(100, game1.room1.goblin1);
         game1.room1.captain.sortThreatTable();
         game1.room1.goblin1.sortThreatTable();
         assertEquals(game1.room1.fellowship.dps(), game1.room1.captain.topThreat());
-        assertEquals(500 ,game1.room1.fellowship.dps().getHealthBar(), 1);
+        assertEquals(300 ,game1.room1.fellowship.dps().getHealthBar(), 1);
+        assertEquals(500 ,game1.room1.fellowship.healer().getHealthBar(), 1);
         game1.room1.captain.threatAttack();
         game1.room1.goblin1.threatAttack();
-        assertEquals(300 ,game1.room1.fellowship.dps().getHealthBar(), 1);
+        assertEquals(200 ,game1.room1.fellowship.dps().getHealthBar(), 1);
+        assertEquals(425 ,game1.room1.fellowship.healer().getHealthBar(), 1);
     }
 
     @Test
@@ -110,4 +110,30 @@ public class GameTest {
         assertEquals(100 ,game1.room1.fellowship.dps().getHealthBar(), 1);
 
     }
+
+    @Test
+    public void attackTest(){
+        assertEquals(600 ,game1.room1.goblin1.getHealthBar(), 1);
+        game1.room1.fellowship.tank().tauntAttack(game1.room1.goblin1);
+        assertEquals(520 ,game1.room1.goblin1.getHealthBar(), 1);
+        game1.room1.fellowship.dps().tauntAttack(game1.room1.goblin1);
+        assertEquals(520 ,game1.room1.goblin1.getHealthBar(), 1);
+
+    }
+
+    @Test
+    public void blockAllTest(){
+        game1.room1.changeAllThreatTables(-10, game1.room1.fellowship.dps());
+        assertEquals(game1.room1.fellowship.tank(), game1.room1.captain.topThreat());
+        assertEquals(1800 ,game1.room1.fellowship.tank().getHealthBar(), 1);
+        game1.room1.fellowship.tank().shieldWall(game1.room1.getBaddies());
+        game1.room1.sortAllThreatTables();
+        game1.room1.captain.weaponattack1(game1.room1.fellowship.tank());
+        assertEquals(1800 ,game1.room1.fellowship.tank().getHealthBar(), 1);
+        game1.room1.endOfCombatChecks();
+        game1.room1.captain.weaponattack1(game1.room1.fellowship.tank());
+        assertEquals(1780 ,game1.room1.fellowship.tank().getHealthBar(), 1);
+
+    }
+
 }

@@ -4,6 +4,8 @@ import com.example.andrew.dungeoneer.Characters.Armour;
 import com.example.andrew.dungeoneer.Characters.OffHand;
 import com.example.andrew.dungeoneer.Characters.Weapon;
 
+import java.util.ArrayList;
+
 public class Knight extends Character {
 
 
@@ -20,6 +22,21 @@ public class Knight extends Character {
         this.stunned = false;
         this.maxHealth = stamina * 20;
         this.healthBar = maxHealth;
+    }
+
+    @Override
+    public void tauntAttack(Character target){
+        weaponattack1(target);
+        increaseThreat(50, target);
+    }
+
+    @Override
+    public void shieldWall(ArrayList<Character> enemies){
+        setBlockAll(true);
+        for (Character enemy: enemies) {
+            increaseThreat(10, enemy);
+        }
+
     }
 
 

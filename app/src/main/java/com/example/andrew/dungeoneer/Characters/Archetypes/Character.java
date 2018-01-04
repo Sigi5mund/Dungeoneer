@@ -33,7 +33,6 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
     Integer agility;
     Integer intellect;
     Integer stamina;
-    Integer baseThreat;
     Integer threat;
     Integer critChance;
     Integer critDamage;
@@ -41,6 +40,7 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
     double maxHealth;
     private Integer dodgeChance;
     private Integer blockChance;
+    private boolean blockAll;
     private Integer magicDefense;
     private Integer stunnedChance;
     private String attackExclamation;
@@ -48,6 +48,9 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
     private String healedExclamation;
     private String critExclamation;
     private ArrayList<ThreatObject> threatTable;
+    Integer manaMax;
+    Integer manaPool;
+    Integer manaRegen;
 
 
     public Character(String name, double gold, Weapon weapon, Armour armour, OffHand offHand) {
@@ -72,17 +75,20 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
         this.agility = 100;
         this.intellect = 100;
         this.stamina = 100;
-        this.baseThreat = 50;
         this.threat = 0;
         this.critChance = 50;
         this.critDamage = 50;
         this.stunned = false;
         this.dodgeChance = agility / 100;
         this.blockChance = strength / 275;
+        this.blockAll = false;
         this.magicDefense = intellect / 100;
         this.stunnedChance = stamina / 100;
         this.maxHealth = stamina * 20;
         this.healthBar = maxHealth;
+        this.manaPool = 50;
+        this.manaRegen = 5;
+        this.manaMax = 100;
 
 //      In-Game Messages:
         this.attackExclamation = "";
@@ -92,6 +98,9 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
     }
 
 //         Attack Mechanics:
+
+
+
 
     public void oldAttack(Character target) {
         double damage;
@@ -105,14 +114,13 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
     }
 
 
-
     public void weaponattack1(Character target) {
         double damage;
         Weapon weapon = this.weapon;
         damage = this.calculateWeaponDamage(weapon);
         damage = damage * calculateCritChance();
         damage = damage * doesSuperWeaponApply();
-        damage = damage * calculateBlockChance();
+        damage = damage * calculateBlockChance(target);
         target.physicalDamage(damage);
         target.checkAlive();
         this.threat = this.threat + this.weapon.getThreatIncrease();
@@ -131,9 +139,10 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
         return damage;
     }
 
-    private double calculateBlockChance() {
-        if (this.canBlockDamage(this.offHand)) {
-            if (this.blockChance + randomBlockModifier() >= 1) {
+    private double calculateBlockChance(Character target) {
+        if (target.blockAll){return 0.0;}
+        else if (target.canBlockDamage(target.offHand)) {
+            if (target.blockChance + randomBlockModifier() >= 1) {
                 return 0.0;
             }
         }
@@ -191,9 +200,13 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
         return "string";
     }
 
-    public void threatAttack() {
-        weaponattack1(this.topThreat());
-    }
+//    Baddies Attacks
+    public void threatAttack(){}
+
+//     Fellowship Attacks
+    public void tauntAttack(Character target){}
+    public void shieldWall(ArrayList<Character> enemies){}
+
 
 
 //    Weapons and Armours:
@@ -233,11 +246,11 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
         return this.healthBar;
     }
 
-    public double getMaxHealth() {
+    private double getMaxHealth() {
         return this.maxHealth;
     }
 
-    public void setHealthBar(Double healthBar) {
+    private void setHealthBar(Double healthBar) {
         this.healthBar = healthBar;
     }
 
@@ -343,10 +356,6 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
         return stamina;
     }
 
-    public Integer getBaseThreat() {
-        return this.baseThreat;
-    }
-
     public Integer getThreat() {
         return this.threat;
     }
@@ -362,6 +371,10 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
     public Integer getBlockChance() {
         return this.blockChance;
     }
+
+    public boolean getBlockAll(){ return this.blockAll; }
+
+    public void setBlockAll(boolean state){ this.blockAll = state; }
 
     public Integer getMagicDefense() {
         return this.magicDefense;
@@ -401,13 +414,9 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
 
 
     //    Threat Table Management
-    public void setThreat(Integer increase) {
-        this.threat = this.getThreat() + increase;
+    public void setThreat(Integer number) {
+        this.threat = number;
     }
-
-
-
-
 
     public void addTargetsToThreatTable(ThreatObject object) {
         this.threatTable.add(object);
@@ -437,6 +446,37 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
 
     public ArrayList<ThreatObject> getThreatTable() {
         return threatTable;
+    }
+
+    public void increaseThreat(Integer increaseInThreat, Character target) {
+        for (ThreatObject hero : target.getThreatTable()) {
+            if (hero.getReference() == this) {
+                hero.increaseThreatLevel(increaseInThreat);
+            }
+        }}
+
+
+    //    Getters and Setters for Mana
+    public Integer getManaMax() {
+        return manaMax;
+    }
+
+    public Integer getManaPool() {
+        return manaPool;
+    }
+
+    public void setManaPool(Integer manaPool) {
+        this.manaPool = manaPool;
+    }
+
+    public void manaRegeneration(){
+        this.manaPool += this.manaRegen;
+    }
+
+    public void manaPoolMaximumCheck(){
+        if (this.manaPool > manaMax){
+            setManaPool(manaMax);
+        }
     }
 
 

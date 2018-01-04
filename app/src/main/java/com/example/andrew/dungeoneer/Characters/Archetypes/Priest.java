@@ -7,9 +7,7 @@ import com.example.andrew.dungeoneer.Characters.Weapon;
 public class Priest extends Character {
 
 
-    Integer manaMax;
-    Integer manaLevel;
-    Integer manaRegen;
+
 
     public Priest(String name, int gold, Weapon weapon, Armour armour, OffHand offHand) {
         super(name, gold, weapon, armour, offHand);
@@ -22,14 +20,14 @@ public class Priest extends Character {
         this.critChance = intellect/100;
         this.critDamage = intellect/25;
         this.stunned = false;
-        this.manaLevel = 50;
-        this.manaRegen = 5;
+        this.manaPool = 100;
+        this.manaRegen = 10;
         this.manaMax = 100;
         this.maxHealth = stamina * 20;
         this.healthBar = maxHealth;
     }
 
-
+    //  Attack Mechanics:
     @Override
     public String spell(Character target) {
         double heal;
@@ -37,6 +35,7 @@ public class Priest extends Character {
         target.healthBar = target.healthBar + heal;
         return "HealthBomb: did " + heal + " healing";
     }
+
 
 
 }

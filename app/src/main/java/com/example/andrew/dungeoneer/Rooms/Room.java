@@ -126,6 +126,15 @@ public abstract class Room {
         }
     }
 
+    private void removeBlockAll() {
+        for (Character character : fellowship.getHeroes()) {
+            character.setBlockAll(false);
+        }
+        for (Character character : baddies) {
+            character.setBlockAll(false);
+        }
+    }
+
     public void triggerITickMechanism() {
         for (ITick iTick : hotsAndDots) {
             iTick.tick();
@@ -141,12 +150,26 @@ public abstract class Room {
         }
     }
 
+    public void checkManaAndRegenerate(){
+        for (Character character : fellowship.getHeroes()) {
+            character.manaRegeneration();
+            character.manaPoolMaximumCheck();
+        }
+        for (Character character : baddies) {
+            character.manaRegeneration();
+            character.manaPoolMaximumCheck();
+        }
+    }
+
     public void endOfCombatChecks() {
         checkForCorpses();
         removeDead();
         removeStuns();
+        removeBlockAll();
         triggerITickMechanism();
         checkForMaxHealth();
+        checkManaAndRegenerate();
+
     }
 
 
@@ -159,21 +182,31 @@ public abstract class Room {
         }
     }
 
-    public void increaseThreat(Integer increaseInThreat, Character target, Character attacker) {
-
-        for (ThreatObject hero : target.getThreatTable()) {
-            if (hero.getReference() == attacker) {
-                hero.increaseThreatLevel(increaseInThreat);
+    public void changeAllThreatTables(Integer changeInThreat, Character heroToBeReduced) {
+        for (Character baddie: baddies) {
+            for (ThreatObject hero : baddie.getThreatTable()) {
+                if (hero.getReference() == heroToBeReduced) {
+                hero.increaseThreatLevel(changeInThreat);
             }
+
         }}
+    sortAllThreatTables();
+    }
 
-        public void villiansTurnAttacks() {
-            for (Character baddie : baddies
-                    ) {
-                baddie.sortThreatTable();
-                baddie.threatAttack();
-            }
+    public void sortAllThreatTables(){
+        for (Character baddie: baddies) {
+            baddie.sortThreatTable();
         }
+    }
+
+
+    public void villiansTurnAttacks() {
+        for (Character baddie : baddies
+                ) {
+            baddie.sortThreatTable();
+            baddie.threatAttack();
+        }
+    }
 
 //        public String goToTheNextRoom(ArrayList<Character> adventurers){
 //        if (baddies.size() == 0){

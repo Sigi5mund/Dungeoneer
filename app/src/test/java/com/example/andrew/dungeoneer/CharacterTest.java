@@ -18,11 +18,11 @@ import static org.junit.Assert.assertNotEquals;
 
 public class CharacterTest {
 
-    Character tank;
-    Character dps;
-    Character dragon;
-    Character healer;
-    Character orcCaptain;
+    private Character tank;
+    private Character dps;
+    private Character dragon;
+    private Character healer;
+    private Character orcCaptain;
 
     @Before
     public void before(){
