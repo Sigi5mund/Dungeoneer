@@ -61,7 +61,7 @@ public class CharacterTest {
 
     @Test
     public void increaseHealthPossible(){
-        healer.attack(tank);
+        healer.oldAttack(tank);
         assertEquals(2000, tank.getHealthBar(),100);
     }
 

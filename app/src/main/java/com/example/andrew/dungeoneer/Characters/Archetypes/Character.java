@@ -8,6 +8,7 @@ import com.example.andrew.dungeoneer.Characters.OffHand;
 import com.example.andrew.dungeoneer.Characters.Weapon;
 import com.example.andrew.dungeoneer.Items.Corpse;
 import com.example.andrew.dungeoneer.Items.Item;
+import com.example.andrew.dungeoneer.Items.ThreatObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -46,9 +47,7 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
     private String defenseExclamation;
     private String healedExclamation;
     private String critExclamation;
-    private ArrayList<Character> threatTable;
-
-
+    private ArrayList<ThreatObject> threatTable;
 
 
     public Character(String name, double gold, Weapon weapon, Armour armour, OffHand offHand) {
@@ -78,23 +77,23 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
         this.critChance = 50;
         this.critDamage = 50;
         this.stunned = false;
-        this.dodgeChance = agility/100;
-        this.blockChance = strength/275;
-        this.magicDefense = intellect/100;
-        this.stunnedChance = stamina/100;
+        this.dodgeChance = agility / 100;
+        this.blockChance = strength / 275;
+        this.magicDefense = intellect / 100;
+        this.stunnedChance = stamina / 100;
         this.maxHealth = stamina * 20;
         this.healthBar = maxHealth;
 
 //      In-Game Messages:
         this.attackExclamation = "";
-        this.defenseExclamation= "";
+        this.defenseExclamation = "";
         this.healedExclamation = "";
         this.critExclamation = "";
     }
 
 //         Attack Mechanics:
 
-    public void attack(Character target) {
+    public void oldAttack(Character target) {
         double damage;
         damage = weapon.getWeaponDamage() * randomDamageModifier();
         if (superWeapon) {
@@ -105,7 +104,9 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
         target.checkAlive();
     }
 
-    public void weaponattack1(Character target){
+
+
+    public void weaponattack1(Character target) {
         double damage;
         Weapon weapon = this.weapon;
         damage = this.calculateWeaponDamage(weapon);
@@ -117,22 +118,22 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
         this.threat = this.threat + this.weapon.getThreatIncrease();
     }
 
-    private double calculateCritChance(){
-        if (this.critChance + randomCritModifier() >= 1){
+    private double calculateCritChance() {
+        if (this.critChance + randomCritModifier() >= 1) {
             return this.critDamage;
         }
         return 1.0;
     }
 
-    private double calculateWeaponDamage(Weapon weapon){
+    private double calculateWeaponDamage(Weapon weapon) {
         double damage;
-        damage = weapon.getWeaponDamage() * this.getStrength()/100 * randomDamageModifier();
+        damage = weapon.getWeaponDamage() * this.getStrength() / 100 * randomDamageModifier();
         return damage;
     }
 
-    private double calculateBlockChance(){
-        if (this.canBlockDamage(this.offHand)){
-            if (this.blockChance + randomBlockModifier() >=1){
+    private double calculateBlockChance() {
+        if (this.canBlockDamage(this.offHand)) {
+            if (this.blockChance + randomBlockModifier() >= 1) {
                 return 0.0;
             }
         }
@@ -157,7 +158,7 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
         }
     }
 
-    void magicDamage(double damage){
+    void magicDamage(double damage) {
         if (damage < 0) {
             this.healthBar = healthBar - damage;
         } else {
@@ -166,8 +167,8 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
         }
     }
 
-    private Integer calculateMagicResistance(Character target){
-        return 1 - (target.getIntellect()/100) ;
+    private Integer calculateMagicResistance(Character target) {
+        return 1 - (target.getIntellect() / 100);
     }
 
     Double randomDamageModifier() {
@@ -175,12 +176,12 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
         return damageModifier.get(0);
     }
 
-    private Double randomCritModifier(){
+    private Double randomCritModifier() {
         Collections.shuffle(this.critModifier);
         return critModifier.get(0);
     }
 
-    private Double randomBlockModifier(){
+    private Double randomBlockModifier() {
         Collections.shuffle(this.blockModifier);
         return blockModifier.get(0);
     }
@@ -190,10 +191,9 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
         return "string";
     }
 
-    public void threatAttack(){
+    public void threatAttack() {
         weaponattack1(this.topThreat());
     }
-
 
 
 //    Weapons and Armours:
@@ -222,8 +222,8 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
         return this.offHand;
     }
 
-    private boolean canBlockDamage(OffHand offhand){
-           return offhand.CanBlock();
+    private boolean canBlockDamage(OffHand offhand) {
+        return offhand.CanBlock();
     }
 
 
@@ -241,30 +241,29 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
         this.healthBar = healthBar;
     }
 
-    public void increaseHealth(double increase){
+    public void increaseHealth(double increase) {
         this.healthBar = healthBar + increase;
     }
 
-    public void decreaseHealth (double decrease){
+    public void decreaseHealth(double decrease) {
         this.healthBar = healthBar - decrease;
     }
 
-    public void increaseHealth50Percent(){
+    public void increaseHealth50Percent() {
         this.healthBar = healthBar * 1.5;
     }
 
-    public void maxHealthExceededCheck(){
-        if (this.getHealthBar() > this.getMaxHealth()){
+    public void maxHealthExceededCheck() {
+        if (this.getHealthBar() > this.getMaxHealth()) {
             this.setHealthBar(this.getMaxHealth());
         }
     }
 
     public boolean checkAlive() {
-        if (this.healthBar <= 0){
+        if (this.healthBar <= 0) {
             this.alive = false;
             return alive;
-        }
-        else {
+        } else {
             this.alive = true;
             return alive;
         }
@@ -273,8 +272,6 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
     public boolean isAlive() {
         return alive;
     }
-
-
 
 
 //  Constructor Getters and Setters:
@@ -287,7 +284,7 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
         return superWeapon;
     }
 
-    public void setSuperWeapon(Boolean change){
+    public void setSuperWeapon(Boolean change) {
         this.superWeapon = change;
     }
 
@@ -300,15 +297,13 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
     }
 
 
-
-
 //    Gold and Loot Mechanics:
 
     public double getGold() {
         return this.gold;
     }
 
-    public void takeGold(Corpse corpse){
+    public void takeGold(Corpse corpse) {
         addGold(corpse.getGold());
         corpse.setGold(corpse.getGold());
     }
@@ -317,19 +312,17 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
         this.gold = gold;
     }
 
-    public void addGold(double gold){
-        this.gold= this.gold + gold;
+    public void addGold(double gold) {
+        this.gold = this.gold + gold;
     }
 
-    public void payGold(double gold){
+    public void payGold(double gold) {
         this.gold = this.gold - gold;
     }
 
-    public String examineCorpse(Corpse corpse){
+    public String examineCorpse(Corpse corpse) {
         return corpse.getName() + " has " + corpse.getGold() + " gold, " + corpse.getArmour() + " armour and a " + corpse.getWeapon() + " weapon. What will you take?";
     }
-
-
 
 
 //    Stats and Status Getters:
@@ -399,60 +392,53 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
     }
 
 
-
 //    Stats and Status Setters:
 
-    public void setStunned(boolean stun){
+    public void setStunned(boolean stun) {
         this.stunned = stun;
     }
 
-    public void setThreat(Integer increase){
+
+
+    //    Threat Table Management
+    public void setThreat(Integer increase) {
         this.threat = this.getThreat() + increase;
     }
 
-    public void increaseThreat( Integer increaseInThreat){
-        this.setThreat(increaseInThreat);
-    }
 
-    public void addTargetsToThreatTable(Fellowship theEnemy){
-        ArrayList<Character> enemies;
-        enemies =theEnemy.getHeroes();
-        this.threatTable.addAll(enemies);
+
+
+
+    public void addTargetsToThreatTable(ThreatObject object) {
+        this.threatTable.add(object);
     }
 
     public void sortThreatTable() {
-        Collections.sort(threatTable, new Comparator<Character>(){
-                    public int compare(Character h1, Character h2) {
-                        return Integer.valueOf(h2.threat).compareTo(h1.threat);
-                    }
-        });
+        Collections.sort(threatTable, new Comparator<ThreatObject>() {
+            public int compare(ThreatObject h1, ThreatObject h2) {
+                return Integer.valueOf(h2.getThreatLevel()).compareTo(h1.getThreatLevel());
+            }});}
+
+    public Character topThreat() {
+        return this.threatTable.get(0).getReference();
     }
 
-    public void initialSortThreatTable(){
-        Collections.sort(threatTable, new Comparator<Character>() {
-                    public int compare(Character h1, Character h2) {
-                        return Integer.valueOf(h2.baseThreat).compareTo(h1.baseThreat);
-                    }
-                });
+    public Character middleThreat() {
+        return this.threatTable.get(1).getReference();
     }
 
-    public Character topThreat(){
-        return this.threatTable.get(0);
-    }
-
-    public Character middleThreat(){
-        return this.threatTable.get(1);
-    }
-
-    public Character bottomThreat(){
-        return this.threatTable.get(2);
+    public Character bottomThreat() {
+        return this.threatTable.get(2).getReference();
     }
 
     public void randomiseThreatTable() {
         Collections.shuffle(this.threatTable);
     }
 
-    public ArrayList<Character> getThreatTable() {
+    public ArrayList<ThreatObject> getThreatTable() {
         return threatTable;
     }
+
+
+
 }

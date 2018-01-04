@@ -15,8 +15,7 @@ public class OrcCaptain extends Character implements IThreatAttack {
         this.agility = 30;
         this.intellect = 40;
         this.stamina = 90;
-        this.baseThreat = 20;
-        this.threat = 0;
+        this.threat = 20;
         this.critChance = agility/100;
         this.critDamage = agility/25;
         this.stunned = false;
@@ -25,6 +24,6 @@ public class OrcCaptain extends Character implements IThreatAttack {
     }
 
     public void threatAttack(){
-        weaponattack1(this.topThreat());
+        oldAttack(this.topThreat());
     }
 }

@@ -29,16 +29,16 @@ public class GameTest {
     public void before() {
 
         ArrayList<Character> heroes = new ArrayList<>();
+        Character healerload = new Priest("Cadfael", 100, Weapon.BLESSED_SCEPTER, Armour.LEATHER, OffHand.HEALWAND);
         Character tankload = new Knight("Athina", 0, Weapon.SWORD, Armour.GOLD, OffHand.SHIELD);
         Character dpsload = new Wizard("Gandalf", 5, Weapon.STAFF, Armour.CLOTHE, OffHand.DPSWAND);
-        Character healerload = new Priest("Cadfael", 100, Weapon.BLESSED_SCEPTER, Armour.LEATHER, OffHand.HEALWAND);
         heroes.add(healerload);
         heroes.add(tankload);
         heroes.add(dpsload);
         Fellowship fellowship = new Fellowship("The Valiant Few", heroes);
         game1 = new Game();
         game1.room1.loadGoodies(fellowship);
-        game1.room1.fillAllThreatTables();
+        game1.room1.addThreatObjectsToTables();
 
     }
 
@@ -61,28 +61,53 @@ public class GameTest {
 
     @Test
     public void threatTablesTests(){
-        assertEquals(game1.room1.fellowship.healer(), game1.room1.captain.getThreatTable().get(0));
-        game1.room1.fellowship.dps().increaseThreat(1000);
-        game1.room1.fillAllThreatTables();
+        assertEquals(game1.room1.fellowship.healer(), game1.room1.captain.topThreat());
+        game1.room1.increaseThreat(100, game1.room1.captain, game1.room1.fellowship.dps());
         game1.room1.captain.sortThreatTable();
         assertEquals(game1.room1.fellowship.dps(), game1.room1.captain.topThreat());
 
     }
 
+
     @Test
-    public void threatTableAttackTest(){
-        assertEquals(game1.room1.fellowship.healer(), game1.room1.captain.getThreatTable().get(0));
+    public void threatTableAttackTestUnsorted(){
+        assertEquals(game1.room1.fellowship.healer(), game1.room1.captain.topThreat());
         assertEquals(500 ,game1.room1.fellowship.healer().getHealthBar(), 1);
         game1.room1.captain.threatAttack();
-        assertEquals(440 ,game1.room1.fellowship.healer().getHealthBar(), 1);
-        game1.room1.fellowship.dps().increaseThreat(1000);
-        game1.room1.fillAllThreatTables();
+        assertEquals(425 ,game1.room1.fellowship.healer().getHealthBar(), 1);
+        game1.room1.increaseThreat(1000, game1.room1.captain, game1.room1.fellowship.dps());
         game1.room1.captain.sortThreatTable();
         assertEquals(game1.room1.fellowship.dps(), game1.room1.captain.topThreat());
         assertEquals(500 ,game1.room1.fellowship.dps().getHealthBar(), 1);
         game1.room1.captain.threatAttack();
-        assertEquals(420 ,game1.room1.fellowship.dps().getHealthBar(), 1);
+        assertEquals(400 ,game1.room1.fellowship.dps().getHealthBar(), 1);
+    }
+    @Test
+    public void threatTableSeparationTest(){
+        game1.room1.captain.sortThreatTable();
+        game1.room1.goblin1.sortThreatTable();
+        assertEquals(game1.room1.fellowship.dps(), game1.room1.captain.topThreat());
+        assertEquals(500 ,game1.room1.fellowship.dps().getHealthBar(), 1);
+        game1.room1.captain.threatAttack();
+        game1.room1.goblin1.threatAttack();
+        assertEquals(500 ,game1.room1.fellowship.dps().getHealthBar(), 1);
+        game1.room1.increaseThreat(100, game1.room1.captain, game1.room1.fellowship.dps());
+        game1.room1.captain.sortThreatTable();
+        game1.room1.goblin1.sortThreatTable();
+        assertEquals(game1.room1.fellowship.dps(), game1.room1.captain.topThreat());
+        assertEquals(500 ,game1.room1.fellowship.dps().getHealthBar(), 1);
+        game1.room1.captain.threatAttack();
+        game1.room1.goblin1.threatAttack();
+        assertEquals(300 ,game1.room1.fellowship.dps().getHealthBar(), 1);
     }
 
+    @Test
+    public void villainGroupThreatAttack(){
+        assertEquals(500 ,game1.room1.fellowship.healer().getHealthBar(), 1);
+        assertEquals(500 ,game1.room1.fellowship.dps().getHealthBar(), 1);
+        game1.room1.villiansTurnAttacks();
+        assertEquals(500 ,game1.room1.fellowship.healer().getHealthBar(), 1);
+        assertEquals(100 ,game1.room1.fellowship.dps().getHealthBar(), 1);
 
+    }
 }

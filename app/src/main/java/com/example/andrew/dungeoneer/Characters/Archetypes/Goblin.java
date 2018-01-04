@@ -15,8 +15,7 @@ public class Goblin extends Character implements IThreatAttack {
         this.agility = 70;
         this.intellect = 25;
         this.stamina = 30;
-        this.baseThreat = 10;
-        this.threat = 0;
+        this.threat = 10;
         this.critChance = agility/100;
         this.critDamage = agility/25;
         this.stunned = false;
@@ -26,7 +25,7 @@ public class Goblin extends Character implements IThreatAttack {
 
 
     public void threatAttack(){
-        weaponattack1(this.middleThreat());
+        oldAttack(this.topThreat());
     }
 
 

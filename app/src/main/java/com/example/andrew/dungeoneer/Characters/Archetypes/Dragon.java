@@ -20,9 +20,8 @@ public class Dragon extends Character implements IThreatAttack {
         this.agility = 20;
         this.intellect = 50;
         this.stamina = 100;
-        this.baseThreat = 100;
         this.damageModifier = new ArrayList<>(Arrays.asList(0.0, 0.0, 0.0, 1.0));
-        this.threat = 0;
+        this.threat = 100;
         this.critChance = agility / 100;
         this.critDamage = agility / 25;
         this.stunned = false;
@@ -37,7 +36,7 @@ public class Dragon extends Character implements IThreatAttack {
     }
 
     public void threatAttack(){
-        weaponattack1(this.topThreat());
+        oldAttack(this.topThreat());
     }
 }
 

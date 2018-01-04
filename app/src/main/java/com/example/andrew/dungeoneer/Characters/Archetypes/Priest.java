@@ -18,8 +18,7 @@ public class Priest extends Character {
         this.agility = 30;
         this.intellect = 85;
         this.stamina = 25;
-        this.baseThreat = 20;
-        this.threat = 0;
+        this.threat = 15;
         this.critChance = intellect/100;
         this.critDamage = intellect/25;
         this.stunned = false;

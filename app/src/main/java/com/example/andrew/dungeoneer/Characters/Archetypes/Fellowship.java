@@ -44,11 +44,12 @@ public class Fellowship {
         return fellowshipMegaManaPool;
     }
 
-    public Character tank(){
-        return this.getHeroes().get(1);
-    }
+
     public Character healer(){
         return this.getHeroes().get(0);
+    }
+    public Character tank(){
+        return this.getHeroes().get(1);
     }
     public Character dps(){
         return this.getHeroes().get(2);

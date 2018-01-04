@@ -4,6 +4,7 @@ import com.example.andrew.dungeoneer.Characters.Archetypes.Character;
 import com.example.andrew.dungeoneer.Characters.Archetypes.Fellowship;
 import com.example.andrew.dungeoneer.Items.Corpse;
 import com.example.andrew.dungeoneer.Items.Item;
+import com.example.andrew.dungeoneer.Items.ThreatObject;
 import com.example.andrew.dungeoneer.Magic.ITick;
 
 import java.util.ArrayList;
@@ -30,7 +31,6 @@ public abstract class Room {
     }
 
 
-
 //    Goodies and Baddies ArrayList Maintenance:
 
     public ArrayList<Character> getGoodies() {
@@ -41,11 +41,11 @@ public abstract class Room {
         this.fellowship = fellowship;
     }
 
-    public void addGoodies(Character character){
+    public void addGoodies(Character character) {
         this.fellowship.addHeroes(character);
     }
 
-    public void removeGoodies(Character character){
+    public void removeGoodies(Character character) {
         this.fellowship.removeHeroes(character);
     }
 
@@ -57,19 +57,18 @@ public abstract class Room {
         this.baddies = baddies;
     }
 
-    public void addBaddies(Character character){
+    public void addBaddies(Character character) {
         this.baddies.add(character);
     }
 
-    public void removeBaddies(Character character){
+    public void removeBaddies(Character character) {
         this.baddies.remove(character);
     }
 
 
-
 //    Room Reward Mechanisms:
 
-    public void collectReward(Character character){
+    public void collectReward(Character character) {
         character.setGold(character.getGold() + this.rewardGold);
     }
 
@@ -82,7 +81,6 @@ public abstract class Room {
     }
 
 
-
 //    Corpse Creation and Implementation:
 
     public void removeDead() {
@@ -90,9 +88,9 @@ public abstract class Room {
         fellowship.getHeroes().removeIf(next -> !next.checkAlive());
     }
 
-    private Corpse corpseCreation(Character character){
+    private Corpse corpseCreation(Character character) {
         Corpse playerCorpse;
-        playerCorpse= new Corpse(character.getName()+ "'s corpse", character.getGold(), character.getItems());
+        playerCorpse = new Corpse(character.getName() + "'s corpse", character.getGold(), character.getItems());
         playerCorpse.setArmour(character.getArmour());
         playerCorpse.setWeapon(character.getWeapon());
         playerCorpse.setOffHand(character.getOffHand());
@@ -104,17 +102,16 @@ public abstract class Room {
     }
 
 
-
 //    End of Combat Turn Checks:
 
-    private void checkForCorpses(){
-        for (Character character: fellowship.getHeroes()){
-            if (!character.checkAlive()){
+    private void checkForCorpses() {
+        for (Character character : fellowship.getHeroes()) {
+            if (!character.checkAlive()) {
                 addToFloor(corpseCreation(character));
             }
         }
-        for (Character character: baddies){
-            if (!character.checkAlive()){
+        for (Character character : baddies) {
+            if (!character.checkAlive()) {
                 addToFloor(corpseCreation(character));
             }
         }
@@ -129,8 +126,8 @@ public abstract class Room {
         }
     }
 
-    public void triggerITickMechanism(){
-        for (ITick iTick: hotsAndDots) {
+    public void triggerITickMechanism() {
+        for (ITick iTick : hotsAndDots) {
             iTick.tick();
         }
     }
@@ -144,7 +141,7 @@ public abstract class Room {
         }
     }
 
-    public void endOfCombatChecks(){
+    public void endOfCombatChecks() {
         checkForCorpses();
         removeDead();
         removeStuns();
@@ -153,13 +150,30 @@ public abstract class Room {
     }
 
 
-
-    public void fillAllThreatTables(){
-        for (Character baddies: baddies
-                ) {baddies.addTargetsToThreatTable(fellowship);
+    public void addThreatObjectsToTables() {
+        for (Character baddie : baddies) {
+            for (Character goodie : fellowship.getHeroes()
+                    ) {
+                baddie.addTargetsToThreatTable(new ThreatObject(goodie, goodie.getThreat()));
+            }
         }
     }
 
+    public void increaseThreat(Integer increaseInThreat, Character target, Character attacker) {
+
+        for (ThreatObject hero : target.getThreatTable()) {
+            if (hero.getReference() == attacker) {
+                hero.increaseThreatLevel(increaseInThreat);
+            }
+        }}
+
+        public void villiansTurnAttacks() {
+            for (Character baddie : baddies
+                    ) {
+                baddie.sortThreatTable();
+                baddie.threatAttack();
+            }
+        }
 
 //        public String goToTheNextRoom(ArrayList<Character> adventurers){
 //        if (baddies.size() == 0){
@@ -170,7 +184,6 @@ public abstract class Room {
 //
 //        return ""
 //    }
-
 
 
 

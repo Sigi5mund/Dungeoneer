@@ -18,8 +18,7 @@ public class Wizard extends Character {
         this.agility = 30;
         this.intellect = 80;
         this.stamina = 25;
-        this.baseThreat = 40;
-        this.threat = 0;
+        this.threat = 25;
         this.critChance = intellect/100;
         this.critDamage = intellect/25;
         this.stunned = false;
