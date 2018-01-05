@@ -111,7 +111,7 @@ public class GameTest {
     }
 
     @Test
-    public void attackTest(){
+    public void knightAttackTest(){
         assertEquals(600 ,game1.room1.goblin1.getHealthBar(), 1);
         game1.room1.fellowship.tank().tauntAttack(game1.room1.goblin1);
         assertEquals(520 ,game1.room1.goblin1.getHealthBar(), 1);
@@ -120,7 +120,7 @@ public class GameTest {
     }
 
     @Test
-    public void blockAllTest(){
+    public void knightBlockAllTestAttack(){
         game1.room1.changeAllThreatTables(-10, game1.room1.fellowship.dps());
         assertEquals(game1.room1.fellowship.tank(), game1.room1.captain.topThreat());
         assertEquals(1800 ,game1.room1.fellowship.tank().getHealthBar(), 1);
@@ -134,7 +134,7 @@ public class GameTest {
     }
 
     @Test
-    public void tauntAOETest(){
+    public void knightTauntAOETestAttack(){
         game1.room1.sortAllThreatTables();
         assertEquals(game1.room1.fellowship.dps(), game1.room1.captain.topThreat());
         assertEquals(game1.room1.fellowship.dps(), game1.room1.goblin1.topThreat());
@@ -148,4 +148,23 @@ public class GameTest {
         assertEquals(game1.room1.fellowship.tank(), game1.room1.goblin3.topThreat());
     }
 
+    @Test
+    public void knightTauntOverTimeTestAttack(){
+        game1.room1.sortAllThreatTables();
+        assertEquals(game1.room1.fellowship.dps(), game1.room1.captain.topThreat());
+        assertEquals(game1.room1.fellowship.dps(), game1.room1.goblin1.topThreat());
+        assertEquals(game1.room1.fellowship.dps(), game1.room1.goblin2.topThreat());
+        assertEquals(game1.room1.fellowship.dps(), game1.room1.goblin3.topThreat());
+        assertEquals(0, game1.room1.hotsAndDots.size());
+        game1.room1.fellowship.tank().tauntOverTime(game1.room1.baddies, game1.room1);
+        assertEquals(4, game1.room1.hotsAndDots.size());
+        game1.room1.endOfCombatChecks();
+        game1.room1.sortAllThreatTables();
+        assertEquals(game1.room1.fellowship.tank(), game1.room1.captain.topThreat());
+        assertEquals(game1.room1.fellowship.tank(), game1.room1.goblin1.topThreat());
+        assertEquals(game1.room1.fellowship.tank(), game1.room1.goblin2.topThreat());
+        assertEquals(game1.room1.fellowship.tank(), game1.room1.goblin3.topThreat());
+
+
+    }
 }

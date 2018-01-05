@@ -53,5 +53,5 @@ public class Knight extends Character {
             room.hotsAndDots.add(new ThreatOverTime(enemy, this, 20, 3 ));
         }
     }
-    
+
 }
