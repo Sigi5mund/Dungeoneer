@@ -9,6 +9,7 @@ import com.example.andrew.dungeoneer.Characters.Weapon;
 import com.example.andrew.dungeoneer.Items.Corpse;
 import com.example.andrew.dungeoneer.Items.Item;
 import com.example.andrew.dungeoneer.Items.ThreatObject;
+import com.example.andrew.dungeoneer.Rooms.Room;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -206,6 +207,8 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
 //     Fellowship Attacks
     public void tauntAttack(Character target){}
     public void shieldWall(ArrayList<Character> enemies){}
+    public void tauntAOE(ArrayList<Character> enemies){}
+    public void tauntOverTime(ArrayList<Character> enemies, Room room){}
 
 
 

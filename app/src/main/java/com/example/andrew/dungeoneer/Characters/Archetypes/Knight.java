@@ -3,6 +3,8 @@ package com.example.andrew.dungeoneer.Characters.Archetypes;
 import com.example.andrew.dungeoneer.Characters.Armour;
 import com.example.andrew.dungeoneer.Characters.OffHand;
 import com.example.andrew.dungeoneer.Characters.Weapon;
+import com.example.andrew.dungeoneer.Magic.ThreatOverTime;
+import com.example.andrew.dungeoneer.Rooms.Room;
 
 import java.util.ArrayList;
 
@@ -36,8 +38,20 @@ public class Knight extends Character {
         for (Character enemy: enemies) {
             increaseThreat(10, enemy);
         }
-
     }
 
+    @Override
+    public void tauntAOE(ArrayList<Character> enemies){
+        for (Character enemy: enemies) {
+            increaseThreat(100, enemy);
+        }
+    }
 
+    @Override
+    public void tauntOverTime(ArrayList<Character> enemies, Room room){
+        for (Character enemy: enemies) {
+            room.hotsAndDots.add(new ThreatOverTime(enemy, this, 20, 3 ));
+        }
+    }
+    
 }

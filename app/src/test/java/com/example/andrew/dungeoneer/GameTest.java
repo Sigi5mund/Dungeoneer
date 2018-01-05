@@ -108,7 +108,6 @@ public class GameTest {
         game1.room1.villiansTurnAttacks();
         assertEquals(500 ,game1.room1.fellowship.healer().getHealthBar(), 1);
         assertEquals(100 ,game1.room1.fellowship.dps().getHealthBar(), 1);
-
     }
 
     @Test
@@ -118,7 +117,6 @@ public class GameTest {
         assertEquals(520 ,game1.room1.goblin1.getHealthBar(), 1);
         game1.room1.fellowship.dps().tauntAttack(game1.room1.goblin1);
         assertEquals(520 ,game1.room1.goblin1.getHealthBar(), 1);
-
     }
 
     @Test
@@ -133,7 +131,21 @@ public class GameTest {
         game1.room1.endOfCombatChecks();
         game1.room1.captain.weaponattack1(game1.room1.fellowship.tank());
         assertEquals(1780 ,game1.room1.fellowship.tank().getHealthBar(), 1);
+    }
 
+    @Test
+    public void tauntAOETest(){
+        game1.room1.sortAllThreatTables();
+        assertEquals(game1.room1.fellowship.dps(), game1.room1.captain.topThreat());
+        assertEquals(game1.room1.fellowship.dps(), game1.room1.goblin1.topThreat());
+        assertEquals(game1.room1.fellowship.dps(), game1.room1.goblin2.topThreat());
+        assertEquals(game1.room1.fellowship.dps(), game1.room1.goblin3.topThreat());
+        game1.room1.fellowship.tank().tauntAOE(game1.room1.baddies);
+        game1.room1.sortAllThreatTables();
+        assertEquals(game1.room1.fellowship.tank(), game1.room1.captain.topThreat());
+        assertEquals(game1.room1.fellowship.tank(), game1.room1.goblin1.topThreat());
+        assertEquals(game1.room1.fellowship.tank(), game1.room1.goblin2.topThreat());
+        assertEquals(game1.room1.fellowship.tank(), game1.room1.goblin3.topThreat());
     }
 
 }
