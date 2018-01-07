@@ -43,7 +43,7 @@ public class Knight extends Character {
     @Override
     public void tauntAOE(ArrayList<Character> enemies){
         for (Character enemy: enemies) {
-            increaseThreat(100, enemy);
+            increaseThreat(80, enemy);
         }
     }
 

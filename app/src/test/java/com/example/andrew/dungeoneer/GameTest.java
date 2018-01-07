@@ -164,7 +164,40 @@ public class GameTest {
         assertEquals(game1.room1.fellowship.tank(), game1.room1.goblin1.topThreat());
         assertEquals(game1.room1.fellowship.tank(), game1.room1.goblin2.topThreat());
         assertEquals(game1.room1.fellowship.tank(), game1.room1.goblin3.topThreat());
-
-
     }
+
+    @Test
+    public void priestAOEHeal(){
+        game1.room1.fellowship.tank().tauntAOE(game1.room1.baddies);
+        game1.room1.sortAllThreatTables();
+        assertEquals(game1.room1.fellowship.tank(), game1.room1.captain.topThreat());
+        assertEquals(game1.room1.fellowship.tank(), game1.room1.goblin1.topThreat());
+        assertEquals(game1.room1.fellowship.tank(), game1.room1.goblin2.topThreat());
+        assertEquals(game1.room1.fellowship.tank(), game1.room1.goblin3.topThreat());
+        assertEquals(1800, game1.room1.fellowship.tank().getHealthBar(), 1);
+        assertEquals(500, game1.room1.fellowship.dps().getHealthBar(),1);
+        assertEquals(500, game1.room1.fellowship.healer().getHealthBar(),1);
+        game1.room1.fellowship.healer().aoeHeal(game1.room1.fellowship, game1.room1.baddies);
+        assertEquals(2050, game1.room1.fellowship.tank().getHealthBar(), 1);
+        assertEquals(750, game1.room1.fellowship.dps().getHealthBar(),1);
+        assertEquals(750, game1.room1.fellowship.healer().getHealthBar(),1);
+        game1.room1.sortAllThreatTables();
+        assertEquals(game1.room1.fellowship.healer(), game1.room1.captain.topThreat());
+        assertEquals(game1.room1.fellowship.healer(), game1.room1.goblin1.topThreat());
+        assertEquals(game1.room1.fellowship.healer(), game1.room1.goblin2.topThreat());
+        assertEquals(game1.room1.fellowship.healer(), game1.room1.goblin3.topThreat());
+    }
+
+    @Test
+    public void priestHOTHealTest(){
+        assertEquals(0, game1.room1.hotsAndDots.size());
+        game1.room1.fellowship.healer().aoeHot(game1.room1.fellowship, game1.room1);
+        assertEquals(3, game1.room1.hotsAndDots.size());
+    }
+
+    @Test
+    public
+
+
 }
+

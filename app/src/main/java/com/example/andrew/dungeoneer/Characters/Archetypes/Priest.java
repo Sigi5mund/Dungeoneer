@@ -3,6 +3,10 @@ package com.example.andrew.dungeoneer.Characters.Archetypes;
 import com.example.andrew.dungeoneer.Characters.Armour;
 import com.example.andrew.dungeoneer.Characters.OffHand;
 import com.example.andrew.dungeoneer.Characters.Weapon;
+import com.example.andrew.dungeoneer.Magic.HealOverTime;
+import com.example.andrew.dungeoneer.Rooms.Room;
+
+import java.util.ArrayList;
 
 public class Priest extends Character {
 
@@ -36,7 +40,47 @@ public class Priest extends Character {
         return "HealthBomb: did " + heal + " healing";
     }
 
+    @Override
+    public void heal(Character target, Room room){
+        this.spendManaToCast(10);
+        target.increaseHealth(500);
+        for (Character enemy: room.baddies
+                ) {increaseThreat(25, enemy);
+        }
+
+    }
 
 
+    @Override
+    public void aoeHeal (Fellowship fellowship, ArrayList<Character> enemies){
+        this.spendManaToCast(35);
+        for (Character hero: fellowship.heroes
+             ) {hero.increaseHealth(250);
+        }
+        for (Character enemy: enemies
+             ) {increaseThreat(100, enemy);
+
+        }
+    }
+
+    @Override
+    public void aoeHot (Fellowship fellowship, Room room){
+        this.spendManaToCast(15);
+        for (Character enemy: room.baddies
+                ) {increaseThreat(30, enemy);
+
+        }
+        for (Character hero: fellowship.heroes
+                ) {room.hotsAndDots.add(new HealOverTime( hero,100, 5));
+        }
+    }
+
+    @Override
+    public void manaStorm(Room room){
+        this.setManaPool(this.getManaMax());
+        for (Character enemy: room.baddies
+                ) {increaseThreat(100, enemy);
+        }
+    }
 }
 

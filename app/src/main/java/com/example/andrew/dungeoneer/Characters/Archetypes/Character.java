@@ -210,8 +210,10 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
     public void shieldWall(ArrayList<Character> enemies){}
     public void tauntAOE(ArrayList<Character> enemies){}
     public void tauntOverTime(ArrayList<Character> enemies, Room room){}
-
-
+    public void aoeHeal (Fellowship fellowship, ArrayList<Character> enemies){}
+    public void aoeHot (Fellowship fellowship, Room room){}
+    public void manaStorm(Room room){}
+    public void heal(Character target, Room room){}
 
 //    Weapons and Armours:
 
@@ -481,6 +483,17 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
         if (this.manaPool > manaMax){
             setManaPool(manaMax);
         }
+    }
+
+    public boolean sufficientManaCheck(Integer cost){
+        if (this.manaPool >= cost){
+            return true;
+        }
+        else return false;
+    }
+
+    public void spendManaToCast(Integer cost){
+        this.manaPool -= cost;
     }
 
 
