@@ -205,6 +205,7 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
     public void threatAttack(){}
 
 //     Fellowship Attacks
+//     knight attacks
     public void tauntAttack(Character target){}
     public void shieldWall(ArrayList<Character> enemies){}
     public void tauntAOE(ArrayList<Character> enemies){}
