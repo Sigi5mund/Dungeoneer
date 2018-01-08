@@ -10,54 +10,42 @@
         android:id="@+id/action1"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="32dp"
         android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/healerList"
-        app:layout_constraintVertical_bias="0.666" />
+        app:layout_constraintBottom_toTopOf="@+id/textView9"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/action4"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="36dp"
         android:layout_marginEnd="36dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textView12"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/action3"
-        app:layout_constraintTop_toBottomOf="@+id/healerList"
-        app:layout_constraintVertical_bias="0.666" />
+        app:layout_constraintHorizontal_bias="0.166"
+        app:layout_constraintStart_toEndOf="@+id/action3" />
 
     <Button
         android:id="@+id/action2"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="36dp"
         android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/action1"
-        app:layout_constraintTop_toBottomOf="@+id/healerList"
-        app:layout_constraintVertical_bias="0.666" />
+        app:layout_constraintBottom_toTopOf="@+id/textView10"
+        app:layout_constraintStart_toEndOf="@+id/action1" />
 
     <Button
         android:id="@+id/action3"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="36dp"
+        android:layout_marginStart="12dp"
         android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/action2"
-        app:layout_constraintTop_toBottomOf="@+id/healerList"
-        app:layout_constraintVertical_bias="0.666" />
+        app:layout_constraintBottom_toTopOf="@+id/textView11"
+        app:layout_constraintStart_toEndOf="@+id/action2" />
 
     <TextView
         android:id="@+id/manaText"
@@ -65,14 +53,13 @@
         android:layout_height="35dp"
         android:layout_marginBottom="8dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="348dp"
         android:text="@string/Mana"
         android:textAlignment="center"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/action1ManaView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.73" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/manaView"
@@ -85,12 +72,12 @@
         android:text="@string/mana"
         android:textAlignment="center"
         android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/action2ManaView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.093"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/manaText"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.716" />
+        app:layout_constraintVertical_bias="0.958" />
 
     <ListView
         android:id="@+id/healerList"
@@ -127,78 +114,98 @@
         android:id="@+id/action1ManaView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:text="manacost"
+        app:layout_constraintBottom_toTopOf="@+id/action1"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="391dp" />
+        app:layout_constraintTop_toBottomOf="@+id/healerList"
+        app:layout_constraintVertical_bias="0.902" />
 
     <TextView
         android:id="@+id/action2ManaView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
         android:text="manacost"
+        app:layout_constraintBottom_toTopOf="@+id/action2"
         app:layout_constraintStart_toEndOf="@+id/action1ManaView"
-        tools:layout_editor_absoluteY="391dp" />
+        app:layout_constraintTop_toBottomOf="@+id/healerList"
+        app:layout_constraintVertical_bias="0.86" />
 
     <TextView
         android:id="@+id/action3ManaView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
         android:text="manacost"
+        app:layout_constraintBottom_toTopOf="@+id/action3"
         app:layout_constraintStart_toEndOf="@+id/action2ManaView"
-        tools:layout_editor_absoluteY="391dp" />
+        app:layout_constraintTop_toBottomOf="@+id/healerList"
+        app:layout_constraintVertical_bias="0.902" />
 
     <TextView
         android:id="@+id/action4ManavView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text="manacost"
+        app:layout_constraintBottom_toTopOf="@+id/action4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintHorizontal_bias="0.437"
         app:layout_constraintStart_toEndOf="@+id/action3ManaView"
-        tools:layout_editor_absoluteY="391dp" />
+        app:layout_constraintTop_toBottomOf="@+id/healerList"
+        app:layout_constraintVertical_bias="0.902" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:text="a"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="476dp" />
+        android:layout_marginBottom="32dp"
+        android:layout_marginStart="16dp"
+        android:text="actiondesc"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/textView9"
-        tools:layout_editor_absoluteY="476dp" />
+        android:layout_marginBottom="28dp"
+        android:layout_marginStart="20dp"
+        android:text="actiondesc"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView9" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
         android:layout_marginStart="32dp"
-        android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/textView10"
-        tools:layout_editor_absoluteY="476dp" />
+        android:text="actiondesc"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView10" />
 
     <TextView
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:text="TextView"
+        android:text="actiondesc"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.461"
-        app:layout_constraintStart_toEndOf="@+id/textView11"
-        tools:layout_editor_absoluteY="476dp" />
+        app:layout_constraintHorizontal_bias="0.68"
+        app:layout_constraintStart_toEndOf="@+id/textView11" />
 
 </android.support.constraint.ConstraintLayout>

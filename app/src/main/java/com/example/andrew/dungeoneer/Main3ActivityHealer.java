@@ -39,8 +39,10 @@ public class Main3ActivityHealer extends AppCompatActivity {
         game.room1.fellowship.healer().aoeHeal(game.room1.fellowship, game.room1);
 
 
-        ArrayList<Character> Heroes();
-        ArrayList<CharacterHeroesRowAdaptor heroesAdapter = new HeroesRowAdaptor(this, list);
+
+        ArrayList<Character> list = game.room1.fellowship.getHeroes();
+
+        HeroesRowAdaptor heroesAdapter = new HeroesRowAdaptor(this, list);
 
         ListView listView = findViewById(R.id.healerList);
         listView.setAdapter(heroesAdapter);
