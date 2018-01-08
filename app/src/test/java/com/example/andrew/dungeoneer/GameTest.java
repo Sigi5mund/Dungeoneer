@@ -211,5 +211,60 @@ public class GameTest {
         assertEquals(240, game1.room1.captain.getThreatTable().get(0).getThreatLevel(), 1);
     }
 
+    @Test
+    public void wizardfireBallAttackTest(){
+        assertEquals(1800, game1.room1.captain.getHealthBar(), 1);
+        assertEquals(game1.room1.fellowship.healer(), game1.room1.captain.topThreat());
+        assertEquals(100, game1.room1.fellowship.dps().getManaPool(), 1);
+        game1.room1.fellowship.dps().fireBall(game1.room1.captain, game1.room1);
+        game1.room1.sortAllThreatTables();
+        assertEquals(1500, game1.room1.captain.getHealthBar(), 1);
+        assertEquals(game1.room1.fellowship.dps(), game1.room1.captain.topThreat());
+        assertEquals(90, game1.room1.fellowship.dps().getManaPool(), 1);
+    }
+
+    @Test
+    public void wizardFireStormAttackTest(){
+        assertEquals(100, game1.room1.fellowship.dps().getManaPool(), 1);
+        assertEquals(1800, game1.room1.captain.getHealthBar(), 1);
+        assertEquals(600, game1.room1.goblin1.getHealthBar(), 1);
+        assertEquals(600, game1.room1.goblin2.getHealthBar(), 1);
+        assertEquals(600, game1.room1.goblin3.getHealthBar(), 1);
+        assertEquals(game1.room1.fellowship.healer(), game1.room1.captain.topThreat());
+        assertEquals(game1.room1.fellowship.healer(), game1.room1.goblin1.topThreat());
+        assertEquals(game1.room1.fellowship.healer(), game1.room1.goblin2.topThreat());
+        assertEquals(game1.room1.fellowship.healer(), game1.room1.goblin3.topThreat());
+        game1.room1.fellowship.dps().fireStorm(game1.room1);
+        assertEquals(50, game1.room1.fellowship.dps().getManaPool(), 1);
+        assertEquals(1400, game1.room1.captain.getHealthBar(), 1);
+        assertEquals(200, game1.room1.goblin1.getHealthBar(), 1);
+        assertEquals(200, game1.room1.goblin2.getHealthBar(), 1);
+        assertEquals(200, game1.room1.goblin3.getHealthBar(), 1);
+        game1.room1.sortAllThreatTables();
+        assertEquals(game1.room1.fellowship.dps(), game1.room1.captain.topThreat());
+        assertEquals(game1.room1.fellowship.dps(), game1.room1.goblin1.topThreat());
+        assertEquals(game1.room1.fellowship.dps(), game1.room1.goblin2.topThreat());
+        assertEquals(game1.room1.fellowship.dps(), game1.room1.goblin3.topThreat());
+    }
+
+    @Test
+    public void wizardSlowBurnAttackTest(){
+        assertEquals(0, game1.room1.hotsAndDots.size());
+        game1.room1.fellowship.dps().slowBurn(game1.room1);
+        assertEquals(4, game1.room1.hotsAndDots.size());
+    }
+
+    @Test
+    public void wizardSlagArmourAttackTest() {
+        assertEquals(Armour.LEATHER ,game1.room1.captain.getArmour());
+        assertEquals(1800, game1.room1.captain.getHealthBar(), 1);
+        assertEquals(game1.room1.fellowship.healer(), game1.room1.captain.topThreat());
+        game1.room1.fellowship.dps().slagArmour(game1.room1.captain);
+        assertEquals(Armour.SLAGGED ,game1.room1.captain.getArmour());
+        assertEquals(1000, game1.room1.captain.getHealthBar(), 1);
+        game1.room1.sortAllThreatTables();
+        assertEquals(game1.room1.fellowship.dps(), game1.room1.captain.topThreat());
+    }
+
 }
 

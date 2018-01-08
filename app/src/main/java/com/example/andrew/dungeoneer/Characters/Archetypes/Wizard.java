@@ -40,8 +40,9 @@ public class Wizard extends Character {
 
     @Override
     public void fireBall(Character target, Room room) {
+        this.spendManaToCast(10);
         double damage;
-        damage = 1500.00 * randomDamageModifier();
+        damage = 300.00 * randomDamageModifier();
         target.magicDamage(damage);
         for (Character enemy : room.baddies
                 ) {
@@ -51,8 +52,9 @@ public class Wizard extends Character {
 
     @Override
     public void fireStorm(Room room) {
+        this.spendManaToCast(50);
         double damage;
-        damage = 1500.00 * randomDamageModifier();
+        damage = 400.00 * randomDamageModifier();
         for (Character baddie :room.baddies
              ) {baddie.magicDamage(damage);
         }
@@ -61,16 +63,18 @@ public class Wizard extends Character {
 
     @Override
     public void slowBurn(Room room) {
+        this.spendManaToCast(10);
         for (Character baddie: room.baddies
-             ) { room.hotsAndDots.add(new PhysicalDamageOverTime(baddie, 100, 5));
+             ) { room.hotsAndDots.add(new PhysicalDamageOverTime(baddie, 75, 5));
         }
         raiseAllThreat(10, room);
     }
 
     @Override
     public void slagArmour(Character target){
+        this.spendManaToCast(30);
         double damage;
-        damage = 1800.00 * randomDamageModifier();
+        damage = 800.00 * randomDamageModifier();
         target.magicDamage(damage);
         increaseSpecificThreat(100, target);
         target.setArmour(Armour.SLAGGED);

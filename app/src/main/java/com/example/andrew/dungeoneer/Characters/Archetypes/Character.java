@@ -424,7 +424,7 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
 
     public void decreaseIntellect(Integer change){
         this.intellect = this.intellect - change;
-        if (this.intellect <0){this.intellect = 0;
+        if (this.intellect <10){this.intellect = 10;
     }}
 
 
