@@ -1,17 +1,15 @@
 package com.example.andrew.dungeoneer.Magic;
 import com.example.andrew.dungeoneer.Characters.Archetypes.Character;
 
-public class ThreatOverTime implements ITick {
+public class MagicalDamageOverTime implements ITick {
 
     Character target;
-    Character attacker;
-    Integer threatPerTick;
+    double damagePerTick;
     Integer duration;
 
-    public ThreatOverTime(Character target, Character attacker, Integer threatPerTick, Integer duration) {
+    public MagicalDamageOverTime(Character target, Integer damagePerTick, Integer duration) {
         this.target = target;
-        this.attacker = attacker;
-        this.threatPerTick = threatPerTick;
+        this.damagePerTick = damagePerTick;
         this.duration = duration;
     }
 
@@ -19,8 +17,8 @@ public class ThreatOverTime implements ITick {
         return this.target;
     }
 
-    public double getThreatPerTick() {
-        return this.threatPerTick;
+    public double getDamagePerTick() {
+        return this.damagePerTick;
     }
 
     public Integer getDuration() {
@@ -37,7 +35,7 @@ public class ThreatOverTime implements ITick {
         }
         else
         {
-            attacker.increaseSpecificThreat(threatPerTick, target);
+            target.decreaseHealth(damagePerTick);
         setDuration(duration -1);
         }
     }

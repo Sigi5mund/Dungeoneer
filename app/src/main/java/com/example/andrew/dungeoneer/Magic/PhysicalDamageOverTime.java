@@ -1,13 +1,13 @@
 package com.example.andrew.dungeoneer.Magic;
 import com.example.andrew.dungeoneer.Characters.Archetypes.Character;
 
-public class DamageOverTime implements ITick {
+public class PhysicalDamageOverTime implements ITick {
 
     Character target;
     double damagePerTick;
     Integer duration;
 
-    public DamageOverTime(Character target, Integer damagePerTick, Integer duration) {
+    public PhysicalDamageOverTime(Character target, Integer damagePerTick, Integer duration) {
         this.target = target;
         this.damagePerTick = damagePerTick;
         this.duration = duration;

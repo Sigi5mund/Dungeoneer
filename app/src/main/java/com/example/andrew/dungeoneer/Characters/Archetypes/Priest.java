@@ -45,42 +45,37 @@ public class Priest extends Character {
         this.spendManaToCast(10);
         target.increaseHealth(500);
         for (Character enemy: room.baddies
-                ) {increaseThreat(25, enemy);
+                ) {
+            increaseSpecificThreat(25, enemy);
         }
 
     }
 
-
     @Override
-    public void aoeHeal (Fellowship fellowship, ArrayList<Character> enemies){
+    public void aoeHeal (Fellowship fellowship, Room room){
         this.spendManaToCast(35);
         for (Character hero: fellowship.heroes
              ) {hero.increaseHealth(250);
         }
-        for (Character enemy: enemies
-             ) {increaseThreat(100, enemy);
-
-        }
+        this.raiseAllThreat(100, room);
     }
 
     @Override
     public void aoeHot (Fellowship fellowship, Room room){
         this.spendManaToCast(15);
-        for (Character enemy: room.baddies
-                ) {increaseThreat(30, enemy);
-
-        }
         for (Character hero: fellowship.heroes
                 ) {room.hotsAndDots.add(new HealOverTime( hero,100, 5));
         }
+        this.raiseAllThreat(30, room);
     }
 
     @Override
     public void manaStorm(Room room){
         this.setManaPool(this.getManaMax());
-        for (Character enemy: room.baddies
-                ) {increaseThreat(100, enemy);
-        }
+        room.fellowship.dps().setManaPool(room.fellowship.dps().getManaMax());
+        this.raiseAllThreat(100, room);
     }
+
 }
+
 

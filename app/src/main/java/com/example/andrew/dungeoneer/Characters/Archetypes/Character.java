@@ -207,13 +207,18 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
 //     Fellowship Attacks
 //     knight attacks
     public void tauntAttack(Character target){}
-    public void shieldWall(ArrayList<Character> enemies){}
-    public void tauntAOE(ArrayList<Character> enemies){}
-    public void tauntOverTime(ArrayList<Character> enemies, Room room){}
-    public void aoeHeal (Fellowship fellowship, ArrayList<Character> enemies){}
+    public void shieldWall(Room room){}
+    public void tauntAOE(Room room){}
+    public void headBash(Character target){}
+    public void aoeHeal (Fellowship fellowship, Room room){}
     public void aoeHot (Fellowship fellowship, Room room){}
     public void manaStorm(Room room){}
     public void heal(Character target, Room room){}
+    public void fireBall(Character target, Room room){}
+    public void fireStorm(Room room) {}
+    public void slowBurn(Room room) {}
+    public void slagArmour(Character target){}
+
 
 //    Weapons and Armours:
 
@@ -417,6 +422,11 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
         this.stunned = stun;
     }
 
+    public void decreaseIntellect(Integer change){
+        this.intellect = this.intellect - change;
+        if (this.intellect <0){this.intellect = 0;
+    }}
+
 
 
     //    Threat Table Management
@@ -454,12 +464,24 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
         return threatTable;
     }
 
-    public void increaseThreat(Integer increaseInThreat, Character target) {
-        for (ThreatObject hero : target.getThreatTable()) {
-            if (hero.getReference() == this) {
-                hero.increaseThreatLevel(increaseInThreat);
+    public void increaseSpecificThreat(Integer increaseInThreat, Character target) {
+        for (ThreatObject heroInTable : target.getThreatTable()) {
+            if (heroInTable.getReference() == this) {
+                heroInTable.increaseThreatLevel(increaseInThreat);
             }
         }}
+
+    public void raiseAllThreat(Integer increaseInThreat, Room room) {
+        for (Character baddie: room.baddies
+             ) {
+            for (ThreatObject hero : baddie.getThreatTable()) {
+                if (hero.getReference() == this) {
+                    hero.increaseThreatLevel(increaseInThreat);
+                }
+            }
+        }
+    }
+
 
 
     //    Getters and Setters for Mana

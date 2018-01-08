@@ -8,6 +8,7 @@ public enum Armour {
     PLATE(0.5),
     LEATHER(0.75),
     CLOTHE(1.0),
+    SLAGGED(0.9),
     DEFAULT(0.0);
 
     Double value;

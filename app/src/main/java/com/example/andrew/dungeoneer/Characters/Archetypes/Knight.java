@@ -29,29 +29,27 @@ public class Knight extends Character {
     @Override
     public void tauntAttack(Character target){
         weaponattack1(target);
-        increaseThreat(50, target);
+        increaseSpecificThreat(100, target);
     }
 
     @Override
-    public void shieldWall(ArrayList<Character> enemies){
+    public void shieldWall(Room room){
         setBlockAll(true);
-        for (Character enemy: enemies) {
-            increaseThreat(10, enemy);
-        }
+        this.raiseAllThreat(10, room);
     }
 
     @Override
-    public void tauntAOE(ArrayList<Character> enemies){
-        for (Character enemy: enemies) {
-            increaseThreat(80, enemy);
-        }
-    }
-
-    @Override
-    public void tauntOverTime(ArrayList<Character> enemies, Room room){
-        for (Character enemy: enemies) {
+    public void tauntAOE(Room room){
+        this.raiseAllThreat(80, room);
+        for (Character enemy: room.baddies) {
             room.hotsAndDots.add(new ThreatOverTime(enemy, this, 20, 3 ));
         }
+    }
+
+    @Override
+    public void headBash(Character target){
+        this.increaseSpecificThreat(100, target);
+        target.decreaseIntellect(20);
     }
 
 }

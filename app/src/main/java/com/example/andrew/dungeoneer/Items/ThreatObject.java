@@ -34,4 +34,5 @@ public class ThreatObject {
     public void increaseThreatLevel(Integer threatIncrease){
         this.threatLevel += threatIncrease;
     }
+
 }

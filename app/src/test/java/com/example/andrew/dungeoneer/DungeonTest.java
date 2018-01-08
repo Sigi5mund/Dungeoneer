@@ -11,7 +11,7 @@ import com.example.andrew.dungeoneer.Characters.Armour;
 import com.example.andrew.dungeoneer.Characters.OffHand;
 import com.example.andrew.dungeoneer.Characters.Weapon;
 import com.example.andrew.dungeoneer.Items.Item;
-import com.example.andrew.dungeoneer.Magic.DamageOverTime;
+import com.example.andrew.dungeoneer.Magic.PhysicalDamageOverTime;
 import com.example.andrew.dungeoneer.Magic.HealOverTime;
 import com.example.andrew.dungeoneer.Rooms.Dungeon1;
 
@@ -30,7 +30,7 @@ public class DungeonTest {
     private ArrayList<Character> villains;
     private Item item;
     private HealOverTime renew;
-    private DamageOverTime scorch;
+    private PhysicalDamageOverTime scorch;
     private Character healer;
     private Character dps;
     private Character tank;
@@ -184,7 +184,7 @@ public class DungeonTest {
 
     @Test
     public void dotInteractsWithTarget() {
-        scorch = new DamageOverTime(tank, 50, 3);
+        scorch = new PhysicalDamageOverTime(tank, 50, 3);
         scorch.tick();
         assertEquals(1750, tank.getHealthBar(), 10);
     }
@@ -192,7 +192,7 @@ public class DungeonTest {
 
     @Test
     public void dotHasDuration() {
-        scorch = new DamageOverTime(tank, 50, 3);
+        scorch = new PhysicalDamageOverTime(tank, 50, 3);
         assertEquals(1800, tank.getHealthBar(), 10);
         assertEquals(3, scorch.getDuration(), 0.1);
         scorch.tick();
@@ -211,7 +211,7 @@ public class DungeonTest {
 
     @Test
     public void ITickLoopMechanismWorksWithDot() {
-        scorch = new DamageOverTime(tank, 50, 3);
+        scorch = new PhysicalDamageOverTime(tank, 50, 3);
         dungeon.hotsAndDots.add(scorch);
         assertEquals(1, dungeon.hotsAndDots.size());
         dungeon.triggerITickMechanism();
@@ -226,7 +226,7 @@ public class DungeonTest {
 
     @Test
     public void endOfTurnTriggersDots() {
-        scorch = new DamageOverTime(tank, 50, 3);
+        scorch = new PhysicalDamageOverTime(tank, 50, 3);
         dungeon.hotsAndDots.add(scorch);
         assertEquals(1, dungeon.hotsAndDots.size());
         assertEquals(1800, tank.getHealthBar(), 10);
@@ -243,7 +243,7 @@ public class DungeonTest {
     @Test
     public void endOfTurnTriggersAllHotsAndDotsInRoomArray(){
 
-        scorch = new DamageOverTime(tank, 100, 3);
+        scorch = new PhysicalDamageOverTime(tank, 100, 3);
         dungeon.hotsAndDots.add(scorch);
         renew = new HealOverTime(tank, 50, 2);
         dungeon.hotsAndDots.add(renew);
