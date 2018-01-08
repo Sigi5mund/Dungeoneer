@@ -26,7 +26,7 @@ public class GameTest {
     public void before() {
 
         ArrayList<Character> heroes = new ArrayList<>();
-        Character healerload = new Priest("Cadfael", 100, Weapon.BLESSED_SCEPTER, Armour.LEATHER, OffHand.HEALWAND);
+        Character healerload = new Priest("Cadfael", 100, Weapon.SCEPTER, Armour.LEATHER, OffHand.HEALWAND);
         Character tankload = new Knight("Athina", 0, Weapon.SWORD, Armour.GOLD, OffHand.SHIELD);
         Character dpsload = new Wizard("Gandalf", 5, Weapon.STAFF, Armour.CLOTHE, OffHand.DPSWAND);
         heroes.add(healerload);
@@ -36,7 +36,6 @@ public class GameTest {
         game1 = new Game();
         game1.room1.loadGoodies(fellowship);
         game1.room1.addThreatObjectsToTables();
-
     }
 
     @Test

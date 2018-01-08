@@ -14,6 +14,7 @@ public class Knight extends Character {
     public Knight(String name, int gold, Weapon weapon, Armour armour, OffHand offHand) {
         super(name, gold, weapon, armour, offHand);
 
+        this.designation = "Tank";
         this.strength = 80;
         this.agility = 30;
         this.intellect = 40;

@@ -30,7 +30,7 @@ public class CharacterTest {
         tank = new Knight("Athina",0, Weapon.SWORD, Armour.GOLD, OffHand.SHIELD);
         dps = new Wizard( "Gandalf",5, Weapon.STAFF, Armour.CLOTHE, OffHand.DPSWAND);
         dragon = new Dragon("Smaug",10000000);
-        healer = new Priest("Cadfael", 100,Weapon.BLESSED_SCEPTER, Armour.LEATHER, OffHand.HEALWAND);
+        healer = new Priest("Cadfael", 100,Weapon.SCEPTER, Armour.LEATHER, OffHand.HEALWAND);
         orcCaptain = new OrcCaptain("Grishnak");
 
     }

@@ -14,6 +14,8 @@ public class Wizard extends Character {
 
     public Wizard(String name, int gold, Weapon weapon, Armour armour, OffHand offHand) {
         super(name, gold, weapon, armour, offHand);
+
+        this.designation = "DPS";
         this.strength = 20;
         this.agility = 30;
         this.intellect = 80;

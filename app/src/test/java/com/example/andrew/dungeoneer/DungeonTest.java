@@ -42,7 +42,7 @@ public class DungeonTest {
     @Before
     public void before() {
         heroes = new ArrayList<>();
-        heroes.add(new Priest("Cadfael", 5, Weapon.BLESSED_SCEPTER, Armour.CLOTHE, OffHand.HEALWAND));
+        heroes.add(new Priest("Cadfael", 5, Weapon.SCEPTER, Armour.CLOTHE, OffHand.HEALWAND));
         heroes.add(new Knight("Athina", 20, Weapon.SWORD, Armour.PLATE, OffHand.SHIELD));
         heroes.add(new Wizard("Gandalf", 10, Weapon.STAFF, Armour.CLOTHE, OffHand.DPSWAND));
         villains = new ArrayList<>();
@@ -83,7 +83,7 @@ public class DungeonTest {
         dungeon.endOfCombatChecks();
         assertEquals(1, dungeon.floor.size());
         assertEquals(2, dungeon.fellowship.getHeroes().size());
-        assertEquals("Cadfael's corpse has 5.0 gold, CLOTHE armour and a BLESSED_SCEPTER weapon. What will you take?", tank.examineCorpse(dungeon.floor.get(0)));
+        assertEquals("Cadfael's corpse has 5.0 gold, CLOTHE armour and a SCEPTER weapon. What will you take?", tank.examineCorpse(dungeon.floor.get(0)));
     }
 
     @Test

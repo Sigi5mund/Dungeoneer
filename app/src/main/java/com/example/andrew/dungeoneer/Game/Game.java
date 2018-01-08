@@ -2,7 +2,9 @@ package com.example.andrew.dungeoneer.Game;
 
 import com.example.andrew.dungeoneer.Rooms.Dungeon1;
 
-public class Game {
+import java.io.Serializable;
+
+public class Game implements Serializable{
 
 //    ArrayList<Room> roomSequence;
     public Dungeon1 room1;

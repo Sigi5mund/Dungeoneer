@@ -4,7 +4,7 @@ public enum Weapon {
 
     SWORD(100, 10),
     STAFF(10, 5 ),
-    BLESSED_SCEPTER(-200, 100),
+    SCEPTER(-200, 100),
     CLAWS(2500, 30),
     DEFAULT(0, 0);
 

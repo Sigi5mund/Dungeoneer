@@ -16,6 +16,7 @@ public class Priest extends Character {
     public Priest(String name, int gold, Weapon weapon, Armour armour, OffHand offHand) {
         super(name, gold, weapon, armour, offHand);
 
+        this.designation = "Healer";
         this.strength = 20;
         this.agility = 30;
         this.intellect = 85;

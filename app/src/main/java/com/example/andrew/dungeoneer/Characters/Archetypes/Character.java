@@ -19,6 +19,7 @@ import java.util.Comparator;
 public abstract class Character implements ISpell, IAttack, ITakeDamage {
 
     protected String name;
+    protected String designation;
     protected double gold;
     protected Weapon weapon;
     private OffHand offHand;
@@ -56,6 +57,7 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
 
     public Character(String name, double gold, Weapon weapon, Armour armour, OffHand offHand) {
         this.name = name;
+        this.designation = "Class";
         this.gold = gold;
         this.weapon = weapon;
         this.offHand = offHand;
@@ -210,10 +212,12 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
     public void shieldWall(Room room){}
     public void tauntAOE(Room room){}
     public void headBash(Character target){}
+//    priest attacks
+public void heal(Character target, Room room){}
     public void aoeHeal (Fellowship fellowship, Room room){}
     public void aoeHot (Fellowship fellowship, Room room){}
     public void manaStorm(Room room){}
-    public void heal(Character target, Room room){}
+//    wizard attacks
     public void fireBall(Character target, Room room){}
     public void fireStorm(Room room) {}
     public void slowBurn(Room room) {}
@@ -318,6 +322,10 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDesignation(){
+        return this.designation;
     }
 
 
