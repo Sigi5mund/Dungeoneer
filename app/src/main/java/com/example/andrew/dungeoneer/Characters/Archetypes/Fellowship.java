@@ -2,9 +2,10 @@ package com.example.andrew.dungeoneer.Characters.Archetypes;
 
 import com.example.andrew.dungeoneer.Items.Item;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Fellowship {
+public class Fellowship implements Serializable {
 
     String name;
     public ArrayList<Character> heroes;

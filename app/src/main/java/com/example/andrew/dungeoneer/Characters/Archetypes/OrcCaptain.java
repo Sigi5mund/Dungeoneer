@@ -5,7 +5,9 @@ import com.example.andrew.dungeoneer.Characters.Interfaces.IThreatAttack;
 import com.example.andrew.dungeoneer.Characters.OffHand;
 import com.example.andrew.dungeoneer.Characters.Weapon;
 
-public class OrcCaptain extends Character implements IThreatAttack {
+import java.io.Serializable;
+
+public class OrcCaptain extends Character implements IThreatAttack, Serializable {
 
 
 
@@ -21,6 +23,7 @@ public class OrcCaptain extends Character implements IThreatAttack {
         this.stunned = false;
         this.maxHealth = stamina * 20;
         this.healthBar = maxHealth;
+        this.designation = "Captain";
     }
 
     public void threatAttack(){

@@ -5,4 +5,17 @@ package com.example.andrew.dungeoneer.Items;
  */
 
 public class RecordObject {
+
+    Character origin;
+    Character target;
+    Double damage;
+    String outcome;
+
+
+    public RecordObject(Character origin, Character target) {
+        this.origin = origin;
+        this.target = target;
+        this.damage = 0.0;
+        this.outcome = null;
+    }
 }

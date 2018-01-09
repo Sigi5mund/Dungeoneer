@@ -5,7 +5,9 @@ package com.example.andrew.dungeoneer.Items;
  */
 import com.example.andrew.dungeoneer.Characters.Archetypes.Character;
 
-public class ThreatObject {
+import java.io.Serializable;
+
+public class ThreatObject implements Serializable{
 
     Character reference;
     Integer threatLevel;

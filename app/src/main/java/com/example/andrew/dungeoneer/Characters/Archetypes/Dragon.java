@@ -5,10 +5,11 @@ import com.example.andrew.dungeoneer.Characters.Interfaces.IThreatAttack;
 import com.example.andrew.dungeoneer.Characters.OffHand;
 import com.example.andrew.dungeoneer.Characters.Weapon;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Dragon extends Character implements IThreatAttack {
+public class Dragon extends Character implements Serializable, IThreatAttack {
 
     double maxHealth;
 
@@ -25,6 +26,7 @@ public class Dragon extends Character implements IThreatAttack {
         this.critChance = agility / 100;
         this.critDamage = agility / 25;
         this.stunned = false;
+        this.designation = "Boss";
     }
 
     @Override
@@ -40,17 +42,6 @@ public class Dragon extends Character implements IThreatAttack {
     }
 }
 
-//
-//    @Override
-//    public String spell(ArrayList<Character> targets){
-//        double damage;
-//        damage = 200.00;
-//        for (Character character:targets) {
-//            character.magicDamage(damage);
-//        }
-//        return "FireWall : Damage to everyone!";}
-//
-//}
 
 
 

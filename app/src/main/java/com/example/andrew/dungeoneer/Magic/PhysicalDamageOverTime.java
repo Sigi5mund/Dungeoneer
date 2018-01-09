@@ -1,7 +1,9 @@
 package com.example.andrew.dungeoneer.Magic;
 import com.example.andrew.dungeoneer.Characters.Archetypes.Character;
 
-public class PhysicalDamageOverTime implements ITick {
+import java.io.Serializable;
+
+public class PhysicalDamageOverTime implements ITick, Serializable {
 
     Character target;
     double damagePerTick;

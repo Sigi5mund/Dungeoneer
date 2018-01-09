@@ -6,9 +6,10 @@ import com.example.andrew.dungeoneer.Characters.Weapon;
 import com.example.andrew.dungeoneer.Magic.HealOverTime;
 import com.example.andrew.dungeoneer.Rooms.Room;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Priest extends Character {
+public class Priest extends Character implements Serializable {
 
 
 
@@ -30,6 +31,10 @@ public class Priest extends Character {
         this.manaMax = 100;
         this.maxHealth = stamina * 20;
         this.healthBar = maxHealth;
+        this.action1cost = 20;
+        this.action2cost = 40;
+        this.action3cost = 20;
+        this.action4cost = 0;
     }
 
     //  Attack Mechanics:
@@ -43,7 +48,7 @@ public class Priest extends Character {
 
     @Override
     public void heal(Character target, Room room){
-        this.spendManaToCast(10);
+        this.spendManaToCast(this.action1cost);
         target.increaseHealth(500);
         for (Character enemy: room.baddies
                 ) {
@@ -54,7 +59,7 @@ public class Priest extends Character {
 
     @Override
     public void aoeHeal (Fellowship fellowship, Room room){
-        this.spendManaToCast(35);
+        this.spendManaToCast(this.action2cost);
         for (Character hero: fellowship.heroes
              ) {hero.increaseHealth(250);
         }
@@ -63,7 +68,7 @@ public class Priest extends Character {
 
     @Override
     public void aoeHot (Fellowship fellowship, Room room){
-        this.spendManaToCast(15);
+        this.spendManaToCast(this.action3cost);
         for (Character hero: fellowship.heroes
                 ) {room.hotsAndDots.add(new HealOverTime( hero,100, 5));
         }
@@ -72,6 +77,7 @@ public class Priest extends Character {
 
     @Override
     public void manaStorm(Room room){
+        this.spendManaToCast(this.action4cost);
         this.setManaPool(this.getManaMax());
         room.fellowship.dps().setManaPool(room.fellowship.dps().getManaMax());
         this.raiseAllThreat(100, room);

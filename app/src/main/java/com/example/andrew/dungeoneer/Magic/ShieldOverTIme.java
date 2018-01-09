@@ -1,6 +1,8 @@
 package com.example.andrew.dungeoneer.Magic;
 
-public class ShieldOverTIme implements ITick{
+import java.io.Serializable;
+
+public class ShieldOverTIme implements ITick, Serializable{
 
     public void tick() {
 

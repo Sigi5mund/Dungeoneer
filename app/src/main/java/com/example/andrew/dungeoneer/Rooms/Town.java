@@ -1,6 +1,8 @@
 package com.example.andrew.dungeoneer.Rooms;
 
-public class Town extends Room {
+import java.io.Serializable;
+
+public class Town extends Room implements Serializable {
 
 
 

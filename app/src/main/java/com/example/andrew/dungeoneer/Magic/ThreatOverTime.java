@@ -1,7 +1,9 @@
 package com.example.andrew.dungeoneer.Magic;
 import com.example.andrew.dungeoneer.Characters.Archetypes.Character;
 
-public class ThreatOverTime implements ITick {
+import java.io.Serializable;
+
+public class ThreatOverTime implements ITick, Serializable {
 
     Character target;
     Character attacker;

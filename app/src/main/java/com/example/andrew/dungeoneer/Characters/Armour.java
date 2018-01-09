@@ -1,6 +1,8 @@
 package com.example.andrew.dungeoneer.Characters;
 
-public enum Armour {
+import java.io.Serializable;
+
+public enum Armour implements Serializable {
 
 
     MAGIC(0.0),

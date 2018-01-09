@@ -11,12 +11,13 @@ import com.example.andrew.dungeoneer.Items.Item;
 import com.example.andrew.dungeoneer.Items.ThreatObject;
 import com.example.andrew.dungeoneer.Rooms.Room;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 
-public abstract class Character implements ISpell, IAttack, ITakeDamage {
+public abstract class Character implements Serializable, IAttack, ITakeDamage {
 
     protected String name;
     protected String designation;
@@ -30,7 +31,7 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
     private ArrayList<Double> critModifier;
     private ArrayList<Double> blockModifier;
     private Armour armour;
-    private boolean alive;
+    boolean alive;
     Integer strength;
     Integer agility;
     Integer intellect;
@@ -53,6 +54,10 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
     Integer manaMax;
     Integer manaPool;
     Integer manaRegen;
+    Integer action1cost;
+    Integer action2cost;
+    Integer action3cost;
+    Integer action4cost;
 
 
     public Character(String name, double gold, Weapon weapon, Armour armour, OffHand offHand) {
@@ -92,6 +97,11 @@ public abstract class Character implements ISpell, IAttack, ITakeDamage {
         this.manaPool = 50;
         this.manaRegen = 5;
         this.manaMax = 100;
+        this.action1cost = 0;
+        this.action2cost = 0;
+        this.action3cost = 0;
+        this.action4cost = 0;
+
 
 //      In-Game Messages:
         this.attackExclamation = "";
@@ -287,6 +297,12 @@ public void heal(Character target, Room room){}
         }
     }
 
+    public void noHealthExceededCheck() {
+        if (this.getHealthBar() < 0) {
+            this.setHealthBar(0.0);
+        }
+    }
+
     public boolean checkAlive() {
         if (this.healthBar <= 0) {
             this.alive = false;
@@ -298,8 +314,18 @@ public void heal(Character target, Room room){}
     }
 
     public boolean isAlive() {
+
         return alive;
     }
+
+    public String aliveNow(){
+        if (this.healthBar > 0){
+            return "ALIVE";
+        }
+        else
+        {return "DEAD";}
+    }
+
 
 
 //  Constructor Getters and Setters:
@@ -422,6 +448,12 @@ public void heal(Character target, Room room){}
     public String getCritExclamation() {
         return this.critExclamation;
     }
+
+    public Integer getAction1cost(){return this.action1cost;}
+    public Integer getAction2cost(){return this.action2cost;}
+    public Integer getAction3cost(){return this.action3cost;}
+    public Integer getAction4cost(){return this.action4cost;}
+
 
 
 //    Stats and Status Setters:

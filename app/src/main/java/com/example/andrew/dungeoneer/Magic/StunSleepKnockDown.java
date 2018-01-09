@@ -2,11 +2,12 @@ package com.example.andrew.dungeoneer.Magic;
 
 import com.example.andrew.dungeoneer.Characters.Archetypes.Character;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
-public class StunSleepKnockDown implements ITick{
+public class StunSleepKnockDown implements ITick, Serializable{
 
     Character target;
     Integer duration;

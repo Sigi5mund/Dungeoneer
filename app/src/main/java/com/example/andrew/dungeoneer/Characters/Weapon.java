@@ -1,6 +1,8 @@
 package com.example.andrew.dungeoneer.Characters;
 
-public enum Weapon {
+import java.io.Serializable;
+
+public enum Weapon implements Serializable{
 
     SWORD(100, 10),
     STAFF(10, 5 ),

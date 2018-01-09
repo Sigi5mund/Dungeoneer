@@ -5,9 +5,10 @@ import com.example.andrew.dungeoneer.Characters.Armour;
 import com.example.andrew.dungeoneer.Characters.OffHand;
 import com.example.andrew.dungeoneer.Characters.Weapon;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Corpse extends Item{
+public class Corpse extends Item implements Serializable{
     Armour armour;
     Weapon weapon;
     OffHand offHand;

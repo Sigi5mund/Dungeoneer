@@ -4,10 +4,11 @@ import com.example.andrew.dungeoneer.Characters.Archetypes.Goblin;
 import com.example.andrew.dungeoneer.Characters.Archetypes.OrcCaptain;
 import com.example.andrew.dungeoneer.Characters.Archetypes.Character;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Dungeon1 extends Room {
+public class Dungeon1 extends Room implements Serializable {
 
     public Character captain;
     public Character goblin1;

@@ -77,32 +77,32 @@ public class DungeonTest {
         assertNotEquals(350, healer.getHealthBar());
     }
 
-    @Test
-    public void checkCorpseCreationAndLootability() {
-        healer.physicalDamage(2000);
-        dungeon.endOfCombatChecks();
-        assertEquals(1, dungeon.floor.size());
-        assertEquals(2, dungeon.fellowship.getHeroes().size());
-        assertEquals("Cadfael's corpse has 5.0 gold, CLOTHE armour and a SCEPTER weapon. What will you take?", tank.examineCorpse(dungeon.floor.get(0)));
-    }
+//    @Test
+//    public void checkCorpseCreationAndLootability() {
+//        healer.physicalDamage(2000);
+//        dungeon.endOfCombatChecks();
+//        assertEquals(1, dungeon.floor.size());
+//        assertEquals(2, dungeon.fellowship.getHeroes().size());
+//        assertEquals("Cadfael's corpse has 5.0 gold, CLOTHE armour and a SCEPTER weapon. What will you take?", tank.examineCorpse(dungeon.floor.get(0)));
+//    }
 
-    @Test
-    public void checkdeletecorpsesafterspawn() {
-        healer.physicalDamage(2000);
-        dungeon.removeDead();
-        assertEquals(2,  dungeon.fellowship.getHeroes().size());
-    }
+//    @Test
+//    public void checkdeletecorpsesafterspawn() {
+//        healer.physicalDamage(2000);
+//        dungeon.removeDead();
+//        assertEquals(2,  dungeon.fellowship.getHeroes().size());
+//    }
 
-    @Test
-    public void checkGoldLootableAndCorpseGoldEmptyAfter() {
-
-        healer.physicalDamage(2000);
-        dungeon.endOfCombatChecks();
-        double gold1 = tank.getGold();
-        tank.takeGold(dungeon.floor.get(0));
-        double gold2 = tank.getGold();
-        assertNotEquals(gold1, gold2);
-    }
+//    @Test
+//    public void checkGoldLootableAndCorpseGoldEmptyAfter() {
+//
+//        healer.physicalDamage(2000);
+//        dungeon.endOfCombatChecks();
+//        double gold1 = tank.getGold();
+//        tank.takeGold(dungeon.floor.get(0));
+//        double gold2 = tank.getGold();
+//        assertNotEquals(gold1, gold2);
+//    }
 
     @Test
     public void spellWorksInDungeons() {

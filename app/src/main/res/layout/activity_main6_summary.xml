@@ -6,104 +6,13 @@
     android:layout_height="match_parent"
     tools:context="com.example.andrew.dungeoneer.Main3ActivityHealer">
 
-    <Button
-        android:id="@+id/action1"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginBottom="4dp"
-        android:text="Attack"
-        app:layout_constraintBottom_toTopOf="@+id/textView9"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/action4"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginBottom="4dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginStart="8dp"
-        android:text="HeadButt"
-        app:layout_constraintBottom_toTopOf="@+id/textView12"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.083"
-        app:layout_constraintStart_toEndOf="@+id/action3" />
-
-    <Button
-        android:id="@+id/action2"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginBottom="4dp"
-        android:layout_marginStart="12dp"
-        android:text="Shield"
-        app:layout_constraintBottom_toTopOf="@+id/textView10"
-        app:layout_constraintStart_toEndOf="@+id/action1" />
-
-    <Button
-        android:id="@+id/action3"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginBottom="4dp"
-        android:layout_marginStart="12dp"
-        android:text="AOE"
-        app:layout_constraintBottom_toTopOf="@+id/textView11"
-        app:layout_constraintStart_toEndOf="@+id/action2" />
-
-    <TextView
-        android:id="@+id/manaText"
-        android:layout_width="87dp"
-        android:layout_height="36dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="Mana"
-        android:textAlignment="center"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/action1ManaView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dpsList"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/manaView"
-        android:layout_width="45dp"
-        android:layout_height="18dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/mana"
-        android:textAlignment="center"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toTopOf="@+id/action2ManaView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.015"
-        app:layout_constraintStart_toEndOf="@+id/manaText"
-        app:layout_constraintTop_toBottomOf="@+id/dpsList"
-        app:layout_constraintVertical_bias="0.138" />
-
-    <ListView
-        android:id="@+id/dpsList"
-        android:layout_width="376dp"
-        android:layout_height="371dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:listSelector="@android:color/holo_red_light"
-        android:longClickable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.0" />
-
     <TextView
         android:id="@+id/textView4"
         android:layout_width="135dp"
-        android:layout_height="28dp"
+        android:layout_height="42dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:text="DPS"
+        android:text="summary"
         android:textAlignment="center"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -112,120 +21,67 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/action1ManaView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="manacost"
-        app:layout_constraintBottom_toTopOf="@+id/action1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dpsList"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/action2ManaView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="8dp"
-        android:text="manacost"
-        app:layout_constraintBottom_toTopOf="@+id/action2"
-        app:layout_constraintStart_toEndOf="@+id/action1ManaView"
-        app:layout_constraintTop_toBottomOf="@+id/dpsList"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/action3ManaView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="8dp"
-        android:text="manacost"
-        app:layout_constraintBottom_toTopOf="@+id/action3"
-        app:layout_constraintStart_toEndOf="@+id/action2ManaView"
-        app:layout_constraintTop_toBottomOf="@+id/dpsList"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/action4ManavView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+    <ListView
+        android:id="@+id/dpsSummaryList"
+        android:layout_width="397dp"
+        android:layout_height="156dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="manacost"
-        app:layout_constraintBottom_toTopOf="@+id/action4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.777"
-        app:layout_constraintStart_toEndOf="@+id/action3ManaView"
-        app:layout_constraintTop_toBottomOf="@+id/dpsList"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="44dp"
-        android:layout_marginStart="16dp"
-        android:text="actiondesc"
+        android:listSelector="@android:color/background_light"
+        android:longClickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="44dp"
-        android:layout_marginStart="32dp"
-        android:text="actiondesc"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView9" />
-
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="44dp"
-        android:layout_marginStart="32dp"
-        android:text="actiondesc"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView10" />
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="44dp"
+    <Button
+        android:id="@+id/onNextTurn"
+        android:layout_width="116dp"
+        android:layout_height="43dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:text="actiondesc"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:onClick="onNextTurn"
+        android:text="Next Turn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.619"
-        app:layout_constraintStart_toEndOf="@+id/textView11" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/skipButton"
-        android:layout_width="60dp"
-        android:layout_height="20dp"
-        android:layout_marginBottom="8dp"
+        android:id="@+id/onQuit"
+        android:layout_width="118dp"
+        android:layout_height="40dp"
+        android:onClick="onQuit"
+        android:text="Quit Game"
+        tools:layout_editor_absoluteX="4dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <ListView
+        android:id="@+id/enemyAttacksList"
+        android:layout_width="368dp"
+        android:layout_height="149dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Pass"
-        android:textAlignment="center"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <ListView
+        android:id="@+id/healerSummaryList"
+        android:layout_width="378dp"
+        android:layout_height="207dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:listSelector="@color/cardview_light_background"
+        android:longClickable="true"
+        app:layout_constraintBottom_toTopOf="@+id/dpsSummaryList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enemyAttacksList"
+        app:layout_constraintVertical_bias="0.0" />
 
 </android.support.constraint.ConstraintLayout>

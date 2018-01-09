@@ -1,6 +1,8 @@
 package com.example.andrew.dungeoneer.Characters;
 
-public enum OffHand {
+import java.io.Serializable;
+
+public enum OffHand implements Serializable {
 
     KNIFE(100, 10, false),
     SHIELD(10, 5, true),

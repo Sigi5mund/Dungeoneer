@@ -7,46 +7,53 @@
     tools:context="com.example.andrew.dungeoneer.Main3ActivityHealer">
 
     <Button
-        android:id="@+id/action1"
+        android:id="@+id/action1DPS"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_marginBottom="4dp"
-        android:text="Attack"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="4dp"
+        android:onClick="onAction1DPS"
+        android:text="FireBall"
         app:layout_constraintBottom_toTopOf="@+id/textView9"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/action4"
+        android:id="@+id/action4DPS"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_marginBottom="4dp"
-        android:layout_marginEnd="36dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginStart="8dp"
-        android:text="HeadButt"
+        android:onClick="onAction4DPS"
+        android:text="Melt"
         app:layout_constraintBottom_toTopOf="@+id/textView12"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.083"
-        app:layout_constraintStart_toEndOf="@+id/action3" />
+        app:layout_constraintStart_toEndOf="@+id/action3Tank" />
 
     <Button
-        android:id="@+id/action2"
+        android:id="@+id/action2DPS"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_marginBottom="4dp"
-        android:layout_marginStart="12dp"
-        android:text="Shield"
-        app:layout_constraintBottom_toTopOf="@+id/textView10"
-        app:layout_constraintStart_toEndOf="@+id/action1" />
-
-    <Button
-        android:id="@+id/action3"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginBottom="4dp"
-        android:layout_marginStart="12dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:onClick="onAction2DPS"
         android:text="AOE"
+        app:layout_constraintBottom_toTopOf="@+id/textView10"
+        app:layout_constraintEnd_toStartOf="@+id/action3DPS"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/action1DPS" />
+
+    <Button
+        android:id="@+id/action3DPS"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginBottom="4dp"
+        android:onClick="onAction3DPS"
+        android:text="DOTAOE"
         app:layout_constraintBottom_toTopOf="@+id/textView11"
-        app:layout_constraintStart_toEndOf="@+id/action2" />
+        app:layout_constraintEnd_toStartOf="@+id/action4DPS" />
 
     <TextView
         android:id="@+id/manaText"
@@ -55,12 +62,12 @@
         android:layout_marginBottom="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="Rage"
+        android:text="Mana"
         android:textAlignment="center"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/action1ManaView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tankList"
+        app:layout_constraintTop_toBottomOf="@+id/dpsList"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -78,19 +85,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.015"
         app:layout_constraintStart_toEndOf="@+id/manaText"
-        app:layout_constraintTop_toBottomOf="@+id/tankList"
+        app:layout_constraintTop_toBottomOf="@+id/dpsList"
         app:layout_constraintVertical_bias="0.138" />
 
     <ListView
-        android:id="@+id/tankList"
+        android:id="@+id/dpsList"
         android:layout_width="376dp"
         android:layout_height="371dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:listSelector="@android:color/holo_orange_light"
-        android:longClickable="true"
+        android:listSelector="@android:color/holo_red_light"
+        android:longClickable="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -103,7 +110,7 @@
         android:layout_height="28dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:text="Tank"
+        android:text="DPS"
         android:textAlignment="center"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -120,9 +127,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="manacost"
-        app:layout_constraintBottom_toTopOf="@+id/action1"
+        app:layout_constraintBottom_toTopOf="@+id/action1tank"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tankList"
+        app:layout_constraintTop_toBottomOf="@+id/dpsList"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
@@ -133,9 +140,9 @@
         android:layout_marginStart="36dp"
         android:layout_marginTop="8dp"
         android:text="manacost"
-        app:layout_constraintBottom_toTopOf="@+id/action2"
+        app:layout_constraintBottom_toTopOf="@+id/action2tank"
         app:layout_constraintStart_toEndOf="@+id/action1ManaView"
-        app:layout_constraintTop_toBottomOf="@+id/tankList"
+        app:layout_constraintTop_toBottomOf="@+id/dpsList"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
@@ -146,9 +153,9 @@
         android:layout_marginStart="48dp"
         android:layout_marginTop="8dp"
         android:text="manacost"
-        app:layout_constraintBottom_toTopOf="@+id/action3"
+        app:layout_constraintBottom_toTopOf="@+id/action3Tank"
         app:layout_constraintStart_toEndOf="@+id/action2ManaView"
-        app:layout_constraintTop_toBottomOf="@+id/tankList"
+        app:layout_constraintTop_toBottomOf="@+id/dpsList"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
@@ -160,11 +167,11 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="manacost"
-        app:layout_constraintBottom_toTopOf="@+id/action4"
+        app:layout_constraintBottom_toTopOf="@+id/action4Tank"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.777"
         app:layout_constraintStart_toEndOf="@+id/action3ManaView"
-        app:layout_constraintTop_toBottomOf="@+id/tankList"
+        app:layout_constraintTop_toBottomOf="@+id/dpsList"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
@@ -211,13 +218,14 @@
         app:layout_constraintStart_toEndOf="@+id/textView11" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/endTurnButton"
         android:layout_width="60dp"
         android:layout_height="20dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:onClick="onSkipButtonClick"
         android:text="Pass"
         android:textAlignment="center"
         android:textSize="10sp"

@@ -7,9 +7,10 @@ import com.example.andrew.dungeoneer.Characters.Weapon;
 import com.example.andrew.dungeoneer.Magic.PhysicalDamageOverTime;
 import com.example.andrew.dungeoneer.Rooms.Room;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Wizard extends Character {
+public class Wizard extends Character implements Serializable {
 
 
     public Wizard(String name, int gold, Weapon weapon, Armour armour, OffHand offHand) {
@@ -29,6 +30,10 @@ public class Wizard extends Character {
         this.manaMax = 100;
         this.maxHealth = stamina * 20;
         this.healthBar = maxHealth;
+        this.action1cost = 10;
+        this.action2cost = 50;
+        this.action3cost = 10;
+        this.action4cost = 30;
     }
 
     //  Attack Mechanics:
@@ -42,7 +47,7 @@ public class Wizard extends Character {
 
     @Override
     public void fireBall(Character target, Room room) {
-        this.spendManaToCast(10);
+        this.spendManaToCast(this.action1cost);
         double damage;
         damage = 300.00 * randomDamageModifier();
         target.magicDamage(damage);
@@ -54,7 +59,7 @@ public class Wizard extends Character {
 
     @Override
     public void fireStorm(Room room) {
-        this.spendManaToCast(50);
+        this.spendManaToCast(this.action2cost);
         double damage;
         damage = 400.00 * randomDamageModifier();
         for (Character baddie :room.baddies
@@ -65,7 +70,7 @@ public class Wizard extends Character {
 
     @Override
     public void slowBurn(Room room) {
-        this.spendManaToCast(10);
+        this.spendManaToCast(this.action3cost);
         for (Character baddie: room.baddies
              ) { room.hotsAndDots.add(new PhysicalDamageOverTime(baddie, 75, 5));
         }
@@ -74,7 +79,7 @@ public class Wizard extends Character {
 
     @Override
     public void slagArmour(Character target){
-        this.spendManaToCast(30);
+        this.spendManaToCast(this.action4cost);
         double damage;
         damage = 800.00 * randomDamageModifier();
         target.magicDamage(damage);

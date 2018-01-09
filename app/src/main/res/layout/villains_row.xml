@@ -7,224 +7,175 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView22"
-        android:layout_width="60dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="24dp"
-        android:text="Armour"
-        android:textSize="10sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/textView20"
-        app:layout_constraintTop_toBottomOf="@+id/healthView" />
-
-    <TextView
-        android:id="@+id/textView20"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="12dp"
-        android:text="Str"
-        android:textSize="10sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/textView19"
-        app:layout_constraintTop_toBottomOf="@+id/agilityView" />
-
-    <TextView
-        android:id="@+id/textView19"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="20dp"
-        android:text="Int"
-        android:textSize="10sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/textView15"
-        app:layout_constraintTop_toBottomOf="@+id/staminaView" />
-
-    <TextView
-        android:id="@+id/textView18"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="8dp"
-        android:text="Agi"
-        android:textSize="10sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/textView17"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/textView16"
-        android:layout_width="60dp"
+        android:layout_width="wrap_content"
         android:layout_height="20dp"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
         android:text="Health"
         android:textSize="10sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/textView18"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView21"
         android:layout_width="60dp"
         android:layout_height="20dp"
-        android:layout_marginStart="12dp"
         android:layout_marginTop="8dp"
         android:text="Mainhand"
         android:textSize="10sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/textView1"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="60dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="12dp"
-        android:text="Offhand"
-        android:textSize="10sp"
-        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/textView14"
-        app:layout_constraintTop_toBottomOf="@+id/mainWeaponView" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView14"
         android:layout_width="55dp"
         android:layout_height="20dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text="Designation"
         android:textSize="10sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameView" />
-
-    <TextView
-        android:id="@+id/nameView"
-        android:layout_width="55dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="16dp"
-        android:text="name"
-        android:textSize="12sp"
-        android:textStyle="italic"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView1" />
+        app:layout_constraintStart_toEndOf="@+id/name"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/mainWeaponView"
         android:layout_width="60dp"
-        android:layout_height="22dp"
-        android:layout_marginStart="12dp"
+        android:layout_height="20dp"
         android:text="mainhand"
         android:textSize="10sp"
         android:textStyle="italic"
-        app:layout_constraintStart_toEndOf="@+id/nameView"
+        app:layout_constraintStart_toEndOf="@+id/designationView"
         app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
     <TextView
-        android:id="@+id/offHandView"
-        android:layout_width="60dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="12dp"
-        android:text="offhand"
-        android:textSize="10sp"
-        android:textStyle="italic"
-        app:layout_constraintStart_toEndOf="@+id/designationView"
-        app:layout_constraintTop_toBottomOf="@+id/textView15" />
-
-    <TextView
-        android:id="@+id/staminaView"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="12dp"
-        android:text="sta"
-        android:textStyle="italic"
-        app:layout_constraintStart_toEndOf="@+id/mainWeaponView"
-        app:layout_constraintTop_toBottomOf="@+id/textView17" />
-
-    <TextView
-        android:id="@+id/strengthView"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="12dp"
-        android:text="str"
-        android:textStyle="italic"
-        app:layout_constraintStart_toEndOf="@+id/intelligenceView"
-        app:layout_constraintTop_toBottomOf="@+id/textView20" />
-
-    <TextView
-        android:id="@+id/intelligenceView"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="12dp"
-        android:text="int"
-        android:textStyle="italic"
-        app:layout_constraintStart_toEndOf="@+id/offHandView"
-        app:layout_constraintTop_toBottomOf="@+id/textView19" />
-
-    <TextView
-        android:id="@+id/agilityView"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="12dp"
-        android:text="agi"
-        android:textStyle="italic"
-        app:layout_constraintStart_toEndOf="@+id/staminaView"
-        app:layout_constraintTop_toBottomOf="@+id/textView18" />
-
-    <TextView
         android:id="@+id/healthView"
-        android:layout_width="60dp"
+        android:layout_width="wrap_content"
         android:layout_height="20dp"
-        android:layout_marginStart="32dp"
         android:text="health"
         android:textSize="12sp"
         android:textStyle="italic"
-        app:layout_constraintStart_toEndOf="@+id/agilityView"
+        app:layout_constraintStart_toEndOf="@+id/armourView"
         app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
     <TextView
         android:id="@+id/armourView"
         android:layout_width="60dp"
         android:layout_height="20dp"
-        android:layout_marginStart="32dp"
         android:text="class resource"
         android:textSize="12sp"
         android:textStyle="italic"
-        app:layout_constraintStart_toEndOf="@+id/strengthView"
-        app:layout_constraintTop_toBottomOf="@+id/textView22" />
+        app:layout_constraintStart_toEndOf="@+id/mainWeaponView"
+        app:layout_constraintTop_toBottomOf="@+id/textView24" />
 
     <TextView
         android:id="@+id/designationView"
         android:layout_width="55dp"
         android:layout_height="20dp"
-        android:layout_marginStart="16dp"
         android:text="designation"
         android:textSize="10sp"
         android:textStyle="italic"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/nameView"
         app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
     <TextView
-        android:id="@+id/textView1"
-        android:layout_width="55dp"
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginStart="4dp"
+        android:text="Alive"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/textView16"
+        tools:layout_editor_absoluteY="8dp" />
+
+    <TextView
+        android:id="@+id/aliveView"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:text="alive?"
+        android:textSize="10sp"
+        app:layout_constraintStart_toEndOf="@+id/healthView"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="66dp"
+        android:layout_height="20dp"
+        android:text="TopThreat"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        tools:layout_editor_absoluteY="8dp" />
+
+    <TextView
+        android:id="@+id/threatView"
+        android:layout_width="63dp"
+        android:layout_height="20dp"
+        android:text="top threat"
+        app:layout_constraintStart_toEndOf="@+id/aliveView"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:text="Int"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/intView"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="8dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintStart_toEndOf="@+id/threatView"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="35dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="8dp"
         android:text="Name"
         android:textSize="10sp"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView17"
-        android:layout_width="20dp"
+        android:id="@+id/textView24"
+        android:layout_width="35dp"
         android:layout_height="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="8dp"
-        android:text="Sta"
+        android:text="Armour"
         android:textSize="10sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/textView21"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteY="8dp" />
+
+    <TextView
+        android:id="@+id/nameView"
+        android:layout_width="35dp"
+        android:layout_height="20dp"
+        android:text="name"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/armourView"
+        app:layout_constraintStart_toEndOf="@+id/textView24"
+        app:srcCompat="@drawable/shield" />
 
 </android.support.constraint.ConstraintLayout>

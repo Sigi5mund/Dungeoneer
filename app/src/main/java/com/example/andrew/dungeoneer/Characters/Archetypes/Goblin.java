@@ -5,7 +5,9 @@ import com.example.andrew.dungeoneer.Characters.Interfaces.IThreatAttack;
 import com.example.andrew.dungeoneer.Characters.OffHand;
 import com.example.andrew.dungeoneer.Characters.Weapon;
 
-public class Goblin extends Character implements IThreatAttack {
+import java.io.Serializable;
+
+public class Goblin extends Character implements Serializable, IThreatAttack {
 
 
     public Goblin(String name) {
@@ -21,6 +23,7 @@ public class Goblin extends Character implements IThreatAttack {
         this.stunned = false;
         this.maxHealth = stamina * 20;
         this.healthBar = maxHealth;
+        this.designation = "minion";
     }
 
 

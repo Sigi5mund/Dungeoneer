@@ -7,9 +7,10 @@ import com.example.andrew.dungeoneer.Items.Item;
 import com.example.andrew.dungeoneer.Items.ThreatObject;
 import com.example.andrew.dungeoneer.Magic.ITick;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class Room {
+public abstract class Room implements Serializable{
 
     public String name;
     double rewardGold;
@@ -145,10 +146,23 @@ public abstract class Room {
         for (Character character : fellowship.getHeroes()) {
             character.maxHealthExceededCheck();
         }
+
         for (Character character : baddies) {
             character.maxHealthExceededCheck();
         }
     }
+
+    private void checkForNoHealth() {
+        for (Character character : fellowship.getHeroes()) {
+            character.noHealthExceededCheck();
+        }
+
+        for (Character character : baddies) {
+            character.noHealthExceededCheck();
+        }
+    }
+
+
 
     public void checkManaAndRegenerate(){
         for (Character character : fellowship.getHeroes()) {
@@ -161,15 +175,27 @@ public abstract class Room {
         }
     }
 
+    public void endOfCharacterTurnChecks(){
+        checkForMaxHealth();
+        checkForNoHealth();
+    }
+
+
     public void endOfCombatChecks() {
-        checkForCorpses();
-        removeDead();
         removeStuns();
         removeBlockAll();
         triggerITickMechanism();
-        checkForMaxHealth();
+        endOfCharacterTurnChecks();
         checkManaAndRegenerate();
 
+    }
+
+
+    public void massThreatAttack(){
+        this.sortAllThreatTables();
+        for (Character baddie: this.baddies) {
+            baddie.threatAttack();
+        }
     }
 
 
@@ -207,6 +233,8 @@ public abstract class Room {
             baddie.threatAttack();
         }
     }
+
+
 
 //        public String goToTheNextRoom(ArrayList<Character> adventurers){
 //        if (baddies.size() == 0){
