@@ -35,6 +35,11 @@ public class Priest extends Character implements Serializable {
         this.action2cost = 40;
         this.action3cost = 20;
         this.action4cost = 0;
+        this.action1threat = 25;
+        this.action2threat = 100;
+        this.action3threat = 30;
+        this.action4threat = 100;
+
     }
 
     //  Attack Mechanics:
@@ -52,7 +57,7 @@ public class Priest extends Character implements Serializable {
         target.increaseHealth(500);
         for (Character enemy: room.baddies
                 ) {
-            increaseSpecificThreat(25, enemy);
+            increaseSpecificThreat(this.action1threat, enemy);
         }
 
     }
@@ -63,7 +68,7 @@ public class Priest extends Character implements Serializable {
         for (Character hero: fellowship.heroes
              ) {hero.increaseHealth(250);
         }
-        this.raiseAllThreat(100, room);
+        this.raiseAllThreat(this.action2threat, room);
     }
 
     @Override
@@ -72,7 +77,7 @@ public class Priest extends Character implements Serializable {
         for (Character hero: fellowship.heroes
                 ) {room.hotsAndDots.add(new HealOverTime( hero,100, 5));
         }
-        this.raiseAllThreat(30, room);
+        this.raiseAllThreat(this.action3threat, room);
     }
 
     @Override
@@ -80,7 +85,7 @@ public class Priest extends Character implements Serializable {
         this.spendManaToCast(this.action4cost);
         this.setManaPool(this.getManaMax());
         room.fellowship.dps().setManaPool(room.fellowship.dps().getManaMax());
-        this.raiseAllThreat(100, room);
+        this.raiseAllThreat(this.action4threat, room);
     }
 
 }

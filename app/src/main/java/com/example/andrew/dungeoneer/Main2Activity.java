@@ -31,7 +31,7 @@ public class Main2Activity extends AppCompatActivity{
         game = new Game();
         ArrayList<Character> heroes = new ArrayList<>();
         Character healer = new Priest("Cadfael", 100, Weapon.SCEPTER, Armour.LEATHER, OffHand.HEALWAND);
-        Character tank = new Knight("Athina", 0, Weapon.SWORD, Armour.GOLD, OffHand.SHIELD);
+        Character tank = new Knight("Athina", 0, Weapon.SWORD, Armour.PLATE, OffHand.SHIELD);
         Character dps = new Wizard("Gandalf", 5, Weapon.STAFF, Armour.CLOTHE, OffHand.DPSWAND);
 
         heroes.add(healer);

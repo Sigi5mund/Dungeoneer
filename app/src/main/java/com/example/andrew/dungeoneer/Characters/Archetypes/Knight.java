@@ -33,26 +33,30 @@ public class Knight extends Character implements Serializable {
         this.action2cost = 30;
         this.action3cost = 20;
         this.action4cost = 20;
+        this.action1threat = 100;
+        this.action2threat = 10;
+        this.action3threat = 80;
+        this.action4threat = 100;
     }
 
     @Override
     public void tauntAttack(Character target){
         spendManaToCast(this.action1cost);
         weaponattack1(target);
-        increaseSpecificThreat(100, target);
+        increaseSpecificThreat(this.action1threat, target);
     }
 
     @Override
     public void shieldWall(Room room){
         spendManaToCast(this.action2cost);
         setBlockAll(true);
-        this.raiseAllThreat(10, room);
+        this.raiseAllThreat(this.action2threat, room);
     }
 
     @Override
     public void tauntAOE(Room room){
         spendManaToCast(this.action3cost);
-        this.raiseAllThreat(80, room);
+        this.raiseAllThreat(this.action3threat, room);
         for (Character enemy: room.baddies) {
             room.hotsAndDots.add(new ThreatOverTime(enemy, this, 20, 3 ));
         }
@@ -61,7 +65,7 @@ public class Knight extends Character implements Serializable {
     @Override
     public void headBash(Character target){
         spendManaToCast(this.action4cost);
-        this.increaseSpecificThreat(100, target);
+        this.increaseSpecificThreat(this.action4threat, target);
         target.decreaseIntellect(20);
     }
 

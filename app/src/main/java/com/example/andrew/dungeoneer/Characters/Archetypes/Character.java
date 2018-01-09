@@ -58,6 +58,10 @@ public abstract class Character implements Serializable, IAttack, ITakeDamage {
     Integer action2cost;
     Integer action3cost;
     Integer action4cost;
+    Integer action1threat;
+    Integer action2threat;
+    Integer action3threat;
+    Integer action4threat;
 
 
     public Character(String name, double gold, Weapon weapon, Armour armour, OffHand offHand) {
@@ -101,6 +105,11 @@ public abstract class Character implements Serializable, IAttack, ITakeDamage {
         this.action2cost = 0;
         this.action3cost = 0;
         this.action4cost = 0;
+        this.action1threat = 0;
+        this.action2threat = 0;
+        this.action3threat = 0;
+        this.action4threat = 0;
+
 
 
 //      In-Game Messages:

@@ -34,6 +34,10 @@ public class Wizard extends Character implements Serializable {
         this.action2cost = 50;
         this.action3cost = 10;
         this.action4cost = 30;
+        this.action1threat = 100;
+        this.action2threat = 150;
+        this.action3threat = 30;
+        this.action4threat = 100;
     }
 
     //  Attack Mechanics:
@@ -53,7 +57,7 @@ public class Wizard extends Character implements Serializable {
         target.magicDamage(damage);
         for (Character enemy : room.baddies
                 ) {
-            increaseSpecificThreat(100, enemy);
+            increaseSpecificThreat(this.action1threat, enemy);
         }
     }
 
@@ -65,7 +69,7 @@ public class Wizard extends Character implements Serializable {
         for (Character baddie :room.baddies
              ) {baddie.magicDamage(damage);
         }
-        this.raiseAllThreat(1000, room);
+        this.raiseAllThreat(this.action2threat, room);
     }
 
     @Override
@@ -74,7 +78,7 @@ public class Wizard extends Character implements Serializable {
         for (Character baddie: room.baddies
              ) { room.hotsAndDots.add(new PhysicalDamageOverTime(baddie, 75, 5));
         }
-        raiseAllThreat(10, room);
+        raiseAllThreat(this.action3threat, room);
     }
 
     @Override
@@ -83,7 +87,7 @@ public class Wizard extends Character implements Serializable {
         double damage;
         damage = 800.00 * randomDamageModifier();
         target.magicDamage(damage);
-        increaseSpecificThreat(100, target);
+        increaseSpecificThreat(this.action4threat, target);
         target.setArmour(Armour.SLAGGED);
     }
 
