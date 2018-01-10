@@ -29,7 +29,7 @@ public class VillainsRowAdaptor extends ArrayAdapter<Character> {
 
             Character currentCharacter = getItem(position);
 
-            TextView name = (TextView) listItemView.findViewById(R.id.nameView);
+            TextView name = (TextView) listItemView.findViewById(R.id.targetView);
             name.setText(currentCharacter.getName().toString());
 
             TextView designation = (TextView) listItemView.findViewById(R.id.designationView);

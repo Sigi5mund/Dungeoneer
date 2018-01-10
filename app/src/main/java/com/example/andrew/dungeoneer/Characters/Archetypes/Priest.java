@@ -39,6 +39,10 @@ public class Priest extends Character implements Serializable {
         this.action2threat = 100;
         this.action3threat = 30;
         this.action4threat = 100;
+        this.action1desc = "";
+        this.action2desc = "";
+        this.action3desc = "";
+        this.action4desc = "";
 
     }
 

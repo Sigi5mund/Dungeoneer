@@ -77,7 +77,7 @@
         android:text="designation"
         android:textSize="10sp"
         android:textStyle="italic"
-        app:layout_constraintStart_toEndOf="@+id/nameView"
+        app:layout_constraintStart_toEndOf="@+id/targetView"
         app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
     <TextView
@@ -162,7 +162,7 @@
         tools:layout_editor_absoluteY="8dp" />
 
     <TextView
-        android:id="@+id/nameView"
+        android:id="@+id/targetView"
         android:layout_width="35dp"
         android:layout_height="20dp"
         android:text="name"

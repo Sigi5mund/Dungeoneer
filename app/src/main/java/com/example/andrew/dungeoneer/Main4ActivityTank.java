@@ -3,11 +3,13 @@ package com.example.andrew.dungeoneer;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.andrew.dungeoneer.Characters.Archetypes.Character;
 import com.example.andrew.dungeoneer.Characters.Archetypes.Fellowship;
@@ -27,6 +29,7 @@ public class Main4ActivityTank extends AppCompatActivity {
     Character target1;
     ListView listView;
     int targetInt;
+    Double damageDone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,7 @@ public class Main4ActivityTank extends AppCompatActivity {
 
 
 
+        game.room1.checkWhoIsAlive();
         game.room1.sortAllThreatTables();
         ArrayList<Character> list = game.room1.baddies;
 
@@ -75,6 +79,9 @@ public class Main4ActivityTank extends AppCompatActivity {
 
 
     public void onSkipButtonClick(View view) {
+
+
+
         Intent intent = new Intent(this, Main5ActivityDPS.class);
         intent.putExtra("game", game);
         startActivity(intent);
@@ -83,12 +90,19 @@ public class Main4ActivityTank extends AppCompatActivity {
 
 
     public void onAction1Tank(View view){
-
-        game.room1.fellowship.tank().tauntAttack(target1);
+        if (target1 != null){
+            damageDone = game.room1.fellowship.tank().tauntAttack(target1, game.room1);
+            Toast toast1 = Toast.makeText(this, target1.getDesignation() + " was hit for "+ damageDone + "!", Toast.LENGTH_SHORT );
+            toast1.setGravity(Gravity.CENTER, 0, 0);
+            toast1.show();
         game.room1.endOfCharacterTurnChecks();
         Intent intent = new Intent(this, Main5ActivityDPS.class);
         intent.putExtra("game", game);
         startActivity(intent);
+    } else {
+        Toast.makeText(this, "You need to target a character before you can cast it!", Toast.LENGTH_SHORT ).show();
+
+    }
     }
 
 
@@ -114,11 +128,15 @@ public class Main4ActivityTank extends AppCompatActivity {
 
 
     public void onAction4Tank(View view){
-
+        if (target1 != null){
         game.room1.fellowship.tank().headBash(target1);
         game.room1.endOfCharacterTurnChecks();
         Intent intent = new Intent(this, Main5ActivityDPS.class);
         intent.putExtra("game", game);
         startActivity(intent);
+        } else {
+            Toast.makeText(this, "You need to target a character before you can cast it!", Toast.LENGTH_SHORT ).show();
+
+        }
     }
 }

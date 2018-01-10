@@ -38,6 +38,10 @@ public class Wizard extends Character implements Serializable {
         this.action2threat = 150;
         this.action3threat = 30;
         this.action4threat = 100;
+        this.action1desc = "";
+        this.action2desc = "";
+        this.action3desc = "";
+        this.action4desc = "";
     }
 
     //  Attack Mechanics:
@@ -50,7 +54,7 @@ public class Wizard extends Character implements Serializable {
     }
 
     @Override
-    public void fireBall(Character target, Room room) {
+    public double fireBall(Character target, Room room) {
         this.spendManaToCast(this.action1cost);
         double damage;
         damage = 300.00 * randomDamageModifier();
@@ -59,10 +63,11 @@ public class Wizard extends Character implements Serializable {
                 ) {
             increaseSpecificThreat(this.action1threat, enemy);
         }
+        return damage;
     }
 
     @Override
-    public void fireStorm(Room room) {
+    public double fireStorm(Room room) {
         this.spendManaToCast(this.action2cost);
         double damage;
         damage = 400.00 * randomDamageModifier();
@@ -70,27 +75,30 @@ public class Wizard extends Character implements Serializable {
              ) {baddie.magicDamage(damage);
         }
         this.raiseAllThreat(this.action2threat, room);
+        return damage;
     }
 
     @Override
-    public void slowBurn(Room room) {
+    public double slowBurn(Room room) {
         this.spendManaToCast(this.action3cost);
         for (Character baddie: room.baddies
              ) { room.hotsAndDots.add(new PhysicalDamageOverTime(baddie, 75, 5));
         }
         raiseAllThreat(this.action3threat, room);
+        return 75;
     }
 
     @Override
-    public void slagArmour(Character target){
+    public double slagArmour(Character target) {
         this.spendManaToCast(this.action4cost);
         double damage;
         damage = 800.00 * randomDamageModifier();
         target.magicDamage(damage);
         increaseSpecificThreat(this.action4threat, target);
         target.setArmour(Armour.SLAGGED);
-    }
 
+        return damage;
+    }
 }
 
 

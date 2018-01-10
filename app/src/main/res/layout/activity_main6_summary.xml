@@ -10,29 +10,12 @@
         android:id="@+id/textView4"
         android:layout_width="135dp"
         android:layout_height="42dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
         android:text="summary"
         android:textAlignment="center"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/onQuit"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ListView
-        android:id="@+id/dpsSummaryList"
-        android:layout_width="397dp"
-        android:layout_height="156dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:listSelector="@android:color/background_light"
-        android:longClickable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.482"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/onNextTurn"
@@ -43,7 +26,6 @@
         android:onClick="onNextTurn"
         android:text="Next Turn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -51,37 +33,40 @@
         android:id="@+id/onQuit"
         android:layout_width="118dp"
         android:layout_height="40dp"
+        android:layout_marginStart="8dp"
         android:onClick="onQuit"
         android:text="Quit Game"
-        tools:layout_editor_absoluteX="4dp"
-        tools:layout_editor_absoluteY="0dp" />
-
-    <ListView
-        android:id="@+id/enemyAttacksList"
-        android:layout_width="368dp"
-        android:layout_height="149dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <ListView
-        android:id="@+id/healerSummaryList"
-        android:layout_width="378dp"
-        android:layout_height="207dp"
+    <TextView
+        android:id="@+id/gameOverView"
+        android:layout_width="333dp"
+        android:layout_height="133dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:listSelector="@color/cardview_light_background"
-        android:longClickable="true"
-        app:layout_constraintBottom_toTopOf="@+id/dpsSummaryList"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ListView
+        android:id="@+id/enemyAttacksList"
+        android:layout_width="366dp"
+        android:layout_height="374dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/gameOverView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enemyAttacksList"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
         app:layout_constraintVertical_bias="0.0" />
 
 </android.support.constraint.ConstraintLayout>

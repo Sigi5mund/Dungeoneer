@@ -1,16 +1,14 @@
 package com.example.andrew.dungeoneer;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
+
 import com.example.andrew.dungeoneer.Characters.Archetypes.Character;
 
 /**
@@ -31,7 +29,7 @@ public class HeroesRowAdaptor extends ArrayAdapter<Character> {
 
             Character currentCharacter = getItem(position);
 
-            TextView name = (TextView) listItemView.findViewById(R.id.nameView);
+            TextView name = (TextView) listItemView.findViewById(R.id.targetView);
             name.setText(currentCharacter.getName().toString());
 
             TextView designation = (TextView) listItemView.findViewById(R.id.designationView);

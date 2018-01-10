@@ -11,66 +11,76 @@
         android:id="@+id/action1Healer"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="4dp"
+        android:backgroundTint="@android:color/holo_green_light"
         android:onClick="onAction1Healer"
         android:text="Heal"
-        tools:layout_editor_absoluteY="461dp" />
+        app:layout_constraintBottom_toTopOf="@+id/textView9"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/action4Healer"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:backgroundTint="@android:color/holo_green_light"
         android:onClick="onAction4Healer"
         android:text="Recharge"
+        app:layout_constraintBottom_toTopOf="@+id/textView12"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/action3Healer"
-        tools:layout_editor_absoluteY="461dp" />
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toEndOf="@+id/action3Healer" />
 
     <Button
         android:id="@+id/action2Healer"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:backgroundTint="@android:color/holo_green_light"
         android:onClick="onAction2Healer"
         android:text="AOEHeal"
-        tools:layout_editor_absoluteX="88dp"
-        tools:layout_editor_absoluteY="461dp" />
+        app:layout_constraintBottom_toTopOf="@+id/textView10"
+        app:layout_constraintStart_toEndOf="@+id/action1Healer" />
 
     <Button
         android:id="@+id/action3Healer"
         android:layout_width="wrap_content"
         android:layout_height="36dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="12dp"
+        android:backgroundTint="@android:color/holo_green_light"
         android:onClick="onAction3Healer"
         android:text="AOEHOt"
-        tools:layout_editor_absoluteX="176dp"
-        tools:layout_editor_absoluteY="461dp" />
+        app:layout_constraintBottom_toTopOf="@+id/textView11"
+        app:layout_constraintStart_toEndOf="@+id/action2Healer" />
 
     <TextView
         android:id="@+id/manaText"
         android:layout_width="87dp"
         android:layout_height="36dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
         android:text="@string/Mana"
         android:textAlignment="center"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textView4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintBottom_toTopOf="@+id/action1ManaView"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/manaView"
         android:layout_width="45dp"
         android:layout_height="18dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="28dp"
         android:text="@string/mana"
         android:textAlignment="center"
         android:textStyle="italic"
-        tools:layout_editor_absoluteX="33dp"
-        tools:layout_editor_absoluteY="390dp" />
+        app:layout_constraintBottom_toTopOf="@+id/action2ManaView"
+        app:layout_constraintStart_toEndOf="@+id/manaText" />
 
     <ListView
         android:id="@+id/healerList"
@@ -87,7 +97,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.028" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView4"
@@ -108,29 +118,44 @@
         android:id="@+id/action1ManaView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="16dp"
         android:text="manacost"
-        tools:layout_editor_absoluteX="16dp" />
+        app:layout_constraintBottom_toTopOf="@+id/action1Healer"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/action2ManaView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="48dp"
         android:text="manacost"
-        tools:layout_editor_absoluteX="114dp" />
+        app:layout_constraintBottom_toTopOf="@+id/action2Healer"
+        app:layout_constraintStart_toEndOf="@+id/action1ManaView" />
 
     <TextView
         android:id="@+id/action3ManaView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="15dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="24dp"
         android:text="manacost"
-        tools:layout_editor_absoluteX="224dp" />
+        app:layout_constraintBottom_toTopOf="@+id/action3Healer"
+        app:layout_constraintStart_toEndOf="@+id/action2ManaView" />
 
     <TextView
         android:id="@+id/action4ManavView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="14dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:text="manacost"
-        tools:layout_editor_absoluteX="310dp" />
+        app:layout_constraintBottom_toTopOf="@+id/action4Healer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.833"
+        app:layout_constraintStart_toEndOf="@+id/action3ManaView" />
 
     <TextView
         android:id="@+id/textView9"

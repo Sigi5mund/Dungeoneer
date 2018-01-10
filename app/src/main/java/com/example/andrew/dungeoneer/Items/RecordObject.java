@@ -4,7 +4,11 @@ package com.example.andrew.dungeoneer.Items;
  * Created by user on 09/01/2018.
  */
 
-public class RecordObject {
+import com.example.andrew.dungeoneer.Characters.Archetypes.Character;
+
+import java.io.Serializable;
+
+public class RecordObject implements Serializable{
 
     Character origin;
     Character target;
@@ -12,10 +16,22 @@ public class RecordObject {
     String outcome;
 
 
-    public RecordObject(Character origin, Character target) {
+    public RecordObject(Character origin, Character target, Double damage) {
         this.origin = origin;
         this.target = target;
-        this.damage = 0.0;
+        this.damage = damage;
         this.outcome = null;
+    }
+
+    public Character getOrigin() {
+        return origin;
+    }
+
+    public Character getTarget() {
+        return target;
+    }
+
+    public Double getDamage() {
+        return damage;
     }
 }

@@ -23,12 +23,12 @@ public class Goblin extends Character implements Serializable, IThreatAttack {
         this.stunned = false;
         this.maxHealth = stamina * 20;
         this.healthBar = maxHealth;
-        this.designation = "minion";
+        this.designation = "Goblin";
     }
 
 
-    public void threatAttack(){
-        oldAttack(this.topThreat());
+    public double threatAttack(){
+        return oldAttack(this.topThreat());
     }
 
 

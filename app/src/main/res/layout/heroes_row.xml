@@ -95,10 +95,10 @@
         android:textSize="10sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameView" />
+        app:layout_constraintTop_toBottomOf="@+id/targetView" />
 
     <TextView
-        android:id="@+id/nameView"
+        android:id="@+id/targetView"
         android:layout_width="55dp"
         android:layout_height="20dp"
         android:layout_marginStart="16dp"
@@ -116,7 +116,7 @@
         android:text="mainhand"
         android:textSize="10sp"
         android:textStyle="italic"
-        app:layout_constraintStart_toEndOf="@+id/nameView"
+        app:layout_constraintStart_toEndOf="@+id/targetView"
         app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
     <TextView

@@ -3,11 +3,13 @@ package com.example.andrew.dungeoneer;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.andrew.dungeoneer.Characters.Archetypes.Character;
 import com.example.andrew.dungeoneer.Characters.Archetypes.Fellowship;
@@ -27,6 +29,7 @@ public class Main5ActivityDPS extends AppCompatActivity {
     Character target1;
     ListView listView;
     int targetInt;
+    Double damageDone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,7 @@ public class Main5ActivityDPS extends AppCompatActivity {
 
 
 
+        game.room1.checkWhoIsAlive();
         game.room1.sortAllThreatTables();
         ArrayList<Character> list = game.room1.baddies;
 
@@ -84,15 +88,29 @@ public class Main5ActivityDPS extends AppCompatActivity {
 
 
     public void onAction1DPS(View view){
-        game.room1.fellowship.dps().fireBall(target1, game.room1);
-        game.room1.endOfCharacterTurnChecks();
+        if (target1 != null){
+
+            damageDone = game.room1.fellowship.dps().fireBall(target1, game.room1);
+            Toast toast1 = Toast.makeText(this, target1.getDesignation() + " was hit for "+ damageDone + "!", Toast.LENGTH_SHORT );
+            toast1.setGravity(Gravity.CENTER, 0, 0);
+            toast1.show();
+            game.room1.endOfCharacterTurnChecks();
+
         Intent intent = new Intent(this, Main6ActivitySummary.class);
         intent.putExtra("game", game);
         startActivity(intent);
+    } else {
+        Toast.makeText(this, "You need to target a character before you can cast it!", Toast.LENGTH_SHORT ).show();
+
+    }
     }
 
     public void onAction2DPS(View view){
-        game.room1.fellowship.dps().fireStorm(game.room1);
+
+        damageDone = game.room1.fellowship.dps().fireStorm(game.room1);
+        Toast toast1 = Toast.makeText(this, "A wall of fire hits all the enemy for" + damageDone + "!", Toast.LENGTH_SHORT );
+        toast1.setGravity(Gravity.CENTER, 0, 0);
+        toast1.show();
         game.room1.endOfCharacterTurnChecks();
         Intent intent = new Intent(this, Main6ActivitySummary.class);
         intent.putExtra("game", game);
@@ -100,7 +118,10 @@ public class Main5ActivityDPS extends AppCompatActivity {
     }
 
     public void onAction3DPS(View view){
-        game.room1.fellowship.dps().slowBurn(game.room1);
+        damageDone = game.room1.fellowship.dps().slowBurn(game.room1);
+        Toast toast1 = Toast.makeText(this, "The enemy are burned and will take " + damageDone + " per turn!", Toast.LENGTH_SHORT );
+        toast1.setGravity(Gravity.CENTER, 0, 0);
+        toast1.show();
         game.room1.endOfCharacterTurnChecks();
         Intent intent = new Intent(this, Main6ActivitySummary.class);
         intent.putExtra("game", game);
@@ -108,11 +129,21 @@ public class Main5ActivityDPS extends AppCompatActivity {
     }
 
     public void onAction4DPS(View view){
-        game.room1.fellowship.dps().slagArmour(target1);
+        if (target1 != null){
+            damageDone = game.room1.fellowship.dps().slagArmour(target1);
+            Toast toast1 = Toast.makeText(this, target1 + "'s armour is melted and broken and " + target1+ " takes " + damageDone + " damage!", Toast.LENGTH_SHORT );
+            toast1.setGravity(Gravity.CENTER, 0, 0);
+            toast1.show();
         game.room1.endOfCharacterTurnChecks();
         Intent intent = new Intent(this, Main6ActivitySummary.class);
         intent.putExtra("game", game);
         startActivity(intent);
+
+    } else {
+        Toast.makeText(this, "You need to target a character before you can cast it!", Toast.LENGTH_SHORT ).show();
+
+        }
+
     }
 
 }

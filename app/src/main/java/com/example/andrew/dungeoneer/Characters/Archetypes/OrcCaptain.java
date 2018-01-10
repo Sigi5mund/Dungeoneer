@@ -23,10 +23,10 @@ public class OrcCaptain extends Character implements IThreatAttack, Serializable
         this.stunned = false;
         this.maxHealth = stamina * 20;
         this.healthBar = maxHealth;
-        this.designation = "Captain";
+        this.designation = "Orc Captain";
     }
 
-    public void threatAttack(){
-        oldAttack(this.topThreat());
+    public double threatAttack(){
+        return oldAttack(this.topThreat());
     }
 }

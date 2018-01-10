@@ -4,6 +4,7 @@ import com.example.andrew.dungeoneer.Characters.Archetypes.Character;
 import com.example.andrew.dungeoneer.Characters.Archetypes.Fellowship;
 import com.example.andrew.dungeoneer.Items.Corpse;
 import com.example.andrew.dungeoneer.Items.Item;
+import com.example.andrew.dungeoneer.Items.RecordObject;
 import com.example.andrew.dungeoneer.Items.ThreatObject;
 import com.example.andrew.dungeoneer.Magic.ITick;
 
@@ -19,6 +20,7 @@ public abstract class Room implements Serializable{
     public ArrayList<Corpse> floor;
     public ArrayList<Item> shelves;
     public ArrayList<ITick> hotsAndDots;
+    public ArrayList<RecordObject> attacksThisTurn;
 
 
     public Room(String name) {
@@ -29,6 +31,7 @@ public abstract class Room implements Serializable{
         this.floor = new ArrayList<>();
         this.shelves = new ArrayList<>();
         this.hotsAndDots = new ArrayList<>();
+        this.attacksThisTurn = new ArrayList<>();
     }
 
 
@@ -118,6 +121,10 @@ public abstract class Room implements Serializable{
         }
     }
 
+    public ArrayList<RecordObject> getAttacksThisTurn() {
+        return attacksThisTurn;
+    }
+
     private void removeStuns() {
         for (Character character : fellowship.getHeroes()) {
             character.setStunned(false);
@@ -169,10 +176,7 @@ public abstract class Room implements Serializable{
             character.manaRegeneration();
             character.manaPoolMaximumCheck();
         }
-        for (Character character : baddies) {
-            character.manaRegeneration();
-            character.manaPoolMaximumCheck();
-        }
+
     }
 
     public void endOfCharacterTurnChecks(){
@@ -226,13 +230,35 @@ public abstract class Room implements Serializable{
     }
 
 
-    public void villiansTurnAttacks() {
-        for (Character baddie : baddies
-                ) {
-            baddie.sortThreatTable();
-            baddie.threatAttack();
+    public void villainsTurnAttacks() {
+        RecordObject object1;
+        sortAllThreatTables();
+        for (Character baddie : baddies) {
+            if (baddie.isAlive()) {
+                object1 = new RecordObject(baddie, baddie.topThreat(), baddie.threatAttack());
+                attacksThisTurn.add(object1);
+            }
         }
     }
+
+    public boolean isTargetSelected(Character target){
+        if (target == null) {
+            return false;
+        }
+        else
+            return true;
+    }
+
+    public void checkWhoIsAlive(){
+        for (Character hero: fellowship.getHeroes()) {
+            hero.checkAlive();
+        }
+        for (Character baddie: baddies) {
+            baddie.checkAlive();
+        }
+    }
+
+
 
 
 

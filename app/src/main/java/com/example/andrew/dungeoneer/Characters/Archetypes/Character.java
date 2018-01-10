@@ -62,6 +62,10 @@ public abstract class Character implements Serializable, IAttack, ITakeDamage {
     Integer action2threat;
     Integer action3threat;
     Integer action4threat;
+    String action1desc;
+    String action2desc;
+    String action3desc;
+    String action4desc;
 
 
     public Character(String name, double gold, Weapon weapon, Armour armour, OffHand offHand) {
@@ -75,6 +79,7 @@ public abstract class Character implements Serializable, IAttack, ITakeDamage {
         this.armour = armour;
         this.alive = true;
         this.threatTable = new ArrayList<>();
+
 
 
 //        Random Modifiers:
@@ -109,6 +114,10 @@ public abstract class Character implements Serializable, IAttack, ITakeDamage {
         this.action2threat = 0;
         this.action3threat = 0;
         this.action4threat = 0;
+        this.action1desc = "";
+        this.action2desc = "";
+        this.action3desc = "";
+        this.action4desc = "";
 
 
 
@@ -124,28 +133,28 @@ public abstract class Character implements Serializable, IAttack, ITakeDamage {
 
 
 
-    public void oldAttack(Character target) {
+    public double oldAttack(Character target) {
         double damage;
         damage = weapon.getWeaponDamage() * randomDamageModifier();
         if (superWeapon) {
             damage = damage * 3;
         }
         this.superWeapon = false;
-        target.physicalDamage(damage);
-        target.checkAlive();
+        return target.physicalDamage(damage);
+
+
     }
 
 
-    public void weaponattack1(Character target) {
+    public double weaponattack1(Character target) {
         double damage;
         Weapon weapon = this.weapon;
         damage = this.calculateWeaponDamage(weapon);
         damage = damage * calculateCritChance();
         damage = damage * doesSuperWeaponApply();
         damage = damage * calculateBlockChance(target);
-        target.physicalDamage(damage);
-        target.checkAlive();
         this.threat = this.threat + this.weapon.getThreatIncrease();
+        return target.physicalDamage(damage);
     }
 
     private double calculateCritChance() {
@@ -180,13 +189,14 @@ public abstract class Character implements Serializable, IAttack, ITakeDamage {
     }
 
 
-    public void physicalDamage(double damage) {
+    public double physicalDamage(double damage) {
         if (damage < 0) {
             this.healthBar = healthBar - damage;
         } else {
             damage = damage * armour.getValue();
             this.healthBar = this.healthBar - damage;
         }
+        return damage;
     }
 
     void magicDamage(double damage) {
@@ -223,24 +233,26 @@ public abstract class Character implements Serializable, IAttack, ITakeDamage {
     }
 
 //    Baddies Attacks
-    public void threatAttack(){}
+    public double threatAttack(){
+        return 0.0;
+    }
 
 //     Fellowship Attacks
 //     knight attacks
-    public void tauntAttack(Character target){}
+    public double tauntAttack(Character target, Room room){return 0.0;}
     public void shieldWall(Room room){}
     public void tauntAOE(Room room){}
-    public void headBash(Character target){}
+    public double headBash(Character target){ return 0.0;}
 //    priest attacks
 public void heal(Character target, Room room){}
     public void aoeHeal (Fellowship fellowship, Room room){}
     public void aoeHot (Fellowship fellowship, Room room){}
     public void manaStorm(Room room){}
 //    wizard attacks
-    public void fireBall(Character target, Room room){}
-    public void fireStorm(Room room) {}
-    public void slowBurn(Room room) {}
-    public void slagArmour(Character target){}
+    public double fireBall(Character target, Room room){return 0;}
+    public double fireStorm(Room room) {return 0;}
+    public double slowBurn(Room room) {return 0;}
+    public double slagArmour(Character target){return 0;}
 
 
 //    Weapons and Armours:
@@ -567,6 +579,12 @@ public void heal(Character target, Room room){}
         this.manaPool -= cost;
     }
 
+    public boolean isManaAbove50(){
+        if (this.manaPool > manaMax/2){
+            return false;
+        }
+        else return true;
+    }
 
 
 }

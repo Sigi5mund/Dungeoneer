@@ -9,49 +9,39 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-
-        <activity android:name=".MainActivity">
-        </activity>
-
-        <activity android:name=".Main2Activity"
+        <activity android:name=".MainActivity"></activity>
+        <activity
+            android:name=".Main2Activity"
             android:label="DUNGEON"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".MainActivity">
-
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
-        <activity android:name=".Main3ActivityHealer"
+        <activity
+            android:name=".Main3ActivityHealer"
             android:label="HEALER"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".Main2Activity">
-        </activity>
-
+            android:parentActivityName=".Main2Activity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".Main4ActivityTank"
             android:label="TANK"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".Main3ActivityHealer">
-        </activity>
-
+            android:parentActivityName=".Main3ActivityHealer"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".Main5ActivityDPS"
             android:label="DPS"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".Main4ActivityTank">
-        </activity>
-
+            android:parentActivityName=".Main4ActivityTank"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".Main6ActivitySummary"
             android:label="Summary"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".Main5ActivityDPS">
-        </activity>
-
+            android:parentActivityName=".Main5ActivityDPS"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".Main7ActivityGameOver"></activity>
     </application>
+
 </manifest>

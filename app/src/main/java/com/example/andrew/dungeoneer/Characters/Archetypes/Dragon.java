@@ -37,8 +37,8 @@ public class Dragon extends Character implements Serializable, IThreatAttack {
         return "FireBall : Did " + damage + "damage.";
     }
 
-    public void threatAttack(){
-        oldAttack(this.topThreat());
+    public double threatAttack(){
+        return oldAttack(this.topThreat());
     }
 }
 

@@ -37,13 +37,18 @@ public class Knight extends Character implements Serializable {
         this.action2threat = 10;
         this.action3threat = 80;
         this.action4threat = 100;
+        this.action1desc = "";
+        this.action2desc = "";
+        this.action3desc = "";
+        this.action4desc = "";
     }
 
     @Override
-    public void tauntAttack(Character target){
+    public double tauntAttack(Character target, Room room){
         spendManaToCast(this.action1cost);
-        weaponattack1(target);
         increaseSpecificThreat(this.action1threat, target);
+        raiseAllThreat(action1threat/2, room);
+        return weaponattack1(target);
     }
 
     @Override
@@ -63,10 +68,12 @@ public class Knight extends Character implements Serializable {
     }
 
     @Override
-    public void headBash(Character target){
+    public double headBash(Character target){
         spendManaToCast(this.action4cost);
+
         this.increaseSpecificThreat(this.action4threat, target);
         target.decreaseIntellect(20);
+        return target.physicalDamage(100);
     }
 
 }
