@@ -15,7 +15,7 @@ public class Dragon extends Character implements Serializable, IThreatAttack {
 
     public Dragon(String name, int gold) {
         super(name, gold, Weapon.CLAWS, Armour.LEATHER, OffHand.BITE);
-        this.maxHealth = stamina * 8;
+        this.maxHealth = stamina * 6;
         this.healthBar = maxHealth;
         this.strength = 100;
         this.agility = 20;
@@ -38,7 +38,7 @@ public class Dragon extends Character implements Serializable, IThreatAttack {
     }
 
     public double threatAttack(){
-        return oldAttack(this.topThreat());
+        return weaponAttack(this.topThreat());
     }
 }
 

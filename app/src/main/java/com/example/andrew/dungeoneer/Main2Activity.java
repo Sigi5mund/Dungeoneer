@@ -1,9 +1,12 @@
 package com.example.andrew.dungeoneer;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.andrew.dungeoneer.Characters.Archetypes.Character;
 import com.example.andrew.dungeoneer.Characters.Archetypes.Fellowship;
@@ -41,10 +44,31 @@ public class Main2Activity extends AppCompatActivity{
         game.room1.loadGoodies(fellowship);
         game.room1.addThreatObjectsToTables();
 
+
+
+
     }
 
 
     public void onEnterButtonClick(View view) {
+        Toast toast1 = Toast.makeText(this, "The heroes enter the dungeon! Prepare for battle!", Toast.LENGTH_LONG );
+        toast1.setGravity(Gravity.CENTER, 0, 0);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                toast1.show();
+            }
+        }, 0000);
+
+
+        Intent intent = new Intent(this, Main3ActivityHealer.class);
+        intent.putExtra("game", game);
+        startActivity(intent);
+    }
+
+    public void onNoviceButtonClick(View view) {
+
+        game.novice = 1;
         Intent intent = new Intent(this, Main3ActivityHealer.class);
         intent.putExtra("game", game);
         startActivity(intent);

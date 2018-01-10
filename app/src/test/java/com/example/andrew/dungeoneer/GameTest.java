@@ -46,7 +46,7 @@ public class GameTest {
 
     @Test
     public void checkGameHasFellowship(){
-        game1.room1.fellowship.tank().weaponattack1(game1.room1.captain);
+        game1.room1.fellowship.tank().weaponAttack(game1.room1.captain);
         assertEquals(1740, game1.room1.captain.getHealthBar(), 1);
     }
 
@@ -125,10 +125,10 @@ public class GameTest {
         assertEquals(1800 ,game1.room1.fellowship.tank().getHealthBar(), 1);
         game1.room1.fellowship.tank().shieldWall(game1.room1);
         game1.room1.sortAllThreatTables();
-        game1.room1.captain.weaponattack1(game1.room1.fellowship.tank());
+        game1.room1.captain.weaponAttack(game1.room1.fellowship.tank());
         assertEquals(1800 ,game1.room1.fellowship.tank().getHealthBar(), 1);
         game1.room1.endOfCombatChecks();
-        game1.room1.captain.weaponattack1(game1.room1.fellowship.tank());
+        game1.room1.captain.weaponAttack(game1.room1.fellowship.tank());
         assertEquals(1780 ,game1.room1.fellowship.tank().getHealthBar(), 1);
     }
 

@@ -5,6 +5,7 @@ import com.example.andrew.dungeoneer.Characters.Armour;
 import com.example.andrew.dungeoneer.Characters.OffHand;
 import com.example.andrew.dungeoneer.Characters.Weapon;
 import com.example.andrew.dungeoneer.Magic.PhysicalDamageOverTime;
+import com.example.andrew.dungeoneer.Magic.ThreatOverTime;
 import com.example.andrew.dungeoneer.Rooms.Room;
 
 import java.io.Serializable;
@@ -28,7 +29,7 @@ public class Wizard extends Character implements Serializable {
         this.manaPool = 100;
         this.manaRegen = 5;
         this.manaMax = 100;
-        this.maxHealth = stamina * 20;
+        this.maxHealth = stamina * 12;
         this.healthBar = maxHealth;
         this.action1cost = 10;
         this.action2cost = 50;
@@ -57,12 +58,10 @@ public class Wizard extends Character implements Serializable {
     public double fireBall(Character target, Room room) {
         this.spendManaToCast(this.action1cost);
         double damage;
-        damage = 300.00 * randomDamageModifier();
+        damage = (300.00 * calculateCritChance()) * randomDamageModifier();
         target.magicDamage(damage);
-        for (Character enemy : room.baddies
-                ) {
-            increaseSpecificThreat(this.action1threat, enemy);
-        }
+        increaseSpecificThreat(this.action1threat, target);
+        raiseAllThreat(action1threat/2, room);
         return damage;
     }
 
@@ -82,17 +81,18 @@ public class Wizard extends Character implements Serializable {
     public double slowBurn(Room room) {
         this.spendManaToCast(this.action3cost);
         for (Character baddie: room.baddies
-             ) { room.hotsAndDots.add(new PhysicalDamageOverTime(baddie, 75, 5));
+             ) { room.hotsAndDots.add(new PhysicalDamageOverTime(baddie, 100, 3));
+                room.hotsAndDots.add(new ThreatOverTime(baddie, this, action3threat, 3));
         }
         raiseAllThreat(this.action3threat, room);
-        return 75;
+        return 100;
     }
 
     @Override
     public double slagArmour(Character target) {
         this.spendManaToCast(this.action4cost);
         double damage;
-        damage = 800.00 * randomDamageModifier();
+        damage = (800.00 * calculateCritChance()) * randomDamageModifier();
         target.magicDamage(damage);
         increaseSpecificThreat(this.action4threat, target);
         target.setArmour(Armour.SLAGGED);

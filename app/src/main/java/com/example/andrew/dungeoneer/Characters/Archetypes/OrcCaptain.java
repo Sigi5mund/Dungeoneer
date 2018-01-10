@@ -12,10 +12,10 @@ public class OrcCaptain extends Character implements IThreatAttack, Serializable
 
 
     public OrcCaptain(String name) {
-        super(name,  100.00, Weapon.SWORD, Armour.LEATHER, OffHand.KNIFE);
-        this.strength = 80;
+        super(name,  100.00, Weapon.SWORD, Armour.PLATE, OffHand.KNIFE);
+        this.strength = 200;
         this.agility = 30;
-        this.intellect = 40;
+        this.intellect = 50;
         this.stamina = 90;
         this.threat = 20;
         this.critChance = agility/100;
@@ -27,6 +27,6 @@ public class OrcCaptain extends Character implements IThreatAttack, Serializable
     }
 
     public double threatAttack(){
-        return oldAttack(this.topThreat());
+        return weaponAttack(this.topThreat());
     }
 }

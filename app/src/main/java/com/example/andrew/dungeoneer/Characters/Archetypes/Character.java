@@ -83,8 +83,8 @@ public abstract class Character implements Serializable, IAttack, ITakeDamage {
 
 
 //        Random Modifiers:
-        this.damageModifier = new ArrayList<>(Arrays.asList(1.0, 1.0, 1.0, 1.0, 1.0));
-        this.critModifier = new ArrayList<>(Arrays.asList(-0.1, 0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 1.0));
+        this.damageModifier = new ArrayList<>(Arrays.asList(0.5, 0.8, 1.0, 1.0, 1.0, 1.2, 1.5));
+        this.critModifier = new ArrayList<>(Arrays.asList( 0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 1.0));
         this.blockModifier = new ArrayList<>(Arrays.asList(0.0, 0.0, 0.0, 0.6, 0.7, 0.7, 0.8, 0.9));
 
 //        Stats:
@@ -146,18 +146,17 @@ public abstract class Character implements Serializable, IAttack, ITakeDamage {
     }
 
 
-    public double weaponattack1(Character target) {
+    public double weaponAttack(Character target) {
         double damage;
         Weapon weapon = this.weapon;
         damage = this.calculateWeaponDamage(weapon);
         damage = damage * calculateCritChance();
         damage = damage * doesSuperWeaponApply();
         damage = damage * calculateBlockChance(target);
-        this.threat = this.threat + this.weapon.getThreatIncrease();
         return target.physicalDamage(damage);
     }
 
-    private double calculateCritChance() {
+     double calculateCritChance() {
         if (this.critChance + randomCritModifier() >= 1) {
             return this.critDamage;
         }
@@ -217,7 +216,7 @@ public abstract class Character implements Serializable, IAttack, ITakeDamage {
         return damageModifier.get(0);
     }
 
-    private Double randomCritModifier() {
+    Double randomCritModifier() {
         Collections.shuffle(this.critModifier);
         return critModifier.get(0);
     }

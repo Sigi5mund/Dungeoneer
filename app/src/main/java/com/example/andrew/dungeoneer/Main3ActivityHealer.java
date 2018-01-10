@@ -1,6 +1,8 @@
 package com.example.andrew.dungeoneer;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Handler;
 import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -76,7 +78,52 @@ public class Main3ActivityHealer extends AppCompatActivity {
         TextView mana = (TextView) findViewById(R.id.manaView);
         mana.setText(game.room1.fellowship.healer().getManaPool().toString());
 
+        TextView manaview1 = (TextView) findViewById(R.id.action1ManaView);
+        manaview1.setText(game.room1.fellowship.healer().getAction1cost().toString());
 
+        TextView manaview2 = (TextView) findViewById(R.id.action2ManaView);
+        manaview2.setText(game.room1.fellowship.healer().getAction2cost().toString());
+
+        TextView manaview3 = (TextView) findViewById(R.id.action3ManaView);
+        manaview3.setText(game.room1.fellowship.healer().getAction3cost().toString());
+
+
+
+    if (game.novice == 1) {
+        Toast toast1 = Toast.makeText(this, "This Screen shows your healer, they need to keep their party alive with spells.", Toast.LENGTH_LONG);
+        toast1.setGravity(Gravity.CENTER, 0, 0);
+        View view1 = toast1.getView();
+        view1.setBackgroundColor(Color.parseColor("#ff99cc00"));
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                toast1.show();
+            }
+        }, 5000);
+
+        Toast toast2 = Toast.makeText(this, "You can select a target or use spells that effect all the heroes, if you have the Mana!", Toast.LENGTH_LONG);
+        toast2.setGravity(Gravity.CENTER, 0, 0);
+        View view2 = toast2.getView();
+        view2.setBackgroundColor(Color.parseColor("#ff99cc00"));
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                toast2.show();
+            }
+        }, 9500);
+
+
+        Toast toast3 = Toast.makeText(this, "Try the AOEHOT Spell to start us off!", Toast.LENGTH_SHORT);
+        toast3.setGravity(Gravity.CENTER, 0, 0);
+        View view3 = toast3.getView();
+        view3.setBackgroundColor(Color.parseColor("#ff99cc00"));
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                toast3.show();
+            }
+        }, 14000);
+    }
 
 
 
@@ -97,12 +144,18 @@ public class Main3ActivityHealer extends AppCompatActivity {
         game.room1.endOfCharacterTurnChecks();
         Toast toast1 = Toast.makeText(this, target1.getDesignation() + " was healed!", Toast.LENGTH_SHORT );
         toast1.setGravity(Gravity.CENTER, 0, 0);
+        View view1 = toast1.getView();
+        view1.setBackgroundColor(Color.parseColor("#ff99cc00"));
         toast1.show();
         Intent intent = new Intent(this, Main4ActivityTank.class);
         intent.putExtra("game", game);
         startActivity(intent);
     } else {
-        Toast.makeText(this, "You need to target a character before you can cast it!", Toast.LENGTH_SHORT ).show();
+        Toast toast = Toast.makeText(this, "You need to target a Hero in order to cast this spell!", Toast.LENGTH_SHORT);
+        View view2 = toast.getView();
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        view2.setBackgroundColor(Color.parseColor("#ff99cc00"));
+        toast.show();
 
     }
 
@@ -113,8 +166,10 @@ public class Main3ActivityHealer extends AppCompatActivity {
 
         game.room1.fellowship.healer().aoeHeal(game.room1.fellowship, game.room1);
         game.room1.endOfCharacterTurnChecks();
-        Toast toast1 = Toast.makeText(this, "The Fellowship was healed!", Toast.LENGTH_SHORT );
+        Toast toast1 = Toast.makeText(this, "All your Heroes were healed!", Toast.LENGTH_SHORT );
         toast1.setGravity(Gravity.CENTER, 0, 0);
+        View view1 = toast1.getView();
+        view1.setBackgroundColor(Color.parseColor("#ff99cc00"));
         toast1.show();
         Intent intent = new Intent(this, Main4ActivityTank.class);
         intent.putExtra("game", game);
@@ -125,8 +180,10 @@ public class Main3ActivityHealer extends AppCompatActivity {
 
         game.room1.fellowship.healer().aoeHot(game.room1.fellowship, game.room1);
         game.room1.endOfCharacterTurnChecks();
-        Toast toast1 = Toast.makeText(this, "The Fellowship have Heal Over Times Active!", Toast.LENGTH_SHORT );
+        Toast toast1 = Toast.makeText(this, "Your Heroes will be healed a small amount at the end of each turn for 3 turns!", Toast.LENGTH_LONG );
         toast1.setGravity(Gravity.CENTER, 0, 0);
+        View view1 = toast1.getView();
+        view1.setBackgroundColor(Color.parseColor("#ff99cc00"));
         toast1.show();
         Intent intent = new Intent(this, Main4ActivityTank.class);
         intent.putExtra("game", game);
@@ -139,6 +196,8 @@ public class Main3ActivityHealer extends AppCompatActivity {
         game.room1.endOfCharacterTurnChecks();
         Toast toast1 = Toast.makeText(this, "The Priest uses the Force and replenishes the Mana resources of the Fellowship!", Toast.LENGTH_SHORT );
         toast1.setGravity(Gravity.CENTER, 0, 0);
+        View view1 = toast1.getView();
+        view1.setBackgroundColor(Color.parseColor("#ff99cc00"));
         toast1.show();
         Intent intent = new Intent(this, Main4ActivityTank.class);
         intent.putExtra("game", game);

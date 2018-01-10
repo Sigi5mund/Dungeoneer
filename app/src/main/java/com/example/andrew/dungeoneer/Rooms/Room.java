@@ -207,7 +207,9 @@ public abstract class Room implements Serializable{
         for (Character baddie : baddies) {
             for (Character goodie : fellowship.getHeroes()
                     ) {
+                if (baddie.getThreatTable().size() < 3)
                 baddie.addTargetsToThreatTable(new ThreatObject(goodie, goodie.getThreat()));
+                baddie.randomiseThreatTable();
             }
         }
     }
@@ -257,6 +259,8 @@ public abstract class Room implements Serializable{
             baddie.checkAlive();
         }
     }
+
+
 
 
 

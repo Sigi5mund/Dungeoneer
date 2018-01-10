@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public enum Weapon implements Serializable{
 
-    SWORD(100, 10),
+    SWORD(300, 10),
     STAFF(10, 5 ),
     SCEPTER(-200, 100),
     CLAWS(2500, 30),

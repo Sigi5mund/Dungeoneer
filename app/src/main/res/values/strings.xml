@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Dungeoneer</string>
     <string name="action_settings">Settings</string>
-    <string name="LandingScreen">Welcome to Dungeoneer! You will need to Tank, Heal and DPS if you want to master the Dungeons and win the ultimate prize!</string>
+    <string name="LandingScreen">Welcome to Dungeoneer! You will need to lead your party of intrepid dungeoneers through many hazards to earn the Treasure!</string>
     <string name="Mana">Mana</string>
     <string name="Healer">Healer</string>
     <string name="mana">mana</string>

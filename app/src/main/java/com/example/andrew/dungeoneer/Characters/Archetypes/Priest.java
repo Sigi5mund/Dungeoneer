@@ -4,6 +4,8 @@ import com.example.andrew.dungeoneer.Characters.Armour;
 import com.example.andrew.dungeoneer.Characters.OffHand;
 import com.example.andrew.dungeoneer.Characters.Weapon;
 import com.example.andrew.dungeoneer.Magic.HealOverTime;
+import com.example.andrew.dungeoneer.Magic.PhysicalDamageOverTime;
+import com.example.andrew.dungeoneer.Magic.ThreatOverTime;
 import com.example.andrew.dungeoneer.Rooms.Room;
 
 import java.io.Serializable;
@@ -29,7 +31,7 @@ public class Priest extends Character implements Serializable {
         this.manaPool = 100;
         this.manaRegen = 10;
         this.manaMax = 100;
-        this.maxHealth = stamina * 20;
+        this.maxHealth = stamina * 12;
         this.healthBar = maxHealth;
         this.action1cost = 20;
         this.action2cost = 40;
@@ -38,7 +40,7 @@ public class Priest extends Character implements Serializable {
         this.action1threat = 25;
         this.action2threat = 100;
         this.action3threat = 30;
-        this.action4threat = 100;
+        this.action4threat = 250;
         this.action1desc = "";
         this.action2desc = "";
         this.action3desc = "";
@@ -59,12 +61,10 @@ public class Priest extends Character implements Serializable {
     public void heal(Character target, Room room){
         this.spendManaToCast(this.action1cost);
         target.increaseHealth(500);
-        for (Character enemy: room.baddies
-                ) {
-            increaseSpecificThreat(this.action1threat, enemy);
+        raiseAllThreat(action1threat, room);
         }
 
-    }
+
 
     @Override
     public void aoeHeal (Fellowship fellowship, Room room){
@@ -81,7 +81,10 @@ public class Priest extends Character implements Serializable {
         for (Character hero: fellowship.heroes
                 ) {room.hotsAndDots.add(new HealOverTime( hero,100, 5));
         }
-        this.raiseAllThreat(this.action3threat, room);
+        for (Character baddie: room.baddies
+                ) {
+            room.hotsAndDots.add(new ThreatOverTime(baddie, this, action3threat, 3));
+        }
     }
 
     @Override

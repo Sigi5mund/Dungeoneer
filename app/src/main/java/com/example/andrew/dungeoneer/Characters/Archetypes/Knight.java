@@ -7,7 +7,6 @@ import com.example.andrew.dungeoneer.Magic.ThreatOverTime;
 import com.example.andrew.dungeoneer.Rooms.Room;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 public class Knight extends Character implements Serializable {
 
@@ -24,7 +23,7 @@ public class Knight extends Character implements Serializable {
         this.critChance = agility/100;
         this.critDamage = agility/25;
         this.stunned = false;
-        this.maxHealth = stamina * 20;
+        this.maxHealth = stamina * 12;
         this.healthBar = maxHealth;
         this.manaMax = 50;
         this.manaPool = 0;
@@ -48,7 +47,7 @@ public class Knight extends Character implements Serializable {
         spendManaToCast(this.action1cost);
         increaseSpecificThreat(this.action1threat, target);
         raiseAllThreat(action1threat/2, room);
-        return weaponattack1(target);
+        return weaponAttack(target);
     }
 
     @Override

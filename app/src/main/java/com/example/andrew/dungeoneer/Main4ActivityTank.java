@@ -1,7 +1,9 @@
 package com.example.andrew.dungeoneer;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
@@ -75,6 +77,53 @@ public class Main4ActivityTank extends AppCompatActivity {
 
         Button onAction4Tank = findViewById(R.id.action4Tank);
         onAction4Tank.setEnabled(game.room1.fellowship.tank().sufficientManaCheck(game.room1.fellowship.tank().getAction4cost()));
+
+        if (game.novice == 1) {
+            Toast toast1 = Toast.makeText(this, "This Screen shows your Tank, they need to defend your party and take the damage.", Toast.LENGTH_LONG);
+            toast1.setGravity(Gravity.CENTER, 0, 0);
+            View view1 = toast1.getView();
+            view1.setBackgroundColor(Color.parseColor("#ffff8800"));
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    toast1.show();
+                }
+            }, 5000);
+
+            Toast toast2 = Toast.makeText(this, "You can select a target and use an attack, it will build up your rage.", Toast.LENGTH_LONG);
+            toast2.setGravity(Gravity.CENTER, 0, 0);
+            View view2 = toast2.getView();
+            view2.setBackgroundColor(Color.parseColor("#ffff8800"));
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    toast2.show();
+                }
+            }, 9500);
+
+
+            Toast toast3 = Toast.makeText(this, "Your attacks will generate Threat and make the enemy attack the Tank!", Toast.LENGTH_LONG);
+            toast3.setGravity(Gravity.CENTER, 0, 0);
+            View view3 = toast3.getView();
+            view3.setBackgroundColor(Color.parseColor("#ffff8800"));
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    toast3.show();
+                }
+            }, 14000);
+
+            Toast toast4 = Toast.makeText(this, "Try Attacking the Orc Captain first.", Toast.LENGTH_SHORT);
+            toast4.setGravity(Gravity.CENTER, 0, 0);
+            View view4 = toast4.getView();
+            view4.setBackgroundColor(Color.parseColor("#ffff8800"));
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    toast4.show();
+                }
+            }, 18000);
+        }
     }
 
 
@@ -94,13 +143,19 @@ public class Main4ActivityTank extends AppCompatActivity {
             damageDone = game.room1.fellowship.tank().tauntAttack(target1, game.room1);
             Toast toast1 = Toast.makeText(this, target1.getDesignation() + " was hit for "+ damageDone + "!", Toast.LENGTH_SHORT );
             toast1.setGravity(Gravity.CENTER, 0, 0);
+            View view1 = toast1.getView();
+            view1.setBackgroundColor(Color.parseColor("#ffff8800"));
             toast1.show();
         game.room1.endOfCharacterTurnChecks();
         Intent intent = new Intent(this, Main5ActivityDPS.class);
         intent.putExtra("game", game);
         startActivity(intent);
     } else {
-        Toast.makeText(this, "You need to target a character before you can cast it!", Toast.LENGTH_SHORT ).show();
+        Toast toast = Toast.makeText(this, "You need to target an Enemy before you can attack with this ability!", Toast.LENGTH_SHORT );
+            View view2 = toast.getView();
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            view2.setBackgroundColor(Color.parseColor("#ffff8800"));
+            toast.show();
 
     }
     }
@@ -108,7 +163,11 @@ public class Main4ActivityTank extends AppCompatActivity {
 
     public void onAction2Tank(View view){
 
-
+        Toast toast1 = Toast.makeText(this, "The Tank raises the Shield and becomes impervious to damage this turn!", Toast.LENGTH_LONG );
+        toast1.setGravity(Gravity.CENTER, 0, 0);
+        View view1 = toast1.getView();
+        view1.setBackgroundColor(Color.parseColor("#ffff8800"));
+        toast1.show();
         game.room1.fellowship.tank().shieldWall(game.room1);
         game.room1.endOfCharacterTurnChecks();
         Intent intent = new Intent(this, Main5ActivityDPS.class);
@@ -118,7 +177,11 @@ public class Main4ActivityTank extends AppCompatActivity {
 
 
     public void onAction3Tank(View view){
-
+        Toast toast1 = Toast.makeText(this, "The Tank taunts all the Enemies and increases Threat!", Toast.LENGTH_LONG );
+        toast1.setGravity(Gravity.CENTER, 0, 0);
+        View view1 = toast1.getView();
+        view1.setBackgroundColor(Color.parseColor("#ffff8800"));
+        toast1.show();
         game.room1.fellowship.tank().tauntAOE(game.room1);
         game.room1.endOfCharacterTurnChecks();
         Intent intent = new Intent(this, Main5ActivityDPS.class);
@@ -129,14 +192,22 @@ public class Main4ActivityTank extends AppCompatActivity {
 
     public void onAction4Tank(View view){
         if (target1 != null){
+            Toast toast1 = Toast.makeText(this, "The Tank brains the target with the Shield and makes it vulnerable to magic!", Toast.LENGTH_LONG );
+            toast1.setGravity(Gravity.CENTER, 0, 0);
+            View view1 = toast1.getView();
+            view1.setBackgroundColor(Color.parseColor("#ffff8800"));
+            toast1.show();
         game.room1.fellowship.tank().headBash(target1);
         game.room1.endOfCharacterTurnChecks();
         Intent intent = new Intent(this, Main5ActivityDPS.class);
         intent.putExtra("game", game);
         startActivity(intent);
         } else {
-            Toast.makeText(this, "You need to target a character before you can cast it!", Toast.LENGTH_SHORT ).show();
-
+            Toast toast = Toast.makeText(this, "You need to target an Enemy before you can attack with this ability!", Toast.LENGTH_SHORT );
+            View view2 = toast.getView();
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            view2.setBackgroundColor(Color.parseColor("#ffff8800"));
+            toast.show();
         }
     }
 }

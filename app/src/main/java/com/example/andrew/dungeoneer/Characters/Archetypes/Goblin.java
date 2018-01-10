@@ -11,7 +11,7 @@ public class Goblin extends Character implements Serializable, IThreatAttack {
 
 
     public Goblin(String name) {
-        super(name, 10, Weapon.SWORD, Armour.CLOTHE, OffHand.BITE);
+        super(name, 10, Weapon.SWORD, Armour.LEATHER, OffHand.BITE);
 
         this.strength = 20;
         this.agility = 70;
@@ -28,7 +28,7 @@ public class Goblin extends Character implements Serializable, IThreatAttack {
 
 
     public double threatAttack(){
-        return oldAttack(this.topThreat());
+        return weaponAttack(this.topThreat());
     }
 
 

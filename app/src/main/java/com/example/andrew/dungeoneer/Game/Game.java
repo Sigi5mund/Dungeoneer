@@ -16,6 +16,7 @@ public class Game implements Serializable{
     public Dungeon1 room2;
     public Dungeon1 room3;
     public int turn;
+    public int novice;
 
     public Game() {
 //        this.roomSequence = new ArrayList<>(Arrays.asList(new Dungeon1("The Undercroft")));
@@ -23,6 +24,7 @@ public class Game implements Serializable{
         this.room2 = null;
         this.room3 = null;
         this.turn =1;
+        this.novice =0;
 
     }
 

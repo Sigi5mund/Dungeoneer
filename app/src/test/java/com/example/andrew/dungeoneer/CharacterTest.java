@@ -87,7 +87,7 @@ public class CharacterTest {
 
     @Test
     public void newAttackMethod(){
-        orcCaptain.weaponattack1(tank);
+        orcCaptain.weaponAttack(tank);
         assertEquals(1780, tank.getHealthBar(), 1);
     }
 }

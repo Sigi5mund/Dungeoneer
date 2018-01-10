@@ -1,7 +1,9 @@
 package com.example.andrew.dungeoneer;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.andrew.dungeoneer.Characters.Archetypes.Character;
 import com.example.andrew.dungeoneer.Characters.Archetypes.Fellowship;
+import com.example.andrew.dungeoneer.Characters.Archetypes.Goblin;
 import com.example.andrew.dungeoneer.Characters.Archetypes.Knight;
 import com.example.andrew.dungeoneer.Characters.Archetypes.Priest;
 import com.example.andrew.dungeoneer.Characters.Archetypes.Wizard;
@@ -107,7 +110,64 @@ public class Main6ActivitySummary extends AppCompatActivity {
         Button onNextTurn = findViewById(R.id.onNextTurn);
         onNextTurn.setEnabled(noDeadCharacters);
 
-    }
+        if (game.turn == 3) {
+            game.currentRoom().baddies.add(new Goblin("Sneaky"));
+            game.currentRoom().baddies.add(new Goblin("Peaky"));
+            game.room1.addThreatObjectsToTables();
+
+        }
+
+
+            if (game.novice == 1) {
+                Toast toast1 = Toast.makeText(this, "This Screen shows the Attacks made by the Enemy to your party.", Toast.LENGTH_LONG);
+                toast1.setGravity(Gravity.CENTER, 0, 0);
+                View view1 = toast1.getView();
+                view1.setBackgroundColor(Color.parseColor("#ffcc0000"));
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        toast1.show();
+                    }
+                }, 4000);
+
+                Toast toast2 = Toast.makeText(this, "Hopefully they are all hitting the Tank, they are best suited to mitigating the damage.", Toast.LENGTH_LONG);
+                toast2.setGravity(Gravity.CENTER, 0, 0);
+                View view2 = toast2.getView();
+                view2.setBackgroundColor(Color.parseColor("#ffcc0000"));
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        toast2.show();
+                    }
+                }, 9000);
+
+
+                Toast toast3 = Toast.makeText(this, "Now, manage your resources, get the threat on the tank, and kill the enemy!", Toast.LENGTH_LONG);
+                toast3.setGravity(Gravity.CENTER, 0, 0);
+                View view3 = toast3.getView();
+                view3.setBackgroundColor(Color.parseColor("#ffcc0000"));
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        toast3.show();
+                    }
+                }, 14000);
+
+                Toast toast4 = Toast.makeText(this, "Click next turn!", Toast.LENGTH_SHORT);
+                toast4.setGravity(Gravity.CENTER, 0, 0);
+                View view4 = toast4.getView();
+                view4.setBackgroundColor(Color.parseColor("#ffcc0000"));
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        toast4.show();
+                    }
+                }, 19000);
+
+
+            }
+        }
+
 
 
 
@@ -118,6 +178,7 @@ public class Main6ActivitySummary extends AppCompatActivity {
     }
 
     public void onNextTurn(View view){
+        game.novice = 0;
         Toast toast1 = Toast.makeText(this, "Turn "+ game.turn, Toast.LENGTH_SHORT );
         toast1.setGravity(Gravity.CENTER, 0, 0);
         toast1.show();
