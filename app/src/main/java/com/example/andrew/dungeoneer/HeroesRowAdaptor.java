@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -29,37 +30,45 @@ public class HeroesRowAdaptor extends ArrayAdapter<Character> {
 
             Character currentCharacter = getItem(position);
 
-            TextView name = (TextView) listItemView.findViewById(R.id.targetView);
-            name.setText(currentCharacter.getName().toString());
 
-            TextView designation = (TextView) listItemView.findViewById(R.id.designationView);
-            designation.setText(currentCharacter.getDesignation().toString());
-
-            TextView mainhand = (TextView) listItemView.findViewById(R.id.mainWeaponView);
-            mainhand.setText(currentCharacter.getWeapon().toString());
-
-            TextView offhand = (TextView) listItemView.findViewById(R.id.offHandView);
-            offhand.setText(currentCharacter.getOffHand().toString());
-
-            TextView stamina = (TextView) listItemView.findViewById(R.id.staminaView);
-            stamina.setText(currentCharacter.getStamina().toString());
-
-            TextView intelligence = (TextView) listItemView.findViewById(R.id.intelligenceView);
-            intelligence.setText(currentCharacter.getIntellect().toString());
-
-            TextView strength = (TextView) listItemView.findViewById(R.id.strengthView);
-            strength.setText(currentCharacter.getStrength().toString());
-
-            TextView agility = (TextView) listItemView.findViewById(R.id.agilityView);
-            agility.setText(currentCharacter.getAgility().toString());
 
             TextView health = (TextView) listItemView.findViewById(R.id.healthView);
             health.setText(currentCharacter.getHealthBar().toString());
 
+            TextView healthMax = (TextView) listItemView.findViewById(R.id.herohealthmaxview);
+            healthMax.setText(currentCharacter.getMaxHealth().toString());
+
             TextView armour = (TextView) listItemView.findViewById(R.id.armourView);
             armour.setText(currentCharacter.getArmour().toString());
 
+            TextView resource = (TextView) listItemView.findViewById(R.id.resourceView);
+            resource.setText(currentCharacter.getManaPool().toString());
 
+            TextView resourcemax = (TextView) listItemView.findViewById(R.id.resourceMaxView);
+            resourcemax.setText(currentCharacter.getManaMax().toString());
+
+            ImageView classIcon = listItemView.findViewById(R.id.classView);
+            switch (currentCharacter.getDesignation()) {
+                case "Healer":
+                        classIcon.setImageResource(R.drawable.healer10);
+                        break;
+                case "Tank":
+                    classIcon.setImageResource(R.drawable.tankicon10);
+                        break;
+                case "DPS":
+                    classIcon.setImageResource(R.drawable.wizardicon3);
+                        break;
+            }
+
+            ImageView resourceIcon = listItemView.findViewById(R.id.resourceIconView);
+            switch (currentCharacter.getClassResource()) {
+                case "Mana":
+                    resourceIcon.setImageResource(R.drawable.manaicon1111);
+                    break;
+                case "Rage":
+                    resourceIcon.setImageResource(R.drawable.fist);
+                    break;
+            }
 
 
             listItemView.setTag(currentCharacter);

@@ -53,7 +53,7 @@ public class Main4ActivityTank extends AppCompatActivity {
         listView = findViewById(R.id.tankList);
         listView.setAdapter(villainsAdapter);
 
-        TextView mana = (TextView) findViewById(R.id.manaView);
+        TextView mana = (TextView) findViewById(R.id.rageView);
         mana.setText(game.room1.fellowship.tank().getManaPool().toString());
 
 
@@ -77,6 +77,19 @@ public class Main4ActivityTank extends AppCompatActivity {
 
         Button onAction4Tank = findViewById(R.id.action4Tank);
         onAction4Tank.setEnabled(game.room1.fellowship.tank().sufficientManaCheck(game.room1.fellowship.tank().getAction4cost()));
+
+        TextView manaview1 = (TextView) findViewById(R.id.action1rageview);
+        manaview1.setText(game.room1.fellowship.tank().getAction1cost().toString());
+
+        TextView manaview2 = (TextView) findViewById(R.id.action2RageView);
+        manaview2.setText(game.room1.fellowship.tank().getAction2cost().toString());
+
+        TextView manaview3 = (TextView) findViewById(R.id.action3RageView);
+        manaview3.setText(game.room1.fellowship.tank().getAction3cost().toString());
+
+        TextView manaview4 = (TextView) findViewById(R.id.action4RageView);
+        manaview4.setText(game.room1.fellowship.tank().getAction4cost().toString());
+
 
         if (game.novice == 1) {
             Toast toast1 = Toast.makeText(this, "This Screen shows your Tank, they need to defend your party and take the damage.", Toast.LENGTH_LONG);

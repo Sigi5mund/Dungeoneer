@@ -56,8 +56,7 @@ public class Main5ActivityDPS extends AppCompatActivity {
         listView = findViewById(R.id.dpsList);
         listView.setAdapter(villainsAdapter);
 
-        TextView mana = (TextView) findViewById(R.id.manaView);
-        mana.setText(game.room1.fellowship.dps().getManaPool().toString());
+
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -79,6 +78,21 @@ public class Main5ActivityDPS extends AppCompatActivity {
 
         Button onAction4DPS = findViewById(R.id.action4DPS);
         onAction4DPS.setEnabled(game.room1.fellowship.dps().sufficientManaCheck(game.room1.fellowship.dps().getAction4cost()));
+
+        TextView mana = (TextView) findViewById(R.id.manaView);
+        mana.setText(game.room1.fellowship.dps().getManaPool().toString());
+
+        TextView manaview1 = (TextView) findViewById(R.id.action1ManaView);
+        manaview1.setText(game.room1.fellowship.dps().getAction1cost().toString());
+
+        TextView manaview2 = (TextView) findViewById(R.id.action2ManaView);
+        manaview2.setText(game.room1.fellowship.dps().getAction2cost().toString());
+
+        TextView manaview3 = (TextView) findViewById(R.id.action3ManaView);
+        manaview3.setText(game.room1.fellowship.dps().getAction3cost().toString());
+
+        TextView manaview4 = (TextView) findViewById(R.id.action4ManaView);
+        manaview4.setText(game.room1.fellowship.dps().getAction4cost().toString());
 
         if (game.novice == 1) {
             Toast toast1 = Toast.makeText(this, "This Screen shows your DPS, they need to damage the enemy.", Toast.LENGTH_LONG);

@@ -204,6 +204,7 @@ public abstract class Room implements Serializable{
     public void endOfCharacterTurnChecks(){
         checkForMaxHealth();
         checkForNoHealth();
+
     }
 
 
@@ -276,6 +277,9 @@ public abstract class Room implements Serializable{
     public void checkWhoIsAlive(){
         for (Character baddie: baddies) {
             baddie.checkAlive();
+        }
+        for (Character hero: fellowship.getHeroes()) {
+            hero.checkAlive();
         }
     }
 

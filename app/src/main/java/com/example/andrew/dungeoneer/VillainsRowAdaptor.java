@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.andrew.dungeoneer.Characters.Archetypes.Character;
@@ -29,15 +30,17 @@ public class VillainsRowAdaptor extends ArrayAdapter<Character> {
 
             Character currentCharacter = getItem(position);
 
-            TextView name = (TextView) listItemView.findViewById(R.id.targetView);
-            name.setText(currentCharacter.getName().toString());
 
-            TextView designation = (TextView) listItemView.findViewById(R.id.designationView);
-            designation.setText(currentCharacter.getDesignation().toString());
+            ImageView classIcon = listItemView.findViewById(R.id.classView);
+            switch (currentCharacter.getDesignation()) {
+                case "Goblin":
+                    classIcon.setImageResource(R.drawable.goblinicon);
+                    break;
+                case "Orc Captain":
+                    classIcon.setImageResource(R.drawable.orcicon);
+                    break;
 
-            TextView mainhand = (TextView) listItemView.findViewById(R.id.mainWeaponView);
-            mainhand.setText(currentCharacter.getWeapon().toString());
-
+            }
 
             TextView intelligence = (TextView) listItemView.findViewById(R.id.intView);
             intelligence.setText(currentCharacter.getIntellect().toString());
@@ -46,16 +49,26 @@ public class VillainsRowAdaptor extends ArrayAdapter<Character> {
             TextView health = (TextView) listItemView.findViewById(R.id.healthView);
             health.setText(currentCharacter.getHealthBar().toString());
 
+
             TextView armour = (TextView) listItemView.findViewById(R.id.armourView);
             armour.setText(currentCharacter.getArmour().toString());
 
-            TextView alive = (TextView) listItemView.findViewById(R.id.aliveView);
-            alive.setText(currentCharacter.aliveNow().toString());
-
-            TextView threat= (TextView) listItemView.findViewById(R.id.threatView);
-            threat.setText(currentCharacter.topThreat().getDesignation().toString());
 
 
+
+
+            ImageView topthreatIcon = listItemView.findViewById(R.id.topthreatView);
+            switch (currentCharacter.topThreat().getDesignation()) {
+                case "Healer":
+                    topthreatIcon.setImageResource(R.drawable.healer10);
+                    break;
+                case "Tank":
+                    topthreatIcon.setImageResource(R.drawable.tankicon10);
+                    break;
+                case "DPS":
+                    topthreatIcon.setImageResource(R.drawable.wizardicon3);
+                    break;
+            }
 
             listItemView.setTag(currentCharacter);
 

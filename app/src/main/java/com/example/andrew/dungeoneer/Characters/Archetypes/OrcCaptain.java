@@ -21,7 +21,7 @@ public class OrcCaptain extends Character implements IThreatAttack, Serializable
         this.critChance = agility/100;
         this.critDamage = agility/25;
         this.stunned = false;
-        this.maxHealth = stamina * 20;
+        this.maxHealth = stamina * 20.00;
         this.healthBar = maxHealth;
         this.designation = "Orc Captain";
     }

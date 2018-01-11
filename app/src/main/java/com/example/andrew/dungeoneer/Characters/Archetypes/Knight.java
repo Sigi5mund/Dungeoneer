@@ -23,9 +23,9 @@ public class Knight extends Character implements Serializable {
         this.critChance = agility/100;
         this.critDamage = agility/25;
         this.stunned = false;
-        this.maxHealth = stamina * 12;
+        this.maxHealth = stamina * 12.00;
         this.healthBar = maxHealth;
-        this.manaMax = 50;
+        this.manaMax = 100;
         this.manaPool = 0;
         this.manaRegen = 10;
         this.action1cost = -10;
@@ -40,6 +40,7 @@ public class Knight extends Character implements Serializable {
         this.action2desc = "";
         this.action3desc = "";
         this.action4desc = "";
+        this.classResource = "Rage";
     }
 
     @Override

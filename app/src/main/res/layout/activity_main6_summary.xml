@@ -69,4 +69,17 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4"
         app:layout_constraintVertical_bias="0.0" />
 
+    <TextView
+        android:id="@+id/gameWonView"
+        android:layout_width="333dp"
+        android:layout_height="133dp"
+        android:layout_marginBottom="8dp"
+        android:text="Your Dungeoneers have won through to the end of this particular dungeon! However, will they enter the next rooms? Find out next time!"
+        android:textSize="18sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

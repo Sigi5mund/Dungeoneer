@@ -99,7 +99,7 @@ public class Main3ActivityHealer extends AppCompatActivity {
             public void run() {
                 toast1.show();
             }
-        }, 2000);
+        }, 1500);
 
         Toast toast2 = Toast.makeText(this, "You can select a target or use spells that effect all the heroes!", Toast.LENGTH_LONG);
         toast2.setGravity(Gravity.CENTER, 0, 0);
@@ -110,7 +110,7 @@ public class Main3ActivityHealer extends AppCompatActivity {
             public void run() {
                 toast2.show();
             }
-        }, 6500);
+        }, 7000);
 
         Toast toast3 = Toast.makeText(this, "Your Spells use up your Mana Pool, it regenerates a little each turn.", Toast.LENGTH_LONG);
         toast3.setGravity(Gravity.CENTER, 0, 0);
@@ -121,19 +121,19 @@ public class Main3ActivityHealer extends AppCompatActivity {
             public void run() {
                 toast3.show();
             }
-        }, 10000);
+        }, 12000);
 
 
         Toast toast4 = Toast.makeText(this, "Try the AOEHOT Spell to start us off!", Toast.LENGTH_SHORT);
         toast4.setGravity(Gravity.CENTER, 0, 0);
-        View view4 = toast3.getView();
+        View view4 = toast4.getView();
         view4.setBackgroundColor(Color.parseColor("#ff99cc00"));
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 toast4.show();
             }
-        }, 14000);
+        }, 17000);
     }
 
 

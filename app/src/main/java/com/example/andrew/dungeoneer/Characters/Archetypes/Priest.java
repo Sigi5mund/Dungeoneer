@@ -31,7 +31,7 @@ public class Priest extends Character implements Serializable {
         this.manaPool = 100;
         this.manaRegen = 10;
         this.manaMax = 100;
-        this.maxHealth = stamina * 12;
+        this.maxHealth = stamina * 12.00;
         this.healthBar = maxHealth;
         this.action1cost = 20;
         this.action2cost = 40;
@@ -45,6 +45,7 @@ public class Priest extends Character implements Serializable {
         this.action2desc = "";
         this.action3desc = "";
         this.action4desc = "";
+        this.classResource = "Mana";
 
     }
 

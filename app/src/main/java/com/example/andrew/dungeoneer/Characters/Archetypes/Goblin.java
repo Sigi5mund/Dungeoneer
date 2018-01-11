@@ -21,7 +21,7 @@ public class Goblin extends Character implements Serializable, IThreatAttack {
         this.critChance = agility/100;
         this.critDamage = agility/25;
         this.stunned = false;
-        this.maxHealth = stamina * 20;
+        this.maxHealth = stamina * 20.00;
         this.healthBar = maxHealth;
         this.designation = "Goblin";
     }

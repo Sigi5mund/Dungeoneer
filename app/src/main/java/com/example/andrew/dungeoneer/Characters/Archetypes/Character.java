@@ -1,5 +1,7 @@
 package com.example.andrew.dungeoneer.Characters.Archetypes;
 
+import android.graphics.drawable.Drawable;
+
 import com.example.andrew.dungeoneer.Characters.Armour;
 import com.example.andrew.dungeoneer.Characters.Interfaces.IAttack;
 import com.example.andrew.dungeoneer.Characters.Interfaces.ISpell;
@@ -40,7 +42,7 @@ public abstract class Character implements Serializable, IAttack, ITakeDamage {
     Integer critChance;
     Integer critDamage;
     Boolean stunned;
-    double maxHealth;
+    Double maxHealth;
     private Integer dodgeChance;
     private Integer blockChance;
     private boolean blockAll;
@@ -66,6 +68,7 @@ public abstract class Character implements Serializable, IAttack, ITakeDamage {
     String action2desc;
     String action3desc;
     String action4desc;
+    String classResource;
 
 
     public Character(String name, double gold, Weapon weapon, Armour armour, OffHand offHand) {
@@ -101,9 +104,9 @@ public abstract class Character implements Serializable, IAttack, ITakeDamage {
         this.blockAll = false;
         this.magicDefense = intellect / 100;
         this.stunnedChance = stamina / 100;
-        this.maxHealth = stamina * 20;
+        this.maxHealth = stamina * 20.00;
         this.healthBar = maxHealth;
-        this.manaPool = 50;
+        this.manaPool = 0;
         this.manaRegen = 5;
         this.manaMax = 100;
         this.action1cost = 0;
@@ -118,6 +121,9 @@ public abstract class Character implements Serializable, IAttack, ITakeDamage {
         this.action2desc = "";
         this.action3desc = "";
         this.action4desc = "";
+        this.classResource = "";
+
+
 
 
 
@@ -291,7 +297,7 @@ public void heal(Character target, Room room){}
         return this.healthBar;
     }
 
-    private double getMaxHealth() {
+    public Double getMaxHealth() {
         return this.maxHealth;
     }
 
@@ -564,6 +570,10 @@ public void heal(Character target, Room room){}
         if (this.manaPool > manaMax){
             setManaPool(manaMax);
         }
+    }
+
+    public String getClassResource(){
+        return classResource;
     }
 
     public boolean sufficientManaCheck(Integer cost){

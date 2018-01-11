@@ -29,7 +29,7 @@ public class Wizard extends Character implements Serializable {
         this.manaPool = 100;
         this.manaRegen = 5;
         this.manaMax = 100;
-        this.maxHealth = stamina * 12;
+        this.maxHealth = stamina * 12.00;
         this.healthBar = maxHealth;
         this.action1cost = 10;
         this.action2cost = 50;
@@ -43,6 +43,7 @@ public class Wizard extends Character implements Serializable {
         this.action2desc = "";
         this.action3desc = "";
         this.action4desc = "";
+        this.classResource = "Mana";
     }
 
     //  Attack Mechanics:

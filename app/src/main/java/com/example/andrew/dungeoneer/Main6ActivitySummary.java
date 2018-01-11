@@ -31,6 +31,7 @@ public class Main6ActivitySummary extends AppCompatActivity {
     Game game;
     String dead;
     boolean noDeadCharacters;
+    boolean enemiesAllDead;
 
 
 //  Activity Set Up
@@ -41,6 +42,7 @@ public class Main6ActivitySummary extends AppCompatActivity {
         Intent intent = getIntent();
         game = (Game)intent.getSerializableExtra("game");
         noDeadCharacters = true;
+        enemiesAllDead = true;
 
 
 //  Game Logic
@@ -62,25 +64,18 @@ public class Main6ActivitySummary extends AppCompatActivity {
         }
 
 
-//        Game Over Screen Idea
-//        Intent intentGameOver = new Intent(this, Main7ActivityGameOver.class);
-//
-//
-//         for (Character hero: game.room1.fellowship.getHeroes()) {
-//             if (hero.isAlive() ==false)
-//             startActivity(intentGameOver);
-//        }
+        if (game.room1.baddies.size() == 0){
+                enemiesAllDead = false;
+        }
 
 
 
 
-//  Display End Step
-////      Baddies ListView
-//        ArrayList<Character> list = game.room1.baddies;
-//        VillainsRowAdaptor villainsAdapter = new VillainsRowAdaptor(this, list);
-//        ListView listView = findViewById(R.id.dpsSummaryList);
-//        listView.setAdapter(villainsAdapter);
-//
+
+
+
+
+
 ////      Heroes ListView
 //        ArrayList<Character> list1 = game.room1.fellowship.getHeroes();
 //        HeroesRowAdaptor heroesAdapter = new HeroesRowAdaptor(this, list1);
@@ -98,18 +93,22 @@ public class Main6ActivitySummary extends AppCompatActivity {
 
         TextView deadHeroMessage = findViewById(R.id.gameOverView);
         deadHeroMessage.setText(dead);
-
         if (noDeadCharacters == false){
 //            listView1.setVisibility(View.INVISIBLE);
             deadHeroMessage.setVisibility(View.VISIBLE);
         }
 
 
+        TextView victoryMessage = findViewById(R.id.gameWonView);
+        if (enemiesAllDead == false){
+            victoryMessage.setVisibility(View.VISIBLE);
+        }
 
 
 
         Button onNextTurn = findViewById(R.id.onNextTurn);
         onNextTurn.setEnabled(noDeadCharacters);
+        onNextTurn.setEnabled(enemiesAllDead);
 
         if (game.turn == 3) {
             game.currentRoom().baddies.add(new Goblin("Sneaky"));

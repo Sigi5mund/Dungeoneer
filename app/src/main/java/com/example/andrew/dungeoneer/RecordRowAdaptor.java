@@ -5,10 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
-import com.example.andrew.dungeoneer.Characters.Archetypes.Character;
 import com.example.andrew.dungeoneer.Items.RecordObject;
 
 import java.util.ArrayList;
@@ -27,14 +27,41 @@ public class RecordRowAdaptor extends ArrayAdapter<RecordObject> {
 
             RecordObject currentRecord = getItem(position);
 
-            TextView origin = (TextView) listItemView.findViewById(R.id.attackerView);
-            origin.setText(currentRecord.getOrigin().getName().toString());
+
+            ImageView classIcon1 = listItemView.findViewById(R.id.enemyView);
+            switch (currentRecord.getOrigin().getDesignation()) {
+                case "Goblin":
+                    classIcon1.setImageResource(R.drawable.goblinicon);
+                    break;
+                case "Orc Captain":
+                    classIcon1.setImageResource(R.drawable.orcicon);
+                    break;
+            }
 
             TextView damage = (TextView) listItemView.findViewById(R.id.damageView);
             damage.setText(currentRecord.getDamage().toString());
 
-            TextView target = (TextView) listItemView.findViewById(R.id.targetView1);
-            target.setText(currentRecord.getTarget().getDesignation().toString());
+            TextView health = (TextView) listItemView.findViewById(R.id.herohealthview);
+            health.setText(currentRecord.getTarget().getHealthBar().toString());
+
+            TextView healthMax = (TextView) listItemView.findViewById(R.id.herohealthmaxview);
+            healthMax.setText(currentRecord.getTarget().getMaxHealth().toString());
+
+            ImageView classIcon = listItemView.findViewById(R.id.heroView);
+            switch (currentRecord.getTarget().getDesignation()) {
+                case "Healer":
+                    classIcon.setImageResource(R.drawable.healer10);
+                    break;
+                case "Tank":
+                    classIcon.setImageResource(R.drawable.tankicon10);
+                    break;
+                case "DPS":
+                    classIcon.setImageResource(R.drawable.wizardicon3);
+                    break;
+            }
+
+
+
 
 
             listItemView.setTag(currentRecord);
