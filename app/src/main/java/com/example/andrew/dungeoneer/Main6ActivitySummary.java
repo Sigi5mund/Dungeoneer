@@ -50,6 +50,7 @@ public class Main6ActivitySummary extends AppCompatActivity {
         game.room1.villainsTurnAttacks();
         game.room1.endOfCombatChecks();
         game.room1.checkWhoIsAlive();
+        game.room1.removeDead();
         game.turn += 1;
 
 
@@ -114,6 +115,17 @@ public class Main6ActivitySummary extends AppCompatActivity {
             game.currentRoom().baddies.add(new Goblin("Sneaky"));
             game.currentRoom().baddies.add(new Goblin("Peaky"));
             game.room1.addThreatObjectsToTables();
+            Toast toast1 = Toast.makeText(this, "A door opens and more enemies join the fight!", Toast.LENGTH_SHORT);
+            toast1.setGravity(Gravity.CENTER, 0, 0);
+            View view1 = toast1.getView();
+            view1.setBackgroundColor(Color.parseColor("#ffcc0000"));
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    toast1.show();
+                }
+            }, 1000);
+
 
         }
 
@@ -178,6 +190,7 @@ public class Main6ActivitySummary extends AppCompatActivity {
     }
 
     public void onNextTurn(View view){
+
         game.novice = 0;
         Toast toast1 = Toast.makeText(this, "Turn "+ game.turn, Toast.LENGTH_SHORT );
         toast1.setGravity(Gravity.CENTER, 0, 0);

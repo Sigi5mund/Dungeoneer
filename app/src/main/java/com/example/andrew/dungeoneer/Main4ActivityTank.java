@@ -141,12 +141,32 @@ public class Main4ActivityTank extends AppCompatActivity {
     public void onAction1Tank(View view){
         if (target1 != null){
             damageDone = game.room1.fellowship.tank().tauntAttack(target1, game.room1);
-            Toast toast1 = Toast.makeText(this, target1.getDesignation() + " was hit for "+ damageDone + "!", Toast.LENGTH_SHORT );
+            Toast toast1 = Toast.makeText(this, target1.getDesignation() + " was hit for "+ damageDone + "damage!", Toast.LENGTH_SHORT );
             toast1.setGravity(Gravity.CENTER, 0, 0);
             View view1 = toast1.getView();
             view1.setBackgroundColor(Color.parseColor("#ffff8800"));
             toast1.show();
-        game.room1.endOfCharacterTurnChecks();
+            game.room1.endOfCharacterTurnChecks();
+            game.room1.removeDead();
+
+
+//            boolean trigger = false;
+//            if ( game.room1.checkIfAnyBaddiesDead() == true){trigger = true;}
+//            if (trigger ==true)
+//            {String message = game.room1.removeDeadMessage();
+//                Toast toast2 = Toast.makeText(this, message, Toast.LENGTH_SHORT);
+//                toast2.setGravity(Gravity.CENTER, 0, 0);
+//                View view2 = toast2.getView();
+//                view2.setBackgroundColor(Color.parseColor("#ff0099cc"));
+//                new Handler().postDelayed(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        toast2.show();
+//                    }
+//                }, 4000);
+//                toast2.show();
+//            }
+
         Intent intent = new Intent(this, Main5ActivityDPS.class);
         intent.putExtra("game", game);
         startActivity(intent);
@@ -170,6 +190,7 @@ public class Main4ActivityTank extends AppCompatActivity {
         toast1.show();
         game.room1.fellowship.tank().shieldWall(game.room1);
         game.room1.endOfCharacterTurnChecks();
+        game.room1.removeDead();
         Intent intent = new Intent(this, Main5ActivityDPS.class);
         intent.putExtra("game", game);
         startActivity(intent);
@@ -184,6 +205,7 @@ public class Main4ActivityTank extends AppCompatActivity {
         toast1.show();
         game.room1.fellowship.tank().tauntAOE(game.room1);
         game.room1.endOfCharacterTurnChecks();
+        game.room1.removeDead();
         Intent intent = new Intent(this, Main5ActivityDPS.class);
         intent.putExtra("game", game);
         startActivity(intent);
@@ -199,6 +221,7 @@ public class Main4ActivityTank extends AppCompatActivity {
             toast1.show();
         game.room1.fellowship.tank().headBash(target1);
         game.room1.endOfCharacterTurnChecks();
+        game.room1.removeDead();
         Intent intent = new Intent(this, Main5ActivityDPS.class);
         intent.putExtra("game", game);
         startActivity(intent);

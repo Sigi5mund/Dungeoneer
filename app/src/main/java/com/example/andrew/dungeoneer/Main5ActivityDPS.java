@@ -84,7 +84,7 @@ public class Main5ActivityDPS extends AppCompatActivity {
             Toast toast1 = Toast.makeText(this, "This Screen shows your DPS, they need to damage the enemy.", Toast.LENGTH_LONG);
             toast1.setGravity(Gravity.CENTER, 0, 0);
             View view1 = toast1.getView();
-            view1.setBackgroundColor(Color.parseColor("#ffcc0000"));
+            view1.setBackgroundColor(Color.parseColor("#ffff4444"));
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -95,7 +95,7 @@ public class Main5ActivityDPS extends AppCompatActivity {
             Toast toast2 = Toast.makeText(this, "You can select a target and use an attack, it costs mana.", Toast.LENGTH_LONG);
             toast2.setGravity(Gravity.CENTER, 0, 0);
             View view2 = toast2.getView();
-            view2.setBackgroundColor(Color.parseColor("#ffcc0000"));
+            view2.setBackgroundColor(Color.parseColor("#ffff4444"));
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -107,7 +107,7 @@ public class Main5ActivityDPS extends AppCompatActivity {
             Toast toast3 = Toast.makeText(this, "Be careful though, try to only damage enemies that are committed to attacking the Tank.", Toast.LENGTH_LONG);
             toast3.setGravity(Gravity.CENTER, 0, 0);
             View view3 = toast3.getView();
-            view3.setBackgroundColor(Color.parseColor("#ffcc0000"));
+            view3.setBackgroundColor(Color.parseColor("#ffff4444"));
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -118,7 +118,7 @@ public class Main5ActivityDPS extends AppCompatActivity {
             Toast toast4 = Toast.makeText(this, "Try an DOTAOE to start with!", Toast.LENGTH_SHORT);
             toast4.setGravity(Gravity.CENTER, 0, 0);
             View view4 = toast4.getView();
-            view4.setBackgroundColor(Color.parseColor("#ffcc0000"));
+            view4.setBackgroundColor(Color.parseColor("#ffff4444"));
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -143,9 +143,10 @@ public class Main5ActivityDPS extends AppCompatActivity {
             Toast toast1 = Toast.makeText(this, target1.getDesignation() + " was hit for "+ damageDone + "!", Toast.LENGTH_SHORT );
             toast1.setGravity(Gravity.CENTER, 0, 0);
             View view1 = toast1.getView();
-            view1.setBackgroundColor(Color.parseColor("#ffcc0000"));
+            view1.setBackgroundColor(Color.parseColor("#ffff4444"));
             toast1.show();
             game.room1.endOfCharacterTurnChecks();
+
 
         Intent intent = new Intent(this, Main6ActivitySummary.class);
         intent.putExtra("game", game);
@@ -154,7 +155,7 @@ public class Main5ActivityDPS extends AppCompatActivity {
             Toast toast = Toast.makeText(this, "You need to target an Enemy before you can attack with this Spell!", Toast.LENGTH_SHORT );
             View view2 = toast.getView();
             toast.setGravity(Gravity.CENTER, 0, 0);
-            view2.setBackgroundColor(Color.parseColor("#ffcc0000"));
+            view2.setBackgroundColor(Color.parseColor("#ffff4444"));
             toast.show();
     }
     }
@@ -165,7 +166,7 @@ public class Main5ActivityDPS extends AppCompatActivity {
         Toast toast1 = Toast.makeText(this, "A wall of fire hits all the enemy for" + damageDone + "!", Toast.LENGTH_SHORT );
         toast1.setGravity(Gravity.CENTER, 0, 0);
         View view1 = toast1.getView();
-        view1.setBackgroundColor(Color.parseColor("#ffcc0000"));
+        view1.setBackgroundColor(Color.parseColor("#ffff4444"));
         toast1.show();
         game.room1.endOfCharacterTurnChecks();
         Intent intent = new Intent(this, Main6ActivitySummary.class);
@@ -178,7 +179,7 @@ public class Main5ActivityDPS extends AppCompatActivity {
         Toast toast1 = Toast.makeText(this, "The enemy are burned and will take " + damageDone + " per turn!", Toast.LENGTH_SHORT );
         toast1.setGravity(Gravity.CENTER, 0, 0);
         View view1 = toast1.getView();
-        view1.setBackgroundColor(Color.parseColor("#ffcc0000"));
+        view1.setBackgroundColor(Color.parseColor("#ffff4444"));
         toast1.show();
         game.room1.endOfCharacterTurnChecks();
         Intent intent = new Intent(this, Main6ActivitySummary.class);
@@ -192,7 +193,7 @@ public class Main5ActivityDPS extends AppCompatActivity {
             Toast toast1 = Toast.makeText(this, target1.getDesignation() + "'s armour is melted and broken and " + target1.getDesignation()+ " takes " + damageDone + " damage!", Toast.LENGTH_SHORT );
             toast1.setGravity(Gravity.CENTER, 0, 0);
             View view1 = toast1.getView();
-            view1.setBackgroundColor(Color.parseColor("#ffcc0000"));
+            view1.setBackgroundColor(Color.parseColor("#ffff4444"));
             toast1.show();
         game.room1.endOfCharacterTurnChecks();
         Intent intent = new Intent(this, Main6ActivitySummary.class);
@@ -203,7 +204,7 @@ public class Main5ActivityDPS extends AppCompatActivity {
             Toast toast = Toast.makeText(this, "You need to target an Enemy before you can attack with this ability!", Toast.LENGTH_SHORT );
             View view2 = toast.getView();
             toast.setGravity(Gravity.CENTER, 0, 0);
-            view2.setBackgroundColor(Color.parseColor("#ffcc0000"));
+            view2.setBackgroundColor(Color.parseColor("#ffff4444"));
             toast.show();
         }
 

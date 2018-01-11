@@ -326,15 +326,14 @@ public void heal(Character target, Room room){}
     public boolean checkAlive() {
         if (this.healthBar <= 0) {
             this.alive = false;
-            return alive;
+
         } else {
             this.alive = true;
-            return alive;
         }
+        return alive;
     }
 
     public boolean isAlive() {
-
         return alive;
     }
 

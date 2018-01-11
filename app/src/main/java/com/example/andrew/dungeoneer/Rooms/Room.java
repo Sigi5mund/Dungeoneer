@@ -89,8 +89,30 @@ public abstract class Room implements Serializable{
 
     public void removeDead() {
         baddies.removeIf(next -> !next.checkAlive());
-        fellowship.getHeroes().removeIf(next -> !next.checkAlive());
     }
+
+    public Integer removeDeadFirstStage() {
+        Integer code = 0;
+        for (Character baddie : baddies
+                ) {
+            baddie.checkAlive();
+            if (baddie.isAlive() == false) {
+                baddies.remove(baddie);
+                code +=1;
+            }
+        }
+        return code;
+    }
+
+    public String removeDeadMessage(){
+        if (removeDeadFirstStage() == 1)
+        {return "An enemy has fallen, keep up the fight!";}
+        else if (removeDeadFirstStage() > 1)
+        {return "The enemies are falling in droves, continue the attaack!";}
+        return "";
+    }
+
+
 
     private Corpse corpseCreation(Character character) {
         Corpse playerCorpse;
@@ -252,12 +274,19 @@ public abstract class Room implements Serializable{
     }
 
     public void checkWhoIsAlive(){
-        for (Character hero: fellowship.getHeroes()) {
-            hero.checkAlive();
-        }
         for (Character baddie: baddies) {
             baddie.checkAlive();
         }
+    }
+
+    public boolean checkIfAnyBaddiesDead(){
+        for (Character baddie: baddies
+             ) {
+            if (baddie.isAlive()==false){
+                return true;
+            }
+        }
+        return false;
     }
 
 
