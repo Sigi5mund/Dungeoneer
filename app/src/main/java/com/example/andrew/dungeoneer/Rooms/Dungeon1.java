@@ -20,8 +20,6 @@ public class Dungeon1 extends Room implements Serializable {
         super(name);
         this.rewardGold = 10000;
         this.baddies = new ArrayList<>(Arrays.asList(new OrcCaptain("Grishnak"), new Goblin("Snotty"),new Goblin("Fotty"), new Goblin("Botty") ));
-        this.floor = new ArrayList<>();
-        this.shelves = new ArrayList<>();
         this.captain = baddies.get(0);
         this.goblin1 = baddies.get(1);
         this.goblin2 = baddies.get(2);

@@ -38,18 +38,17 @@ public class Main4ActivityTank extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main4_tank);
 
-
         Intent intent = getIntent();
         game = (Game)intent.getSerializableExtra("game");
 
-
+//        Game Logic
 
         game.room1.checkWhoIsAlive();
         game.room1.sortAllThreatTables();
         ArrayList<Character> list = game.room1.baddies;
 
-        VillainsRowAdaptor villainsAdapter = new VillainsRowAdaptor(this, list);
 
+        VillainsRowAdaptor villainsAdapter = new VillainsRowAdaptor(this, list);
         listView = findViewById(R.id.tankList);
         listView.setAdapter(villainsAdapter);
 
@@ -63,7 +62,6 @@ public class Main4ActivityTank extends AppCompatActivity {
                 targetInt = position;
                 target1 = game.room1.baddies.get(targetInt);
             }
-
         });
 
         Button onAction1Tank = findViewById(R.id.action1Tank);
@@ -92,7 +90,19 @@ public class Main4ActivityTank extends AppCompatActivity {
 
 
         if (game.novice == 1) {
-            Toast toast1 = Toast.makeText(this, "This Screen shows your Tank, they need to defend your party and take the damage.", Toast.LENGTH_LONG);
+
+            Toast toast = Toast.makeText(this, "Here come the Enemy! You can target them by clicking.", Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.TOP, 0, 0);
+            View view = toast.getView();
+            view.setBackgroundColor(Color.parseColor("#ffff8800"));
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    toast.show();
+                }
+            }, 5000);
+
+            Toast toast1 = Toast.makeText(this, "Your Tank needs to defend the Fellowship and take the damage.", Toast.LENGTH_LONG);
             toast1.setGravity(Gravity.CENTER, 0, 0);
             View view1 = toast1.getView();
             view1.setBackgroundColor(Color.parseColor("#ffff8800"));
@@ -101,10 +111,10 @@ public class Main4ActivityTank extends AppCompatActivity {
                 public void run() {
                     toast1.show();
                 }
-            }, 5000);
+            }, 9000);
 
-            Toast toast2 = Toast.makeText(this, "You can select a target and use an attack, it will build up your rage.", Toast.LENGTH_LONG);
-            toast2.setGravity(Gravity.CENTER, 0, 0);
+            Toast toast2 = Toast.makeText(this, "Select a target and use an attack, it will build up your rage.", Toast.LENGTH_LONG);
+            toast2.setGravity(Gravity.BOTTOM, 0, 0);
             View view2 = toast2.getView();
             view2.setBackgroundColor(Color.parseColor("#ffff8800"));
             new Handler().postDelayed(new Runnable() {
@@ -112,10 +122,10 @@ public class Main4ActivityTank extends AppCompatActivity {
                 public void run() {
                     toast2.show();
                 }
-            }, 9500);
+            }, 13000);
 
 
-            Toast toast3 = Toast.makeText(this, "Your attacks will generate Threat and make the enemy attack the Tank!", Toast.LENGTH_LONG);
+            Toast toast3 = Toast.makeText(this, "Attacks will increase Threat and make the enemy attack the Tank!", Toast.LENGTH_LONG);
             toast3.setGravity(Gravity.CENTER, 0, 0);
             View view3 = toast3.getView();
             view3.setBackgroundColor(Color.parseColor("#ffff8800"));
@@ -124,10 +134,10 @@ public class Main4ActivityTank extends AppCompatActivity {
                 public void run() {
                     toast3.show();
                 }
-            }, 14000);
+            }, 17000);
 
             Toast toast4 = Toast.makeText(this, "Try Attacking the Orc Captain first.", Toast.LENGTH_SHORT);
-            toast4.setGravity(Gravity.CENTER, 0, 0);
+            toast4.setGravity(Gravity.TOP, 0, 0);
             View view4 = toast4.getView();
             view4.setBackgroundColor(Color.parseColor("#ffff8800"));
             new Handler().postDelayed(new Runnable() {
@@ -135,7 +145,7 @@ public class Main4ActivityTank extends AppCompatActivity {
                 public void run() {
                     toast4.show();
                 }
-            }, 18000);
+            }, 21000);
         }
     }
 
@@ -161,36 +171,18 @@ public class Main4ActivityTank extends AppCompatActivity {
             toast1.show();
             game.room1.endOfCharacterTurnChecks();
             game.room1.removeDead();
-
-
-//            boolean trigger = false;
-//            if ( game.room1.checkIfAnyBaddiesDead() == true){trigger = true;}
-//            if (trigger ==true)
-//            {String message = game.room1.removeDeadMessage();
-//                Toast toast2 = Toast.makeText(this, message, Toast.LENGTH_SHORT);
-//                toast2.setGravity(Gravity.CENTER, 0, 0);
-//                View view2 = toast2.getView();
-//                view2.setBackgroundColor(Color.parseColor("#ff0099cc"));
-//                new Handler().postDelayed(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        toast2.show();
-//                    }
-//                }, 4000);
-//                toast2.show();
-//            }
-
         Intent intent = new Intent(this, Main5ActivityDPS.class);
         intent.putExtra("game", game);
         startActivity(intent);
-    } else {
+        }
+        else {
         Toast toast = Toast.makeText(this, "You need to target an Enemy before you can attack with this ability!", Toast.LENGTH_SHORT );
             View view2 = toast.getView();
             toast.setGravity(Gravity.CENTER, 0, 0);
             view2.setBackgroundColor(Color.parseColor("#ffff8800"));
             toast.show();
 
-    }
+        }
     }
 
 

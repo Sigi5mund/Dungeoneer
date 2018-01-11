@@ -50,7 +50,7 @@ public class CharacterTest {
     @Test
     public void knightTakesDamage(){
         tank.physicalDamage(500);
-        assertEquals(1675, tank.getHealthBar(), 0.1);
+        assertEquals(955, tank.getHealthBar(), 0.1);
     }
 
     @Test
@@ -62,7 +62,7 @@ public class CharacterTest {
     @Test
     public void increaseHealthPossible(){
         healer.oldAttack(tank);
-        assertEquals(2000, tank.getHealthBar(),100);
+        assertEquals(1180, tank.getHealthBar(),100);
     }
 
     @Test
@@ -88,6 +88,6 @@ public class CharacterTest {
     @Test
     public void newAttackMethod(){
         orcCaptain.weaponAttack(tank);
-        assertEquals(1780, tank.getHealthBar(), 1);
+        assertEquals(930, tank.getHealthBar(), 1);
     }
 }

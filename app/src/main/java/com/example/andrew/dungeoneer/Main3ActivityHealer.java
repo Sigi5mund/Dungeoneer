@@ -90,7 +90,19 @@ public class Main3ActivityHealer extends AppCompatActivity {
 
 
     if (game.novice == 1) {
-        Toast toast1 = Toast.makeText(this, "This Screen shows your healer, they need to keep their party alive with spells.", Toast.LENGTH_LONG);
+
+        Toast toast = Toast.makeText(this, "Here is your Fellowship of Dungeoneers! Healer, Tank and DPS.", Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.TOP, 0, 0);
+        View view = toast.getView();
+        view.setBackgroundColor(Color.parseColor("#ff99cc00"));
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                toast.show();
+            }
+        }, 1000);
+
+        Toast toast1 = Toast.makeText(this, "The Healer needs to keep their Fellowship alive with their Heal Spells.", Toast.LENGTH_LONG);
         toast1.setGravity(Gravity.CENTER, 0, 0);
         View view1 = toast1.getView();
         view1.setBackgroundColor(Color.parseColor("#ff99cc00"));
@@ -99,10 +111,10 @@ public class Main3ActivityHealer extends AppCompatActivity {
             public void run() {
                 toast1.show();
             }
-        }, 1500);
+        }, 5000);
 
-        Toast toast2 = Toast.makeText(this, "You can select a target or use spells that effect all the heroes!", Toast.LENGTH_LONG);
-        toast2.setGravity(Gravity.CENTER, 0, 0);
+        Toast toast2 = Toast.makeText(this, "Select a Target, or use Spells that affect all the Heroes!", Toast.LENGTH_LONG);
+        toast2.setGravity(Gravity.BOTTOM, 0, 0);
         View view2 = toast2.getView();
         view2.setBackgroundColor(Color.parseColor("#ff99cc00"));
         new Handler().postDelayed(new Runnable() {
@@ -110,10 +122,10 @@ public class Main3ActivityHealer extends AppCompatActivity {
             public void run() {
                 toast2.show();
             }
-        }, 7000);
+        }, 9000);
 
-        Toast toast3 = Toast.makeText(this, "Your Spells use up your Mana Pool, it regenerates a little each turn.", Toast.LENGTH_LONG);
-        toast3.setGravity(Gravity.CENTER, 0, 0);
+        Toast toast3 = Toast.makeText(this, "Spells use up your Mana Pool, it regenerates at the end of each Turn.", Toast.LENGTH_LONG);
+        toast3.setGravity(Gravity.BOTTOM, 0, 0);
         View view3 = toast3.getView();
         view3.setBackgroundColor(Color.parseColor("#ff99cc00"));
         new Handler().postDelayed(new Runnable() {
@@ -121,10 +133,10 @@ public class Main3ActivityHealer extends AppCompatActivity {
             public void run() {
                 toast3.show();
             }
-        }, 12000);
+        }, 13000);
 
 
-        Toast toast4 = Toast.makeText(this, "Try the AOEHOT Spell to start us off!", Toast.LENGTH_SHORT);
+        Toast toast4 = Toast.makeText(this, "Try the Timed Heal Spell to start us off!", Toast.LENGTH_SHORT);
         toast4.setGravity(Gravity.CENTER, 0, 0);
         View view4 = toast4.getView();
         view4.setBackgroundColor(Color.parseColor("#ff99cc00"));
@@ -135,8 +147,6 @@ public class Main3ActivityHealer extends AppCompatActivity {
             }
         }, 17000);
     }
-
-
 
     }
 
@@ -149,32 +159,28 @@ public class Main3ActivityHealer extends AppCompatActivity {
 
 
     public void onAction1Healer(View view){
-    if (target1 != null){
-
-        game.room1.fellowship.healer().heal(target1, game.room1);
-        game.room1.endOfCharacterTurnChecks();
-        Toast toast1 = Toast.makeText(this, target1.getDesignation() + " was healed!", Toast.LENGTH_SHORT );
-        toast1.setGravity(Gravity.CENTER, 0, 0);
-        View view1 = toast1.getView();
-        view1.setBackgroundColor(Color.parseColor("#ff99cc00"));
-        toast1.show();
-        Intent intent = new Intent(this, Main4ActivityTank.class);
-        intent.putExtra("game", game);
-        startActivity(intent);
-    } else {
-        Toast toast = Toast.makeText(this, "You need to target a Hero in order to cast this spell!", Toast.LENGTH_SHORT);
-        View view2 = toast.getView();
-        toast.setGravity(Gravity.CENTER, 0, 0);
-        view2.setBackgroundColor(Color.parseColor("#ff99cc00"));
-        toast.show();
-
-    }
-
-
+        if (target1 != null){
+            game.room1.fellowship.healer().heal(target1, game.room1);
+            game.room1.endOfCharacterTurnChecks();
+            Toast toast1 = Toast.makeText(this, target1.getDesignation() + " was healed!", Toast.LENGTH_SHORT );
+            toast1.setGravity(Gravity.CENTER, 0, 0);
+            View view1 = toast1.getView();
+            view1.setBackgroundColor(Color.parseColor("#ff99cc00"));
+            toast1.show();
+            Intent intent = new Intent(this, Main4ActivityTank.class);
+            intent.putExtra("game", game);
+            startActivity(intent);
+        }
+        else {
+            Toast toast = Toast.makeText(this, "You need to target a Hero in order to cast this spell!", Toast.LENGTH_SHORT);
+            View view2 = toast.getView();
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            view2.setBackgroundColor(Color.parseColor("#ff99cc00"));
+            toast.show();
+        }
     }
 
     public void onAction2Healer(View view){
-
         game.room1.fellowship.healer().aoeHeal(game.room1.fellowship, game.room1);
         game.room1.endOfCharacterTurnChecks();
         Toast toast1 = Toast.makeText(this, "All your Heroes were healed!", Toast.LENGTH_SHORT );

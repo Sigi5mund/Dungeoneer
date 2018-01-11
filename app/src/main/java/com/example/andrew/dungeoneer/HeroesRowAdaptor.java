@@ -31,7 +31,6 @@ public class HeroesRowAdaptor extends ArrayAdapter<Character> {
             Character currentCharacter = getItem(position);
 
 
-
             TextView health = (TextView) listItemView.findViewById(R.id.healthView);
             health.setText(currentCharacter.getHealthBar().toString());
 

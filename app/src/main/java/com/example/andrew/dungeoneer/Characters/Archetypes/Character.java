@@ -1,15 +1,8 @@
 package com.example.andrew.dungeoneer.Characters.Archetypes;
 
-import android.graphics.drawable.Drawable;
-
 import com.example.andrew.dungeoneer.Characters.Armour;
-import com.example.andrew.dungeoneer.Characters.Interfaces.IAttack;
-import com.example.andrew.dungeoneer.Characters.Interfaces.ISpell;
-import com.example.andrew.dungeoneer.Characters.Interfaces.ITakeDamage;
 import com.example.andrew.dungeoneer.Characters.OffHand;
 import com.example.andrew.dungeoneer.Characters.Weapon;
-import com.example.andrew.dungeoneer.Items.Corpse;
-import com.example.andrew.dungeoneer.Items.Item;
 import com.example.andrew.dungeoneer.Items.ThreatObject;
 import com.example.andrew.dungeoneer.Rooms.Room;
 
@@ -19,15 +12,14 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 
-public abstract class Character implements Serializable, IAttack, ITakeDamage {
+public abstract class Character implements Serializable {
 
     protected String name;
     protected String designation;
-    protected double gold;
+    private double gold;
     protected Weapon weapon;
     private OffHand offHand;
     Double healthBar;
-    private ArrayList<Item> items;
     private boolean superWeapon;
     ArrayList<Double> damageModifier;
     private ArrayList<Double> critModifier;
@@ -48,10 +40,6 @@ public abstract class Character implements Serializable, IAttack, ITakeDamage {
     private boolean blockAll;
     private Integer magicDefense;
     private Integer stunnedChance;
-    private String attackExclamation;
-    private String defenseExclamation;
-    private String healedExclamation;
-    private String critExclamation;
     private ArrayList<ThreatObject> threatTable;
     Integer manaMax;
     Integer manaPool;
@@ -77,17 +65,15 @@ public abstract class Character implements Serializable, IAttack, ITakeDamage {
         this.gold = gold;
         this.weapon = weapon;
         this.offHand = offHand;
-        this.items = new ArrayList<>();
         this.superWeapon = false;
         this.armour = armour;
         this.alive = true;
         this.threatTable = new ArrayList<>();
 
 
-
 //        Random Modifiers:
         this.damageModifier = new ArrayList<>(Arrays.asList(0.5, 0.8, 1.0, 1.0, 1.0, 1.2, 1.5));
-        this.critModifier = new ArrayList<>(Arrays.asList( 0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 1.0));
+        this.critModifier = new ArrayList<>(Arrays.asList(0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 1.0));
         this.blockModifier = new ArrayList<>(Arrays.asList(0.0, 0.0, 0.0, 0.6, 0.7, 0.7, 0.8, 0.9));
 
 //        Stats:
@@ -109,6 +95,8 @@ public abstract class Character implements Serializable, IAttack, ITakeDamage {
         this.manaPool = 0;
         this.manaRegen = 5;
         this.manaMax = 100;
+
+//        For easy Android Display Info
         this.action1cost = 0;
         this.action2cost = 0;
         this.action3cost = 0;
@@ -122,23 +110,14 @@ public abstract class Character implements Serializable, IAttack, ITakeDamage {
         this.action3desc = "";
         this.action4desc = "";
         this.classResource = "";
-
-
-
-
-
-//      In-Game Messages:
-        this.attackExclamation = "";
-        this.defenseExclamation = "";
-        this.healedExclamation = "";
-        this.critExclamation = "";
     }
+
+
+
 
 //         Attack Mechanics:
 
-
-
-
+//    Main Attacks
     public double oldAttack(Character target) {
         double damage;
         damage = weapon.getWeaponDamage() * randomDamageModifier();
@@ -147,10 +126,7 @@ public abstract class Character implements Serializable, IAttack, ITakeDamage {
         }
         this.superWeapon = false;
         return target.physicalDamage(damage);
-
-
     }
-
 
     public double weaponAttack(Character target) {
         double damage;
@@ -161,6 +137,10 @@ public abstract class Character implements Serializable, IAttack, ITakeDamage {
         damage = damage * calculateBlockChance(target);
         return target.physicalDamage(damage);
     }
+
+
+
+//    Calculation Methods
 
      double calculateCritChance() {
         if (this.critChance + randomCritModifier() >= 1) {
@@ -183,6 +163,10 @@ public abstract class Character implements Serializable, IAttack, ITakeDamage {
             }
         }
         return 1.0;
+    }
+
+    private Integer calculateMagicResistance(Character target) {
+        return 1 - (target.getIntellect() / 100);
     }
 
     private double doesSuperWeaponApply() {
@@ -213,30 +197,26 @@ public abstract class Character implements Serializable, IAttack, ITakeDamage {
         }
     }
 
-    private Integer calculateMagicResistance(Character target) {
-        return 1 - (target.getIntellect() / 100);
-    }
 
-    Double randomDamageModifier() {
+//  Random Chance Modifiers
+
+    protected Double randomDamageModifier() {
         Collections.shuffle(this.damageModifier);
         return damageModifier.get(0);
     }
 
-    Double randomCritModifier() {
+    protected Double randomCritModifier() {
         Collections.shuffle(this.critModifier);
         return critModifier.get(0);
     }
 
-    private Double randomBlockModifier() {
+    protected Double randomBlockModifier() {
         Collections.shuffle(this.blockModifier);
         return blockModifier.get(0);
     }
 
 
-    public String spell(Character target) {
-        return "string";
-    }
-
+//                                       Inheritance action abilities
 //    Baddies Attacks
     public double threatAttack(){
         return 0.0;
@@ -352,12 +332,7 @@ public void heal(Character target, Room room){}
     }
 
 
-
 //  Constructor Getters and Setters:
-
-    public ArrayList<Item> getItems() {
-        return this.items;
-    }
 
     public boolean isSuperWeapon() {
         return superWeapon;
@@ -380,32 +355,6 @@ public void heal(Character target, Room room){}
     }
 
 
-//    Gold and Loot Mechanics:
-
-    public double getGold() {
-        return this.gold;
-    }
-
-    public void takeGold(Corpse corpse) {
-        addGold(corpse.getGold());
-        corpse.setGold(corpse.getGold());
-    }
-
-    public void setGold(double gold) {
-        this.gold = gold;
-    }
-
-    public void addGold(double gold) {
-        this.gold = this.gold + gold;
-    }
-
-    public void payGold(double gold) {
-        this.gold = this.gold - gold;
-    }
-
-    public String examineCorpse(Corpse corpse) {
-        return corpse.getName() + " has " + corpse.getGold() + " gold, " + corpse.getArmour() + " armour and a " + corpse.getWeapon() + " weapon. What will you take?";
-    }
 
 
 //    Stats and Status Getters:
@@ -458,22 +407,9 @@ public void heal(Character target, Room room){}
         return this.stunnedChance;
     }
 
-    public String getAttackExclamation() {
-        return this.attackExclamation;
-    }
 
-    public String getDefenseExclamation() {
-        return this.defenseExclamation;
-    }
 
-    public String getHealedExclamation() {
-        return this.healedExclamation;
-    }
-
-    public String getCritExclamation() {
-        return this.critExclamation;
-    }
-
+//    Android display getters
     public Integer getAction1cost(){return this.action1cost;}
     public Integer getAction2cost(){return this.action2cost;}
     public Integer getAction3cost(){return this.action3cost;}
@@ -513,14 +449,6 @@ public void heal(Character target, Room room){}
         return this.threatTable.get(0).getReference();
     }
 
-    public Character middleThreat() {
-        return this.threatTable.get(1).getReference();
-    }
-
-    public Character bottomThreat() {
-        return this.threatTable.get(2).getReference();
-    }
-
     public void randomiseThreatTable() {
         Collections.shuffle(this.threatTable);
     }
@@ -549,7 +477,7 @@ public void heal(Character target, Room room){}
 
 
 
-    //    Getters and Setters for Mana
+    //    Getters and Setters for Mana and Rage Resources
     public Integer getManaMax() {
         return manaMax;
     }

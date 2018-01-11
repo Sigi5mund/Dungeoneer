@@ -94,9 +94,11 @@ public class Main5ActivityDPS extends AppCompatActivity {
         TextView manaview4 = (TextView) findViewById(R.id.action4ManaView);
         manaview4.setText(game.room1.fellowship.dps().getAction4cost().toString());
 
+
+
         if (game.novice == 1) {
-            Toast toast1 = Toast.makeText(this, "This Screen shows your DPS, they need to damage the enemy.", Toast.LENGTH_LONG);
-            toast1.setGravity(Gravity.CENTER, 0, 0);
+            Toast toast1 = Toast.makeText(this, "Your DPS needs to damage the Enemy.", Toast.LENGTH_LONG);
+            toast1.setGravity(Gravity.TOP, 0, 0);
             View view1 = toast1.getView();
             view1.setBackgroundColor(Color.parseColor("#ffff4444"));
             new Handler().postDelayed(new Runnable() {
@@ -106,7 +108,7 @@ public class Main5ActivityDPS extends AppCompatActivity {
                 }
             }, 4000);
 
-            Toast toast2 = Toast.makeText(this, "You can select a target and use an attack, it costs mana.", Toast.LENGTH_LONG);
+            Toast toast2 = Toast.makeText(this, "Select a target and use an attack, it costs Mana.", Toast.LENGTH_LONG);
             toast2.setGravity(Gravity.CENTER, 0, 0);
             View view2 = toast2.getView();
             view2.setBackgroundColor(Color.parseColor("#ffff4444"));
@@ -118,8 +120,8 @@ public class Main5ActivityDPS extends AppCompatActivity {
             }, 9000);
 
 
-            Toast toast3 = Toast.makeText(this, "Be careful though, try to only damage enemies that are committed to attacking the Tank.", Toast.LENGTH_LONG);
-            toast3.setGravity(Gravity.CENTER, 0, 0);
+            Toast toast3 = Toast.makeText(this, "Be careful, try to only damage Enemies that are already committed to attacking the Tank.", Toast.LENGTH_LONG);
+            toast3.setGravity(Gravity.BOTTOM, 0, 0);
             View view3 = toast3.getView();
             view3.setBackgroundColor(Color.parseColor("#ffff4444"));
             new Handler().postDelayed(new Runnable() {
@@ -129,7 +131,7 @@ public class Main5ActivityDPS extends AppCompatActivity {
                 }
             }, 14000);
 
-            Toast toast4 = Toast.makeText(this, "Try an DOTAOE to start with!", Toast.LENGTH_SHORT);
+            Toast toast4 = Toast.makeText(this, "Try a DOTAOE to start with!", Toast.LENGTH_SHORT);
             toast4.setGravity(Gravity.CENTER, 0, 0);
             View view4 = toast4.getView();
             view4.setBackgroundColor(Color.parseColor("#ffff4444"));

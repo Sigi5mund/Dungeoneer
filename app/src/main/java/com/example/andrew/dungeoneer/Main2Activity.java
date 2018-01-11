@@ -1,6 +1,7 @@
 package com.example.andrew.dungeoneer;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,7 +31,7 @@ public class Main2Activity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-
+//  New Game Creation
         game = new Game();
         ArrayList<Character> heroes = new ArrayList<>();
         Character healer = new Priest("Cadfael", 100, Weapon.SCEPTER, Armour.LEATHER, OffHand.HEALWAND);
@@ -44,15 +45,14 @@ public class Main2Activity extends AppCompatActivity{
         game.room1.loadGoodies(fellowship);
         game.room1.addThreatObjectsToTables();
 
-
-
-
     }
 
 
     public void onEnterButtonClick(View view) {
         Toast toast1 = Toast.makeText(this, "The heroes enter the dungeon! Prepare for battle!", Toast.LENGTH_LONG );
         toast1.setGravity(Gravity.CENTER, 0, 0);
+        View view1 = toast1.getView();
+        view1.setBackgroundColor(Color.parseColor("#ffff4444"));
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

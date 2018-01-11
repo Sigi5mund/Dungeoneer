@@ -33,7 +33,8 @@
         android:layout_height="40dp"
         android:backgroundTint="@android:color/holo_red_light"
         android:onClick="onAction2DPS"
-        android:text="AOE"
+        android:text="FlameWall"
+        android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/textView10"
         app:layout_constraintStart_toEndOf="@+id/action1DPS" />
 
@@ -43,7 +44,8 @@
         android:layout_height="40dp"
         android:backgroundTint="@android:color/holo_red_light"
         android:onClick="onAction3DPS"
-        android:text="DOTAOE"
+        android:text="Smoulder"
+        android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/textView11"
         app:layout_constraintEnd_toStartOf="@+id/action4DPS" />
 
@@ -53,7 +55,8 @@
         android:layout_height="48dp"
         android:text="@string/mana"
         android:textAlignment="center"
-        android:textStyle="italic"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/action1ManaView"
         app:layout_constraintStart_toEndOf="@+id/imageView6" />
 
@@ -75,6 +78,8 @@
         android:backgroundTint="@android:color/background_light"
         android:text="DPS"
         android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@android:color/holo_red_light"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -172,6 +177,7 @@
         android:id="@+id/imageView6"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:background="@android:color/holo_red_light"
         app:layout_constraintBottom_toTopOf="@+id/action1ManaView"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/manaicon1111" />

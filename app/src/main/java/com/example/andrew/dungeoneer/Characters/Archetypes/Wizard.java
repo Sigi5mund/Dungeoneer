@@ -46,14 +46,7 @@ public class Wizard extends Character implements Serializable {
         this.classResource = "Mana";
     }
 
-    //  Attack Mechanics:
-    @Override
-    public String spell(Character target) {
-        double damage;
-        damage = 1000.00 * randomDamageModifier();
-        target.magicDamage(damage);
-        return "Fireball! : Did " + damage + "damage.";
-    }
+    //  Spell Mechanics:
 
     @Override
     public double fireBall(Character target, Room room) {

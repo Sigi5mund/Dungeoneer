@@ -9,12 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"></activity>
         <activity
             android:name=".Main2Activity"
-            android:label="DUNGEON"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:label="DUNGEONEER">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -41,7 +38,7 @@
             android:label="Summary"
             android:parentActivityName=".Main5ActivityDPS"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".Main7ActivityGameOver"></activity>
+
     </application>
 
 </manifest>

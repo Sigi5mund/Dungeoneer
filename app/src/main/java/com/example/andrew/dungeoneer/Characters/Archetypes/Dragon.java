@@ -29,13 +29,6 @@ public class Dragon extends Character implements Serializable, IThreatAttack {
         this.designation = "Boss";
     }
 
-    @Override
-    public String spell(Character target) {
-        double damage;
-        damage = 1000.00;
-        target.healthBar = healthBar - damage;
-        return "FireBall : Did " + damage + "damage.";
-    }
 
     public double threatAttack(){
         return weaponAttack(this.topThreat());

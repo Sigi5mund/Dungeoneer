@@ -49,23 +49,14 @@ public class Priest extends Character implements Serializable {
 
     }
 
-    //  Attack Mechanics:
-    @Override
-    public String spell(Character target) {
-        double heal;
-        heal = 300 * randomDamageModifier();
-        target.healthBar = target.healthBar + heal;
-        return "HealthBomb: did " + heal + " healing";
-    }
+    //  Spell Mechanics:
 
     @Override
     public void heal(Character target, Room room){
         this.spendManaToCast(this.action1cost);
         target.increaseHealth(500);
         raiseAllThreat(action1threat, room);
-        }
-
-
+    }
 
     @Override
     public void aoeHeal (Fellowship fellowship, Room room){
@@ -95,7 +86,6 @@ public class Priest extends Character implements Serializable {
         room.fellowship.dps().setManaPool(room.fellowship.dps().getManaMax());
         this.raiseAllThreat(this.action4threat, room);
     }
-
 }
 
 

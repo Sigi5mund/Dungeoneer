@@ -13,7 +13,7 @@
         android:layout_height="40dp"
         android:backgroundTint="@android:color/holo_orange_dark"
         android:onClick="onAction1Tank"
-        android:text="Sword"
+        android:text="Attack"
         app:layout_constraintBottom_toTopOf="@+id/textView9"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -34,7 +34,8 @@
         android:layout_height="40dp"
         android:backgroundTint="@android:color/holo_orange_dark"
         android:onClick="onAction2Tank"
-        android:text="Shield"
+        android:text="Shield Up"
+        android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/textView10"
         app:layout_constraintStart_toEndOf="@+id/action1Tank" />
 
@@ -44,7 +45,8 @@
         android:layout_height="40dp"
         android:backgroundTint="@android:color/holo_orange_dark"
         android:onClick="onAction3Tank"
-        android:text="AOE"
+        android:text="Attack All"
+        android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/textView11"
         app:layout_constraintEnd_toStartOf="@+id/action4Tank" />
 
@@ -54,15 +56,15 @@
         android:layout_height="48dp"
         android:text="rage"
         android:textAlignment="center"
-        android:textSize="24sp"
-        android:textStyle="italic"
+        android:textSize="18sp"
+        android:textStyle="bold|italic"
         app:layout_constraintBottom_toTopOf="@+id/action1rageview"
         app:layout_constraintStart_toEndOf="@+id/imageView" />
 
     <TextView
         android:id="@+id/action1rageview"
         android:layout_width="96dp"
-        android:layout_height="20sp"
+        android:layout_height="20dp"
         android:text="manacost"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/action1Tank"
@@ -102,6 +104,7 @@
         android:text="Rage building, high threat attack"
         android:textAlignment="center"
         android:textSize="12sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -112,6 +115,7 @@
         android:text="Raise shield and block all"
         android:textAlignment="center"
         android:textSize="12sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView9" />
 
@@ -122,6 +126,7 @@
         android:text="Hits all the enemies"
         android:textAlignment="center"
         android:textSize="12sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/textView12" />
 
@@ -132,6 +137,7 @@
         android:text="Reduce resistance to magic"
         android:textAlignment="center"
         android:textSize="12sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -151,9 +157,10 @@
         android:id="@+id/imageView"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:background="@android:color/holo_orange_dark"
         app:layout_constraintBottom_toTopOf="@+id/action1rageview"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/rageicon" />
+        app:srcCompat="@drawable/fist" />
 
     <TextView
         android:id="@+id/textView4"
@@ -162,6 +169,7 @@
         android:layout_marginBottom="108dp"
         android:text="Tank"
         android:textAlignment="center"
+        android:textColor="@android:color/holo_orange_dark"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
