@@ -202,19 +202,26 @@ public class Main6ActivitySummary extends AppCompatActivity {
             toast1.setGravity(Gravity.TOP, 0, 0);
             View view1 = toast1.getView();
             view1.setBackgroundColor(Color.parseColor("#ffff8800"));
-            toast1.show();
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    toast1.show();
+                }
+            }, 1000);
+
 
             Toast toast2 = Toast.makeText(this, "A door opens and more enemies join the fight!", Toast.LENGTH_SHORT);
-            toast2.setGravity(Gravity.CENTER, 0, 0);
+            toast2.setGravity(Gravity.BOTTOM, 0, 0);
             View view2 = toast2.getView();
             view2.setBackgroundColor(Color.parseColor("#ffff8800"));
-            toast2.show();
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    toast2.show();
+                }
+            }, 1000);
 
-            Toast toast3 = Toast.makeText(this, "A door opens and more enemies join the fight!", Toast.LENGTH_SHORT);
-            toast3.setGravity(Gravity.BOTTOM, 0, 0);
-            View view3 = toast3.getView();
-            view3.setBackgroundColor(Color.parseColor("#ffff8800"));
-            toast3.show();
+
 
         }
 

@@ -10,8 +10,8 @@
         android:id="@+id/EnterButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="8dp"
         android:backgroundTint="@android:color/holo_red_light"
         android:onClick="onEnterButtonClick"
         android:text="Veterans Enter Here!"
@@ -22,17 +22,18 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.736" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="338dp"
-        android:layout_height="113dp"
-        android:layout_marginTop="52dp"
+        android:layout_height="137dp"
+        android:layout_marginTop="208dp"
         android:backgroundTint="@android:color/holo_blue_dark"
         android:text="@string/LandingScreen"
         android:textAlignment="center"
         android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+        android:textColor="@android:color/background_dark"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -44,7 +45,7 @@
         android:id="@+id/NoviceButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="108dp"
+        android:layout_marginBottom="32dp"
         android:backgroundTint="@android:color/holo_green_light"
         android:onClick="onNoviceButtonClick"
         android:text="Novices Enter Here!"
@@ -54,5 +55,19 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/dragonmainpage" />
 
 </android.support.constraint.ConstraintLayout>
