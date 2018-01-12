@@ -51,7 +51,7 @@
         android:background="@android:color/transparent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/wizardicon" />
+        app:srcCompat="@drawable/wizardicon3" />
 
     <ImageView
         android:id="@+id/armourType"
@@ -91,7 +91,7 @@
         android:background="@android:color/transparent"
         app:layout_constraintStart_toEndOf="@+id/classView"
         app:layout_constraintTop_toBottomOf="@+id/Health"
-        app:srcCompat="@drawable/manaicon" />
+        app:srcCompat="@drawable/manaicon1111" />
 
     <TextView
         android:id="@+id/resourceView"

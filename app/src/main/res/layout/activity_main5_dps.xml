@@ -55,6 +55,7 @@
         android:layout_height="48dp"
         android:text="@string/mana"
         android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/action1ManaView"
@@ -63,9 +64,11 @@
     <ListView
         android:id="@+id/dpsList"
         android:layout_width="380dp"
-        android:layout_height="380dp"
+        android:layout_height="400dp"
+        android:layout_marginBottom="8dp"
         android:listSelector="@android:color/holo_red_light"
         android:longClickable="false"
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -79,7 +82,7 @@
         android:text="DPS"
         android:textAlignment="center"
         android:textAllCaps="false"
-        android:textColor="@android:color/holo_red_light"
+        android:textColor="@android:color/background_dark"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -95,6 +98,7 @@
         android:layout_height="20dp"
         android:text="manacost"
         android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
         app:layout_constraintBottom_toTopOf="@+id/action1DPS"
         app:layout_constraintLeft_toLeftOf="parent" />
 
@@ -104,6 +108,7 @@
         android:layout_height="20dp"
         android:text="manacost"
         android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
         app:layout_constraintBottom_toTopOf="@+id/action2DPS"
         app:layout_constraintStart_toEndOf="@+id/action1ManaView" />
 
@@ -113,6 +118,7 @@
         android:layout_height="20dp"
         android:text="manacost"
         android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
         app:layout_constraintBottom_toTopOf="@+id/action3DPS"
         app:layout_constraintEnd_toStartOf="@+id/action4ManaView" />
 
@@ -122,6 +128,7 @@
         android:layout_height="20dp"
         android:text="manacost"
         android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
         app:layout_constraintBottom_toTopOf="@+id/action4DPS"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -131,6 +138,7 @@
         android:layout_height="50dp"
         android:text="Basic attack, high threat"
         android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -140,6 +148,7 @@
         android:layout_height="50dp"
         android:text="Hits all enemies, high threat"
         android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView9" />
 
@@ -149,6 +158,7 @@
         android:layout_height="50dp"
         android:text="Slow damage, low threat"
         android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/textView12" />
 
@@ -158,6 +168,7 @@
         android:layout_height="50dp"
         android:text="Damages armour, very high threat"
         android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 

@@ -85,7 +85,7 @@ public class Main6ActivitySummary extends AppCompatActivity {
             public void run() {
                 toast6.show();
             }
-        }, 3000);
+        }, 2000);
 
         Toast toast7 = Toast.makeText(this, "Your Smoulder spells trigger", Toast.LENGTH_SHORT);
         toast7.setGravity(Gravity.CENTER, 0, 0);
@@ -96,7 +96,7 @@ public class Main6ActivitySummary extends AppCompatActivity {
             public void run() {
                 toast7.show();
             }
-        }, 3000);
+        }, 2000);
 
         game.turn += 1;
 
@@ -199,10 +199,23 @@ public class Main6ActivitySummary extends AppCompatActivity {
             game.currentRoom().baddies.add(new Goblin("Peaky"));
             game.room1.addThreatObjectsToTables();
             Toast toast1 = Toast.makeText(this, "A door opens and more enemies join the fight!", Toast.LENGTH_SHORT);
-            toast1.setGravity(Gravity.NO_GRAVITY, 0, 0);
+            toast1.setGravity(Gravity.TOP, 0, 0);
             View view1 = toast1.getView();
             view1.setBackgroundColor(Color.parseColor("#ffff8800"));
             toast1.show();
+
+            Toast toast2 = Toast.makeText(this, "A door opens and more enemies join the fight!", Toast.LENGTH_SHORT);
+            toast2.setGravity(Gravity.CENTER, 0, 0);
+            View view2 = toast2.getView();
+            view2.setBackgroundColor(Color.parseColor("#ffff8800"));
+            toast2.show();
+
+            Toast toast3 = Toast.makeText(this, "A door opens and more enemies join the fight!", Toast.LENGTH_SHORT);
+            toast3.setGravity(Gravity.BOTTOM, 0, 0);
+            View view3 = toast3.getView();
+            view3.setBackgroundColor(Color.parseColor("#ffff8800"));
+            toast3.show();
+
         }
 
         game.novice = 0;

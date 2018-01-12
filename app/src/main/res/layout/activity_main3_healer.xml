@@ -56,6 +56,7 @@
         android:layout_height="48dp"
         android:text="@string/mana"
         android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/action1ManaView"
@@ -65,9 +66,11 @@
         android:id="@+id/healerList"
         android:layout_width="380dp"
         android:layout_height="400dp"
+        android:layout_marginBottom="8dp"
         android:clickable="true"
         android:listSelector="@android:color/holo_green_light"
         android:longClickable="true"
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -79,7 +82,7 @@
         android:layout_marginBottom="116dp"
         android:text="Healer"
         android:textAlignment="center"
-        android:textColor="@android:color/holo_green_light"
+        android:textColor="@android:color/background_dark"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -92,6 +95,7 @@
         android:layout_height="20dp"
         android:text="manacost"
         android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
         app:layout_constraintBottom_toTopOf="@+id/action1Healer"
         app:layout_constraintLeft_toLeftOf="parent" />
 
@@ -101,6 +105,7 @@
         android:layout_height="20dp"
         android:text="manacost"
         android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
         app:layout_constraintBottom_toTopOf="@+id/action2Healer"
         app:layout_constraintStart_toEndOf="@+id/action1ManaView" />
 
@@ -110,6 +115,7 @@
         android:layout_height="20dp"
         android:text="manacost"
         android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
         app:layout_constraintBottom_toTopOf="@+id/action3Healer"
         app:layout_constraintEnd_toStartOf="@+id/action4ManaView" />
 
@@ -119,6 +125,7 @@
         android:layout_height="20dp"
         android:text="Below 50"
         android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
         app:layout_constraintBottom_toTopOf="@+id/action4Healer"
         app:layout_constraintRight_toRightOf="parent" />
 
@@ -128,6 +135,7 @@
         android:layout_height="50dp"
         android:text="Raise a single Heroes health"
         android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
         android:textSize="12sp"
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -139,6 +147,7 @@
         android:layout_height="50dp"
         android:text="Raise all Heroes Health"
         android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
         android:textSize="12sp"
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -150,6 +159,7 @@
         android:layout_height="50dp"
         android:text="Raise all Heroes Health for 3 turns"
         android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
         android:textSize="12sp"
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -161,6 +171,7 @@
         android:layout_height="50dp"
         android:text="Recharge Heroes Mana"
         android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
         android:textSize="12sp"
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
