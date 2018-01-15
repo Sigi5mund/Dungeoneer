@@ -25,7 +25,7 @@ public abstract class Character implements Serializable {
     private ArrayList<Double> critModifier;
     private ArrayList<Double> blockModifier;
     private Armour armour;
-    boolean alive;
+    private boolean alive;
     Integer strength;
     Integer agility;
     Integer intellect;

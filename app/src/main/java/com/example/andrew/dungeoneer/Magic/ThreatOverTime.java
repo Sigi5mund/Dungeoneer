@@ -1,5 +1,6 @@
 package com.example.andrew.dungeoneer.Magic;
 import com.example.andrew.dungeoneer.Characters.Archetypes.Character;
+import com.example.andrew.dungeoneer.Characters.Interfaces.ITick;
 
 import java.io.Serializable;
 

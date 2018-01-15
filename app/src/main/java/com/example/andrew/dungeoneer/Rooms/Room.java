@@ -4,7 +4,7 @@ import com.example.andrew.dungeoneer.Characters.Archetypes.Character;
 import com.example.andrew.dungeoneer.Characters.Archetypes.Fellowship;
 import com.example.andrew.dungeoneer.Items.RecordObject;
 import com.example.andrew.dungeoneer.Items.ThreatObject;
-import com.example.andrew.dungeoneer.Magic.ITick;
+import com.example.andrew.dungeoneer.Characters.Interfaces.ITick;
 
 import java.io.Serializable;
 import java.util.ArrayList;
