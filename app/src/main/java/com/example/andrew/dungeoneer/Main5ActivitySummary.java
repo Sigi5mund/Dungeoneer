@@ -13,20 +13,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.andrew.dungeoneer.Characters.Archetypes.Character;
-import com.example.andrew.dungeoneer.Characters.Archetypes.Fellowship;
 import com.example.andrew.dungeoneer.Characters.Archetypes.Goblin;
-import com.example.andrew.dungeoneer.Characters.Archetypes.Knight;
-import com.example.andrew.dungeoneer.Characters.Archetypes.Priest;
-import com.example.andrew.dungeoneer.Characters.Archetypes.Wizard;
-import com.example.andrew.dungeoneer.Characters.Armour;
-import com.example.andrew.dungeoneer.Characters.OffHand;
-import com.example.andrew.dungeoneer.Characters.Weapon;
 import com.example.andrew.dungeoneer.Game.Game;
 import com.example.andrew.dungeoneer.Items.RecordObject;
 
 import java.util.ArrayList;
 
-public class Main6ActivitySummary extends AppCompatActivity {
+public class Main5ActivitySummary extends AppCompatActivity {
 
     Game game;
     String dead;
@@ -188,7 +181,7 @@ public class Main6ActivitySummary extends AppCompatActivity {
 
 
     public void onQuit(View view){
-        Intent intent = new Intent(this, Main2Activity.class);
+        Intent intent = new Intent(this, Main1Activity.class);
         startActivity(intent);
     }
 
@@ -237,7 +230,7 @@ public class Main6ActivitySummary extends AppCompatActivity {
             }
         }, 500);
 
-        Intent intent = new Intent(this, Main3ActivityHealer.class);
+        Intent intent = new Intent(this, Main2ActivityHealer.class);
         intent.putExtra("game", game);
         startActivity(intent);
     }

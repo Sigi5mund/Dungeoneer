@@ -19,10 +19,9 @@ import com.example.andrew.dungeoneer.Characters.OffHand;
 import com.example.andrew.dungeoneer.Characters.Weapon;
 import com.example.andrew.dungeoneer.Game.Game;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Main2Activity extends AppCompatActivity{
+public class Main1Activity extends AppCompatActivity{
 
     Game game;
 
@@ -61,7 +60,7 @@ public class Main2Activity extends AppCompatActivity{
         }, 0000);
 
 
-        Intent intent = new Intent(this, Main3ActivityHealer.class);
+        Intent intent = new Intent(this, Main2ActivityHealer.class);
         intent.putExtra("game", game);
         startActivity(intent);
     }
@@ -69,7 +68,7 @@ public class Main2Activity extends AppCompatActivity{
     public void onNoviceButtonClick(View view) {
 
         game.novice = 1;
-        Intent intent = new Intent(this, Main3ActivityHealer.class);
+        Intent intent = new Intent(this, Main2ActivityHealer.class);
         intent.putExtra("game", game);
         startActivity(intent);
     }

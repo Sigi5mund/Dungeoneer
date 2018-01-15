@@ -14,18 +14,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.andrew.dungeoneer.Characters.Archetypes.Character;
-import com.example.andrew.dungeoneer.Characters.Archetypes.Fellowship;
-import com.example.andrew.dungeoneer.Characters.Archetypes.Knight;
-import com.example.andrew.dungeoneer.Characters.Archetypes.Priest;
-import com.example.andrew.dungeoneer.Characters.Archetypes.Wizard;
-import com.example.andrew.dungeoneer.Characters.Armour;
-import com.example.andrew.dungeoneer.Characters.OffHand;
-import com.example.andrew.dungeoneer.Characters.Weapon;
 import com.example.andrew.dungeoneer.Game.Game;
 
 import java.util.ArrayList;
 
-public class Main5ActivityDPS extends AppCompatActivity {
+public class Main4ActivityDPS extends AppCompatActivity {
 
     Game game;
     Character target1;
@@ -131,7 +124,7 @@ public class Main5ActivityDPS extends AppCompatActivity {
                 }
             }, 14000);
 
-            Toast toast4 = Toast.makeText(this, "Try a DOTAOE to start with!", Toast.LENGTH_SHORT);
+            Toast toast4 = Toast.makeText(this, "Try a Smoulder Spell to start with!", Toast.LENGTH_SHORT);
             toast4.setGravity(Gravity.CENTER, 0, 0);
             View view4 = toast4.getView();
             view4.setBackgroundColor(Color.parseColor("#ffff4444"));
@@ -146,7 +139,7 @@ public class Main5ActivityDPS extends AppCompatActivity {
 
 
     public void onSkipButtonClick(View view) {
-        Intent intent = new Intent(this, Main6ActivitySummary.class);
+        Intent intent = new Intent(this, Main5ActivitySummary.class);
         intent.putExtra("game", game);
         startActivity(intent);
     }
@@ -164,7 +157,7 @@ public class Main5ActivityDPS extends AppCompatActivity {
             game.room1.endOfCharacterTurnChecks();
 
 
-        Intent intent = new Intent(this, Main6ActivitySummary.class);
+        Intent intent = new Intent(this, Main5ActivitySummary.class);
         intent.putExtra("game", game);
         startActivity(intent);
     } else {
@@ -185,7 +178,7 @@ public class Main5ActivityDPS extends AppCompatActivity {
         view1.setBackgroundColor(Color.parseColor("#ffff4444"));
         toast1.show();
         game.room1.endOfCharacterTurnChecks();
-        Intent intent = new Intent(this, Main6ActivitySummary.class);
+        Intent intent = new Intent(this, Main5ActivitySummary.class);
         intent.putExtra("game", game);
         startActivity(intent);
     }
@@ -198,7 +191,7 @@ public class Main5ActivityDPS extends AppCompatActivity {
         view1.setBackgroundColor(Color.parseColor("#ffff4444"));
         toast1.show();
         game.room1.endOfCharacterTurnChecks();
-        Intent intent = new Intent(this, Main6ActivitySummary.class);
+        Intent intent = new Intent(this, Main5ActivitySummary.class);
         intent.putExtra("game", game);
         startActivity(intent);
     }
@@ -212,7 +205,7 @@ public class Main5ActivityDPS extends AppCompatActivity {
             view1.setBackgroundColor(Color.parseColor("#ffff4444"));
             toast1.show();
         game.room1.endOfCharacterTurnChecks();
-        Intent intent = new Intent(this, Main6ActivitySummary.class);
+        Intent intent = new Intent(this, Main5ActivitySummary.class);
         intent.putExtra("game", game);
         startActivity(intent);
 

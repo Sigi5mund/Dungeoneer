@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Dungeon1 extends Room implements Serializable {
+public class DungeonOrcHorde extends Room implements Serializable {
 
     public Character captain;
     public Character goblin1;
@@ -16,7 +16,7 @@ public class Dungeon1 extends Room implements Serializable {
     public Character goblin3;
 
 
-    public Dungeon1(String name) {
+    public DungeonOrcHorde(String name) {
         super(name);
         this.rewardGold = 10000;
         this.baddies = new ArrayList<>(Arrays.asList(new OrcCaptain("Grishnak"), new Goblin("Snotty"),new Goblin("Fotty"), new Goblin("Botty") ));

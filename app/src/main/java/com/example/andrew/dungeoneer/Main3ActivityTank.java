@@ -14,18 +14,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.andrew.dungeoneer.Characters.Archetypes.Character;
-import com.example.andrew.dungeoneer.Characters.Archetypes.Fellowship;
-import com.example.andrew.dungeoneer.Characters.Archetypes.Knight;
-import com.example.andrew.dungeoneer.Characters.Archetypes.Priest;
-import com.example.andrew.dungeoneer.Characters.Archetypes.Wizard;
-import com.example.andrew.dungeoneer.Characters.Armour;
-import com.example.andrew.dungeoneer.Characters.OffHand;
-import com.example.andrew.dungeoneer.Characters.Weapon;
 import com.example.andrew.dungeoneer.Game.Game;
 
 import java.util.ArrayList;
 
-public class Main4ActivityTank extends AppCompatActivity {
+public class Main3ActivityTank extends AppCompatActivity {
 
     Game game;
     Character target1;
@@ -154,7 +147,7 @@ public class Main4ActivityTank extends AppCompatActivity {
 
 
 
-        Intent intent = new Intent(this, Main5ActivityDPS.class);
+        Intent intent = new Intent(this, Main4ActivityDPS.class);
         intent.putExtra("game", game);
         startActivity(intent);
 
@@ -171,7 +164,7 @@ public class Main4ActivityTank extends AppCompatActivity {
             toast1.show();
             game.room1.endOfCharacterTurnChecks();
             game.room1.removeDead();
-        Intent intent = new Intent(this, Main5ActivityDPS.class);
+        Intent intent = new Intent(this, Main4ActivityDPS.class);
         intent.putExtra("game", game);
         startActivity(intent);
         }
@@ -196,7 +189,7 @@ public class Main4ActivityTank extends AppCompatActivity {
         game.room1.fellowship.tank().shieldWall(game.room1);
         game.room1.endOfCharacterTurnChecks();
         game.room1.removeDead();
-        Intent intent = new Intent(this, Main5ActivityDPS.class);
+        Intent intent = new Intent(this, Main4ActivityDPS.class);
         intent.putExtra("game", game);
         startActivity(intent);
     }
@@ -211,7 +204,7 @@ public class Main4ActivityTank extends AppCompatActivity {
         game.room1.fellowship.tank().tauntAOE(game.room1);
         game.room1.endOfCharacterTurnChecks();
         game.room1.removeDead();
-        Intent intent = new Intent(this, Main5ActivityDPS.class);
+        Intent intent = new Intent(this, Main4ActivityDPS.class);
         intent.putExtra("game", game);
         startActivity(intent);
     }
@@ -227,7 +220,7 @@ public class Main4ActivityTank extends AppCompatActivity {
         game.room1.fellowship.tank().headBash(target1);
         game.room1.endOfCharacterTurnChecks();
         game.room1.removeDead();
-        Intent intent = new Intent(this, Main5ActivityDPS.class);
+        Intent intent = new Intent(this, Main4ActivityDPS.class);
         intent.putExtra("game", game);
         startActivity(intent);
         } else {

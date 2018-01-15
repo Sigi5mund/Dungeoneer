@@ -3,10 +3,8 @@ package com.example.andrew.dungeoneer;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
-import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,20 +14,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.andrew.dungeoneer.Characters.Archetypes.Character;
-import com.example.andrew.dungeoneer.Characters.Archetypes.Fellowship;
-import com.example.andrew.dungeoneer.Characters.Archetypes.Knight;
-import com.example.andrew.dungeoneer.Characters.Archetypes.Priest;
-import com.example.andrew.dungeoneer.Characters.Archetypes.Wizard;
-import com.example.andrew.dungeoneer.Characters.Armour;
-import com.example.andrew.dungeoneer.Characters.OffHand;
-import com.example.andrew.dungeoneer.Characters.Weapon;
 import com.example.andrew.dungeoneer.Game.Game;
 
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
 
-public class Main3ActivityHealer extends AppCompatActivity {
+public class Main2ActivityHealer extends AppCompatActivity {
 
     Game game;
     Character target1;
@@ -152,7 +141,7 @@ public class Main3ActivityHealer extends AppCompatActivity {
 
 
     public void onSkipButtonClick(View view){
-        Intent intent = new Intent(this, Main4ActivityTank.class);
+        Intent intent = new Intent(this, Main3ActivityTank.class);
         intent.putExtra("game", game);
         startActivity(intent);
     }
@@ -167,7 +156,7 @@ public class Main3ActivityHealer extends AppCompatActivity {
             View view1 = toast1.getView();
             view1.setBackgroundColor(Color.parseColor("#ff99cc00"));
             toast1.show();
-            Intent intent = new Intent(this, Main4ActivityTank.class);
+            Intent intent = new Intent(this, Main3ActivityTank.class);
             intent.putExtra("game", game);
             startActivity(intent);
         }
@@ -188,7 +177,7 @@ public class Main3ActivityHealer extends AppCompatActivity {
         View view1 = toast1.getView();
         view1.setBackgroundColor(Color.parseColor("#ff99cc00"));
         toast1.show();
-        Intent intent = new Intent(this, Main4ActivityTank.class);
+        Intent intent = new Intent(this, Main3ActivityTank.class);
         intent.putExtra("game", game);
         startActivity(intent);
     }
@@ -202,7 +191,7 @@ public class Main3ActivityHealer extends AppCompatActivity {
         View view1 = toast1.getView();
         view1.setBackgroundColor(Color.parseColor("#ff99cc00"));
         toast1.show();
-        Intent intent = new Intent(this, Main4ActivityTank.class);
+        Intent intent = new Intent(this, Main3ActivityTank.class);
         intent.putExtra("game", game);
         startActivity(intent);
     }
@@ -216,7 +205,7 @@ public class Main3ActivityHealer extends AppCompatActivity {
         View view1 = toast1.getView();
         view1.setBackgroundColor(Color.parseColor("#ff99cc00"));
         toast1.show();
-        Intent intent = new Intent(this, Main4ActivityTank.class);
+        Intent intent = new Intent(this, Main3ActivityTank.class);
         intent.putExtra("game", game);
         startActivity(intent);
     }

@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Main2Activity"
+            android:name=".Main1Activity"
             android:label="DUNGEONEER">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,24 +19,24 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Main3ActivityHealer"
+            android:name=".Main2ActivityHealer"
             android:label="HEALER"
-            android:parentActivityName=".Main2Activity"
+            android:parentActivityName=".Main1Activity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".Main4ActivityTank"
+            android:name=".Main3ActivityTank"
             android:label="TANK"
-            android:parentActivityName=".Main3ActivityHealer"
+            android:parentActivityName=".Main2ActivityHealer"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".Main5ActivityDPS"
+            android:name=".Main4ActivityDPS"
             android:label="DPS"
-            android:parentActivityName=".Main4ActivityTank"
+            android:parentActivityName=".Main3ActivityTank"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".Main6ActivitySummary"
+            android:name=".Main5ActivitySummary"
             android:label="Summary"
-            android:parentActivityName=".Main5ActivityDPS"
+            android:parentActivityName=".Main4ActivityDPS"
             android:theme="@style/AppTheme.NoActionBar"></activity>
 
     </application>

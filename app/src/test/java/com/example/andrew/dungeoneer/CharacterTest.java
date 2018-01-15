@@ -35,7 +35,6 @@ public class CharacterTest {
 
     }
 
-
     @Test
     public void attackIsModifiedByArmour(){
         tank.changeArmour(Armour.MAGIC);
@@ -44,7 +43,6 @@ public class CharacterTest {
         tank.changeArmour(Armour.CLOTHE);
         tank.physicalDamage(500);
         assertEquals(1300, tank.getHealthBar(), 1);
-
     }
 
     @Test
@@ -65,29 +63,4 @@ public class CharacterTest {
         assertEquals(1180, tank.getHealthBar(),100);
     }
 
-    @Test
-    public void castSpellPriest(){
-        double health;
-        double health2;
-        health = tank.getHealthBar();
-        healer.spell(tank);
-        health2 = tank.getHealthBar();
-        assertNotEquals(health, health2);
-    }
-
-    @Test
-    public void castSpellWizard(){
-        double health;
-        double health2;
-        health = dragon.getHealthBar();
-        dps.spell(dragon);
-        health2 = dragon.getHealthBar();
-        assertNotEquals(health, health2);
-    }
-
-    @Test
-    public void newAttackMethod(){
-        orcCaptain.weaponAttack(tank);
-        assertEquals(930, tank.getHealthBar(), 1);
-    }
 }
